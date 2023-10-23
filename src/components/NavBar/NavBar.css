@@ -1,0 +1,36 @@
+.navbar {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: rgb(134, 5, 89);
+    margin: 0;
+    width: 100%;
+    padding: 0.5rem;
+  }
+  /* any Link that is child of .navbar-item */
+  li > a {
+    color: rgb(144, 191, 210);
+  
+  }
+
+  .navbar-item {
+    flex-basis: 20%;
+    list-style-type: none;
+    text-align: center;
+    color: rgb(215, 219, 255);
+  }
+
+  .navbar-link {
+    text-decoration: none;
+    font-family: "Quicksand", sans-serif;
+    letter-spacing: 1px;
+  }
+
+  .navbar-logout {
+    margin-left: auto;
+    list-style-type: none;
+    
+  }
+
+  .navbar-link:hover {
+    color: whitesmoke;
+  }
