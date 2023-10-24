@@ -1,0 +1,36 @@
+.home {
+  display: flex;
+  justify-content: center;
+  
+}
+
+#home_card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  color: white;
+  width: 300px; /* Or whatever width you want */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  background-color: rgb(134, 5, 89);
+}
+
+a {
+  color: rgb(144, 191, 210);
+}
+#home_card_title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#home_card_img img {
+  width: 100%;
+  height: auto;
+}
+
+.home-info {
+  margin-top: 10px;
+}
+
+.btn-container {
+  margin-top: 20px;
+}

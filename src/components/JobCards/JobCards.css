@@ -1,0 +1,43 @@
+.jobs-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Spacing between cards */
+  }
+  
+  .job-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    color: white;
+    width: 300px; /* Or whatever width you want */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px; /* Adjust as needed */
+    background-color: rgb(134, 5, 89);
+  }
+  
+  .job-card a {
+    color: rgb(144, 191, 210);
+  }
+  
+  .job-card-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .job-card-description {
+    margin-top: 10px;
+  }
+  
+  .job-card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .btn-container {
+    margin-top: 20px;
+  }
+  
+  #job_card_img img {
+    width: 100%;
+    height: auto;
+  }

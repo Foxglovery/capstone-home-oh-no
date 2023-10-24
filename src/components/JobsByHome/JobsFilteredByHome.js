@@ -1,10 +1,11 @@
 import { Link, useParams } from "react-router-dom";
-import "./HomeDetails.css";
+import "./JobsFilteredByHome.css";
 import { useEffect, useState } from "react";
 import { GetHomeById } from "../../services/homeService";
 import { GetJobsByHomeId } from "../../services/jobsService";
+import { JobCards } from "../JobCards/JobCards";
 
-export const HomeDetails = ({ currentUser }) => {
+export const JobsFilteredByHome = () => {
   const { currentHomeId } = useParams();
   const [home, setHome] = useState([]);
   const [jobs, setJobs] = useState([]);
@@ -16,11 +17,7 @@ export const HomeDetails = ({ currentUser }) => {
       setHome(data);
     });
   }, [currentHomeId]);
-  //uses .some to check all the objects in the array. my new darling child
-  const isCurrentUserOwner = home.some(
-    (homeEntry) => homeEntry.userId === currentUser.id
-  );
-
+  
   useEffect(() => {
     GetJobsByHomeId(currentHomeId).then((jobsArray) => {
       console.log("jobsArray from api:", jobsArray); //debug log
@@ -30,7 +27,9 @@ export const HomeDetails = ({ currentUser }) => {
     });
   }, [currentHomeId]);
 
-  return (
+
+
+  return (<>
     <div className="home">
       {home.length > 0 ? (
         <div id="home_card">
@@ -62,16 +61,13 @@ export const HomeDetails = ({ currentUser }) => {
             <div>
               <span className="home-info">Finished Jobs:{finishedJobs} </span>
             </div>
-            {isCurrentUserOwner && (
-              <div className="btn-container">
-                <button>Change Something About Your Home</button>
-              </div>
-            )}
+            
           </div>
         </div>
       ) : (
         "Loading..."
       )}
     </div>
-  );
+    <JobCards jobs = {jobs}/>
+  </>)
 };

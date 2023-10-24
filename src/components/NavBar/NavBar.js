@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css"
-export const NavBar = () => {
+export const NavBar = ({currentUser}) => {
   const navigate = useNavigate();
   return (
     <ul className="navbar">
@@ -8,7 +8,7 @@ export const NavBar = () => {
         <Link className="navbar-link" to="allHomes">Home</Link>
       </li>
       <li className="navbar-item">
-        <Link className="navbar-link" to="">My Jobs</Link>
+        <Link className="navbar-link" to={`/myJobs/${currentUser.id}`}>My Jobs</Link>
       </li>
       <li className="navbar-item">
         <Link className="navbar-link" to="">Add A Job</Link>

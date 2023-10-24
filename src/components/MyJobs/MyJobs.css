@@ -1,0 +1,18 @@
+.home_card_container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.home_title_card {
+
+border: black 2px solid;
+border-radius: 20px;
+
+padding: 20px;
+background-color: rgb(134, 5, 89);
+}
+
+.home_title {
+color: white;
+}

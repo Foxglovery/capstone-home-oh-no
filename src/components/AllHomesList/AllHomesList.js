@@ -66,12 +66,12 @@ export const AllHomesList = () => {
         return (
           <li className="cards__item" key={home.homeId}>
               <div className="card">
-                <Link to={`/allHomes/${home.homeId}`}>
+                <Link to={`/homeDetails/${home.homeId}`}>
                 <div className="card__image card__image--fence"></div>
                 </Link>
                 <div className="card__content">
                   <div className="card__title">{home.home.name}</div>
-                  <p className="card__text">{home.home.description}</p>
+                  {/* <p className="card__text">{home.home.description}</p> */}
                   <p>Ongoing Projects: {homeJobCount[home.home.name]}</p>
                   <p>Owners: {home.owners.map(owner => owner.user.name).join(', ')}</p>
                   <button className="btn btn--block card__btn">Button</button>
