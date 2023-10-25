@@ -11,7 +11,7 @@ export const NavBar = ({currentUser}) => {
         <Link className="navbar-link" to={`/myJobs/${currentUser.id}`}>My Jobs</Link>
       </li>
       <li className="navbar-item">
-        <Link className="navbar-link" to="">Add A Job</Link>
+        <Link className="navbar-link" to="/addAJob">Add A Job</Link>
       </li>
       <li className="navbar-item">
         <Link className="navbar-link" to="">Home Details</Link>

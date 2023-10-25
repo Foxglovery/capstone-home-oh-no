@@ -21,6 +21,8 @@ export const JobsFilteredByHome = () => {
   useEffect(() => {
     GetJobsByHomeId(currentHomeId).then((jobsArray) => {
       console.log("jobsArray from api:", jobsArray); //debug log
+      console.log("GPT LOG",new Date(jobsArray[0]?.startDate * 1000).toLocaleDateString());
+
       setJobs(jobsArray);
       const numberFinishedJobs = jobsArray.filter((job) => job.endDate).length;
       setFinishedJobs(numberFinishedJobs);
@@ -64,7 +66,7 @@ export const JobsFilteredByHome = () => {
             
           </div>
         </div>
-      ) : (
+      ) : (//TODO: this needs to move to include the jobCard component
         "Loading..."
       )}
     </div>
