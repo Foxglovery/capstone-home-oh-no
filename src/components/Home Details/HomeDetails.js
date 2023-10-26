@@ -38,7 +38,7 @@ export const HomeDetails = ({ currentUser }) => {
             <div id="home_card_title">{home[0].home?.name}</div>
           </Link>
           <div id="home_card_img">
-            <img src={home[0].home?.imgURL} alt={home[0].home?.name} />
+            <img src={home[0].home?.imgUrl} alt={home[0].home?.name} />
           </div>
 
           <div>

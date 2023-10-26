@@ -5,7 +5,7 @@ import { GetHomeById } from "../../services/homeService";
 import { GetJobsByHomeId } from "../../services/jobsService";
 import { JobCards } from "../JobCards/JobCards";
 
-export const JobsFilteredByHome = () => {
+export const JobsFilteredByHome = ({currentUser}) => {
   const { currentHomeId } = useParams();
   const [home, setHome] = useState([]);
   const [jobs, setJobs] = useState([]);
@@ -39,7 +39,7 @@ export const JobsFilteredByHome = () => {
             <div id="home_card_title">{home[0].home?.name}</div>
           </Link>
           <div id="home_card_img">
-            <img src={home[0].home?.imgURL} alt={home[0].home?.name} />
+            <img src={home[0].home?.imgUrl} alt={home[0].home?.name} />
           </div>
 
           <div>
@@ -70,6 +70,6 @@ export const JobsFilteredByHome = () => {
         "Loading..."
       )}
     </div>
-    <JobCards jobs = {jobs}/>
+    <JobCards currentUser={currentUser} jobs = {jobs}/>
   </>)
 };

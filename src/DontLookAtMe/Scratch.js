@@ -64,3 +64,55 @@ this is what i had before:
 
 
 
+          import { useEffect, useState } from "react";
+          import { Link } from "react-router-dom";
+          import "./JobCards.css";
+          import { GetHomeByUserId } from "../../services/homeService";
+          
+          export const JobCards = ({ currentUser, jobs }) => {
+          const [home, setHome] = useState([])
+          const [userId, setUserId] = useState(0)
+            useEffect(() => {
+              GetHomeByUserId(currentUser.id).then((homeObj) => {
+                  console.log("homebyuserobj from api", homeObj)//debug log
+                  setUserId(homeObj[0].userId)
+                  
+              })
+            },[currentUser])
+            const isHomeOwner = home.some(homeObj => homeObj[0]?.userId === currentUser.id)
+          
+            return (
+              <div className="jobs-container">
+                {console.log(isHomeOwner)}
+                {jobs.length > 0
+                  ? jobs.map((job, index) => (
+                      <div key={index} className="job-card">
+                        <Link to={`/jobDetails/${job.id}`}>
+                          <div className="job-card-title">{job.title}</div>
+                        </Link>
+                        {/* added in the * 1000; otherwise all the dates are the same from the 70's */}
+                        <div className="job-card-start">Started on: {new Date(job.startDate * 1000).toLocaleDateString("en-US")}</div>
+                        <div className="job-card-start">Current Step: {job.currentStep}</div>
+                        <div id="job_card_img">
+                          <img src={job.imgUrl} alt={job.title} />
+                        </div>
+                        <div className="job-card-description">
+                          <p>{job.description}</p>
+                          <div className="job-card-area">Category: {job.area?.areaName}</div>
+                          
+                        </div>
+                        {/* Add more fields here as needed */}
+                      </div>
+                    ))
+                  : "Loading..."}
+              </div>
+            );
+          };
+          
+          const isHomeOwner = home[0]?.userId === currentUser.id
+
+          {isHomeOwner && (
+            <div>
+              <button>Update This Job</button>
+            </div>
+          )}

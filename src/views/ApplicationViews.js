@@ -11,6 +11,7 @@ import { JobsFilteredByHome } from "../components/JobsByHome/JobsFilteredByHome"
 import { MyJobs } from "../components/MyJobs/MyJobs";
 import { JobDetails } from "../components/JobDetails/JobDetails";
 import { AddAJob } from "../components/AddAJob/AddAJob";
+import { UpdateJob } from "../components/UpdateJob/UpdateJob";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -77,6 +78,9 @@ export const ApplicationViews = () => {
             <Route index element={<AddAJob currentUser={currentUser}/>}/>
           </Route>
           
+          <Route path="updateJob">
+            <Route path=":jobId" element={<UpdateJob currentUser={currentUser} />}/>
+          </Route>
 
         </Route>
       </Routes>

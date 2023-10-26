@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { GetHomeByUserId, GetOwnersByHomeId } from "../../services/homeService";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./MyJobs.css"
 import { GetJobsByHomeId } from "../../services/jobsService";
 import { JobCards } from "../JobCards/JobCards";
+import { MyJobCards } from "../JobCards/MyJobCards";
 
 export const MyJobs = ({ currentUser }) => {
   const { userId } = useParams();
@@ -12,6 +13,7 @@ export const MyJobs = ({ currentUser }) => {
   const [jobs, setJobs] = useState([])
   const [finishedJobs, setFinishedJobs] = useState([])
   const [owners, setOwners] = useState([])
+  const navigate = useNavigate()
   useEffect(() => {
     GetHomeByUserId(userId).then((data) => {
       console.log("data from api", data);//debug log
@@ -19,11 +21,12 @@ export const MyJobs = ({ currentUser }) => {
       setHomeId(data[0]?.homeId)
       
     });
+    
   }, [userId]);
   
   useEffect(() => {
     GetJobsByHomeId(homeId).then((jobsArray) => {
-      console.log("jobsArray from api:", jobsArray); //debug log
+      console.log("jobsArray", jobsArray); //debug log
       setJobs(jobsArray);
       const numberFinishedJobs = jobsArray.filter((job) => job.endDate).length;
       setFinishedJobs(numberFinishedJobs);
@@ -32,11 +35,11 @@ export const MyJobs = ({ currentUser }) => {
 
   useEffect(() => {
     GetOwnersByHomeId(homeId).then((ownerArray) => {
-        console.log("ownerArray from api", ownerArray)//debug log
+        console.log("ownerArray", ownerArray)//debug log
         setOwners(ownerArray)
     })
   },[homeId])
-
+//can this be replaced ith a boolean
   const isHomeOwner = owners.some(owner => owner.userId === currentUser.id)
 
   return (
@@ -48,10 +51,13 @@ export const MyJobs = ({ currentUser }) => {
               <div className="home_title">{home[0]?.home.name}</div>
             </div>
           </div>
-          <JobCards jobs={jobs} />
+          <MyJobCards isHomeOwner={isHomeOwner} currentUser={currentUser} jobs={jobs} />
         </>
       ) : (
-        <div></div>
+        <div>
+          {/* TODO if user is not owner, nothing displays, replace with nav to  */}
+        </div>
+        
       )}
     </>
   );

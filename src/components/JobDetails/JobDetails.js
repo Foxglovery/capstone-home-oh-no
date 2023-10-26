@@ -40,7 +40,7 @@ export const JobDetails = ({ currentUser }) => {
           <div id="home_info">At: {job.home.name}</div>
 
           <div id="home_card_img">
-            <img src={job.imgURL} alt={job.title} />
+            <img src={job.imgUrl} alt={job.title} />
           </div>
 
           <div>

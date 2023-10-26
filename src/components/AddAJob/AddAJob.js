@@ -8,7 +8,7 @@ export const AddAJob = ({ currentUser }) => {
   const [job, setJob] = useState({
     title: "",
     description: "",
-    imageUrl: "",
+    imgUrl: "",
     budgetGoal: 0,
     selectedArea: "",
     currentStep: ""
@@ -24,9 +24,9 @@ export const AddAJob = ({ currentUser }) => {
     });
     GetHomeByUserId(currentUser.id).then((homeObj) => {
       setHome(homeObj);
-      console.log("homeObjLog",homeObj)//debug log
+      
     });
-  }, [currentUser.id]);
+  }, [currentUser]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -35,16 +35,16 @@ export const AddAJob = ({ currentUser }) => {
         homeId: home[0].homeId,
         title: job.title,
         description: job.description,
-        areaId: job.selectedArea,
+        areaId: parseInt(job.selectedArea),
         startDate: Date.now(),
         endDate: false,
         budgetGoal: job.budgetGoal,
         budget: 0,
         currentStep: job.currentStep,
-        imageUrl: job.imageUrl
+        imgUrl: job.imgUrl
       };
       submitJob(newJob).then(() => {
-        navigate(`/myJobs`);
+        navigate(`/myJobs/${currentUser.id}`);
       });
     } else {
       window.alert("Please Name Your Job");
@@ -63,12 +63,14 @@ export const AddAJob = ({ currentUser }) => {
     <div className="card">
       <div className="card-body">
         <h5 className="card-title">Add A Job</h5>
+        {/* HTML provides a native submit function for forms. */}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="title">Title:</label>
             <input
               type="text"
               id="title"
+              required
               name="title"
               className="form-control"
               placeholder="Enter title"
@@ -78,14 +80,14 @@ export const AddAJob = ({ currentUser }) => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="imageUrl">Image URL:</label>
+            <label htmlFor="imgUrl">Image URL:</label>
             <input
               type="text"
-              id="imageUrl"
-              name="imageUrl"
+              id="imgUrl"
+              name="imgUrl"
               className="form-control"
               placeholder="Enter image URL"
-              value={job.imageUrl}
+              value={job.imgUrl}
               onChange={handleInputChange}
             />
           </div>
@@ -94,6 +96,7 @@ export const AddAJob = ({ currentUser }) => {
             <label htmlFor="description">Description:</label>
             <input
               type="text"
+              required
               id="description"
               name="description"
               className="form-control"
@@ -118,6 +121,7 @@ export const AddAJob = ({ currentUser }) => {
             <label htmlFor="currentStep">First Step</label>
             <input
               type="text"
+              required
               id="currentStep"
               name="currentStep"
               className="form-control"
@@ -131,6 +135,7 @@ export const AddAJob = ({ currentUser }) => {
             <label htmlFor="area">Select an Area:</label>
             <select
               id="area"
+              required
               name="selectedArea"
               className="form-control"
               value={job.selectedArea}

@@ -27,6 +27,16 @@ export const submitJob = (job) => {
   })
 }
 
+export const submitUpdateJob = (job, jobId) => {
+  return fetch(`http://localhost:8088/jobs/${jobId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(job)
+  })
+}
+
 export const GetAllAreas = () => {
   return fetch(`http://localhost:8088/areas`).then((res) => res.json());
 };

@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./JobCards.css";
 
-export const JobCards = ({ jobs }) => {
-  const [isLoading, setIsLoading] = useState(false)
+export const MyJobCards = ({ jobs }) => {
+  const [isLoaded, setIsLoaded] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
+    console.log("jobs",jobs)
+    // checks if jobs has been populated, if so it
     if (jobs.length > 0) {
-      setIsLoading(true)
+      setIsLoaded(true)
+      
     }
   },[jobs]);
 
-  if (!isLoading) {
+  if (!isLoaded) {
     return <div></div>
   }
 
@@ -33,7 +37,9 @@ export const JobCards = ({ jobs }) => {
                 <div className="job-card-area">Category: {job.area?.areaName}</div>
                 {console.log(job)}
               </div>
-              {/* Add more fields here as needed */}
+              <div className="update-btn-container">
+                <button onClick={() => {navigate(`/updateJob/${job.id}`)}}>Update Job</button>
+              </div>
             </div>
           ))}
     </div>
