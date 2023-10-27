@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./UpdateJob.css";
-import { GetAllAreas, GetJobById, submitUpdateJob } from "../../services/jobsService";
-import { GetHomeByUserId } from "../../services/homeService";
+import { GetAllAreas, GetJobById, submitDeleteJob, submitUpdateJob } from "../../services/jobsService";
+import { GetHomesByUserId } from "../../services/homeService";
 import { useNavigate, useParams } from "react-router-dom";
 
 export const UpdateJob = ({ currentUser }) => {
@@ -14,6 +14,7 @@ export const UpdateJob = ({ currentUser }) => {
     description: "",
     imgUrl: "",
     budgetGoal: 0,
+    budget: 0,
     selectedArea: "",
     currentStep: "",
   });
@@ -22,7 +23,7 @@ export const UpdateJob = ({ currentUser }) => {
     GetAllAreas().then((areaArray) => {
       setAreas(areaArray);
     });
-    GetHomeByUserId(currentUser.id).then((homeObj) => {
+    GetHomesByUserId(currentUser.id).then((homeObj) => {
       setHome(homeObj);
     });
   }, [currentUser]);
@@ -33,13 +34,13 @@ export const UpdateJob = ({ currentUser }) => {
         
         title: currentJobData.title,
         description: currentJobData.description,
-        // TODO areaId is a string
+        
         //changing this from areaId: to selectedArea let the update form populate the select with the previous choice
         selectedArea: currentJobData.areaId,
         startDate: Date.now(),
         endDate: false,
         budgetGoal: currentJobData.budgetGoal,
-        budget: 0,
+        budget: currentJobData.budget || 0,
         currentStep: currentJobData.currentStep,
         imgUrl: currentJobData.imgUrl
       })
@@ -57,10 +58,11 @@ export const UpdateJob = ({ currentUser }) => {
         startDate: Date.now(),
         endDate: false,
         budgetGoal: job.budgetGoal,
-        budget: 0,
+        budget: job.budget,
         currentStep: job.currentStep,
         imgUrl: job.imgUrl
         };
+        console.log("Sending this updatedJob", updatedJob)//debug log
         submitUpdateJob(updatedJob, jobId).then(() => {
             navigate(`/myJobs/${currentUser.id}`)
         })
@@ -69,6 +71,33 @@ export const UpdateJob = ({ currentUser }) => {
     }
   }
 
+  const handleFinishJob = () => {
+    const finishedJob = {
+      homeId: home[0].homeId,
+        title: job.title,
+        description: job.description,
+        areaId: parseInt(job.selectedArea),
+        startDate: job.startDate,
+        endDate: true,
+        budgetGoal: job.budgetGoal,
+        budget: job.budget,
+        currentStep: job.currentStep,
+        imgUrl: job.imgUrl
+
+    }
+    console.log("Sending this finishedJob", finishedJob)//debug log
+    submitUpdateJob(finishedJob, jobId).then(() => {
+      navigate(`/myJobs/${currentUser.id}`)
+    })
+  }
+
+  const handleDeleteJob = () => {
+    submitDeleteJob(jobId).then(() => {
+      navigate(`/myJobs/${currentUser.id}`)
+    })
+  }
+
+  //when change is made, the property name specified in the form-name is given the value and set in the job state
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setJob({
@@ -81,7 +110,7 @@ export const UpdateJob = ({ currentUser }) => {
     <div className="card">
     <div className="card-body">
       <h5 className="card-title">Update Job</h5>
-      
+      {/* having the submit be in the form html preserves the native HTML submit function and keeps it pretty. NO ALERTS! */}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="title">Title:</label>
@@ -136,6 +165,18 @@ export const UpdateJob = ({ currentUser }) => {
           />
         </div>
         <div className="form-group">
+          <label htmlFor="budget">Budget</label>
+          <input
+            type="text"
+            id="budget"
+            name="budget"
+            className="form-control"
+            placeholder="$$$ Saved"
+            value={job.budget}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-group">
           <label htmlFor="currentStep">First Step</label>
           <input
             type="text"
@@ -171,6 +212,16 @@ export const UpdateJob = ({ currentUser }) => {
         <div className="form-group">
           <button className="form-btn btn-info" type="submit" >
             Submit Job
+          </button>
+          </div>
+          <div className="form-group">
+          <button className="form-btn btn-info" type="button" onClick={handleFinishJob} >
+            Finish Job
+          </button>
+        </div>
+        <div className="form-group">
+          <button className="form-btn btn-warning" type="button" onClick={handleDeleteJob} >
+            Delete Job
           </button>
         </div>
       </form>

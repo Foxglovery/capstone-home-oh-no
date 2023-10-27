@@ -8,7 +8,7 @@ export const MyJobCards = ({ jobs }) => {
 
   useEffect(() => {
     console.log("jobs",jobs)
-    // checks if jobs has been populated, if so it
+    // checks if jobs has been populated, if so it sets is loaded to true to render the content or not
     if (jobs.length > 0) {
       setIsLoaded(true)
       
@@ -26,7 +26,10 @@ export const MyJobCards = ({ jobs }) => {
               <Link to={`/jobDetails/${job.id}`}>
                 <div className="job-card-title">{job.title}</div>
               </Link>
-              {/* added in the * 1000; otherwise all the dates are the same from the 70's */}
+              {job.endDate ? (
+                <div>~COMPLETED~</div>
+              ) : ("")}
+              
               <div className="job-card-start">Started on: {new Date(job.startDate).toLocaleDateString("en-US")}</div>
               <div className="job-card-start">Current Step: {job.currentStep}</div>
               <div id="job_card_img">

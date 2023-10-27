@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./AddAJob.css";
 import { GetAllAreas, submitJob } from "../../services/jobsService";
-import { GetHomeByUserId } from "../../services/homeService";
+import { GetHomesByUserId } from "../../services/homeService";
 import { useNavigate } from "react-router-dom";
 
 export const AddAJob = ({ currentUser }) => {
@@ -22,7 +22,7 @@ export const AddAJob = ({ currentUser }) => {
     GetAllAreas().then((areaArray) => {
       setAreas(areaArray);
     });
-    GetHomeByUserId(currentUser.id).then((homeObj) => {
+    GetHomesByUserId(currentUser.id).then((homeObj) => {
       setHome(homeObj);
       
     });

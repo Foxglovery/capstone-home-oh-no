@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "./HomeDetails.css";
 import { useEffect, useState } from "react";
 import { GetHomeById } from "../../services/homeService";
@@ -9,6 +9,7 @@ export const HomeDetails = ({ currentUser }) => {
   const [home, setHome] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [finishedJobs, setFinishedJobs] = useState([]);
+  const navigate = useNavigate()
   useEffect(() => {
     GetHomeById(currentHomeId).then((data) => {
       console.log("data from api:", data); //debug log
@@ -64,7 +65,9 @@ export const HomeDetails = ({ currentUser }) => {
             </div>
             {isCurrentUserOwner && (
               <div className="btn-container">
-                <button>Change Something About Your Home</button>
+                <button onClick={() => {
+                  navigate(`/updateHome/${home[0]?.homeId}`)
+                }}>Change Something About Your Home</button>
               </div>
             )}
           </div>

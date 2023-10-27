@@ -12,15 +12,20 @@ import { MyJobs } from "../components/MyJobs/MyJobs";
 import { JobDetails } from "../components/JobDetails/JobDetails";
 import { AddAJob } from "../components/AddAJob/AddAJob";
 import { UpdateJob } from "../components/UpdateJob/UpdateJob";
+import { UpdateHome } from "../components/UpdateHome/UpdateHome";
+import { GetHomesByUserId } from "../services/homeService";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
+  const [homeId, setHomeId] = useState()
 
   useEffect(() => {
     const localLearningUser = localStorage.getItem("home_oh_no_user");
     const learningUserObject = JSON.parse(localLearningUser);
     setCurrentUser(learningUserObject);
   }, []);
+  
+  
 
   return (
     <>
@@ -80,6 +85,9 @@ export const ApplicationViews = () => {
           
           <Route path="updateJob">
             <Route path=":jobId" element={<UpdateJob currentUser={currentUser} />}/>
+          </Route>
+          <Route path="updateHome">
+            <Route path=":currentHomeId" element={<UpdateHome currentUser={currentUser} />}/>
           </Route>
 
         </Route>

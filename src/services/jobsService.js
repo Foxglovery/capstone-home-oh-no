@@ -21,21 +21,27 @@ export const submitJob = (job) => {
   return fetch("http://localhost:8088/jobs", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(job)
-  })
-}
+    body: JSON.stringify(job),
+  });
+};
 
 export const submitUpdateJob = (job, jobId) => {
   return fetch(`http://localhost:8088/jobs/${jobId}`, {
     method: "PUT",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(job)
-  })
-}
+    body: JSON.stringify(job),
+  });
+};
+
+export const submitDeleteJob = (jobId) => {
+  return fetch(`http://localhost:8088/jobs/${jobId}`, {
+    method: "DELETE",
+  });
+};
 
 export const GetAllAreas = () => {
   return fetch(`http://localhost:8088/areas`).then((res) => res.json());

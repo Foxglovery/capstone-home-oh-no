@@ -1,21 +1,22 @@
 import { useEffect, useState } from "react";
-import { GetHomeByUserId, GetOwnersByHomeId } from "../../services/homeService";
+import { GetHomesByUserId, GetOwnersByHomeId } from "../../services/homeService";
 import { useNavigate, useParams } from "react-router-dom";
 import "./MyJobs.css"
-import { GetJobsByHomeId } from "../../services/jobsService";
-import { JobCards } from "../JobCards/JobCards";
+import { GetAllAreas, GetJobsByHomeId } from "../../services/jobsService";
 import { MyJobCards } from "../JobCards/MyJobCards";
+import { AreaDropdown } from "../Filter/AreaDropdown";
 
 export const MyJobs = ({ currentUser }) => {
   const { userId } = useParams();
   const [home, setHome] = useState([]);
   const [homeId, setHomeId] = useState(0)  
   const [jobs, setJobs] = useState([])
-  const [finishedJobs, setFinishedJobs] = useState([])
   const [owners, setOwners] = useState([])
+  const [filteredJobs, setFilteredJobs] = useState([])
+  const [areas, setAreas] = useState([])
   const navigate = useNavigate()
   useEffect(() => {
-    GetHomeByUserId(userId).then((data) => {
+    GetHomesByUserId(userId).then((data) => {
       console.log("data from api", data);//debug log
       setHome(data);
       setHomeId(data[0]?.homeId)
@@ -28,8 +29,7 @@ export const MyJobs = ({ currentUser }) => {
     GetJobsByHomeId(homeId).then((jobsArray) => {
       console.log("jobsArray", jobsArray); //debug log
       setJobs(jobsArray);
-      const numberFinishedJobs = jobsArray.filter((job) => job.endDate).length;
-      setFinishedJobs(numberFinishedJobs);
+      
     });
   }, [homeId]);
 
@@ -39,6 +39,16 @@ export const MyJobs = ({ currentUser }) => {
         setOwners(ownerArray)
     })
   },[homeId])
+
+  useEffect(() => {
+    GetAllAreas().then((areaArray) => {
+      setAreas(areaArray);
+    });
+  }, [currentUser]);
+
+  useEffect(() => {
+    setFilteredJobs(jobs)
+  },[jobs])
 //can this be replaced ith a boolean
   const isHomeOwner = owners.some(owner => owner.userId === currentUser.id)
 
@@ -46,12 +56,13 @@ export const MyJobs = ({ currentUser }) => {
     <>
       {isHomeOwner ? (
         <>
+        <AreaDropdown jobs={jobs} areas={areas} setFilteredJobs={setFilteredJobs} />
           <div className="home_card_container">
             <div className="home_title_card">
               <div className="home_title">{home[0]?.home.name}</div>
             </div>
           </div>
-          <MyJobCards isHomeOwner={isHomeOwner} currentUser={currentUser} jobs={jobs} />
+          <MyJobCards isHomeOwner={isHomeOwner}  currentUser={currentUser} jobs={filteredJobs} />
         </>
       ) : (
         <div>

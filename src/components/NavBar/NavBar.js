@@ -1,7 +1,27 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css"
+import { useEffect, useState } from "react";
+import { GetHomesByUserId } from "../../services/homeService";
+
 export const NavBar = ({currentUser}) => {
   const navigate = useNavigate();
+  const [homeId, setHomeId] = useState(0)
+
+  
+  useEffect(() => {
+    GetHomesByUserId(currentUser.id).then((homeObj) => {
+      console.log("homeObjNavBar", homeObj) //debug log
+      if(homeObj) {
+        setHomeId(homeObj[0]?.homeId)
+      }
+      
+      
+      
+    })
+  },[currentUser])
+  console.log("HomeId", homeId)
+console.log("what is the homeId set to", homeId)
+
   return (
     <ul className="navbar">
       <li className="navbar-item">
@@ -14,7 +34,7 @@ export const NavBar = ({currentUser}) => {
         <Link className="navbar-link" to="/addAJob">Add A Job</Link>
       </li>
       <li className="navbar-item">
-        <Link className="navbar-link" to="">Home Details</Link>
+        <Link className="navbar-link" to={`/homeDetails/${homeId}`}>Home Details</Link>
       </li>
       {localStorage.getItem("home_oh_no_user") ? (
         <li className="navbar-item navbar-logout">

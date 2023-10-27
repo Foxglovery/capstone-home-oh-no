@@ -36,7 +36,7 @@ export const JobDetails = ({ currentUser }) => {
       {Object.keys(job).length > 0 ? (
         <div id="home_card">
           <div id="home_card_title">{job.title}</div>
-          <div className="job-card-start">Started on: {new Date(job.startDate * 1000).toLocaleDateString("en-US")}</div>
+          <div className="job-card-start">Started on: {new Date(job.startDate).toLocaleDateString("en-US")}</div>
           <div id="home_info">At: {job.home.name}</div>
 
           <div id="home_card_img">

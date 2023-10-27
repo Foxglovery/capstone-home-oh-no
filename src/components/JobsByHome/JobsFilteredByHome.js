@@ -2,17 +2,20 @@ import { Link, useParams } from "react-router-dom";
 import "./JobsFilteredByHome.css";
 import { useEffect, useState } from "react";
 import { GetHomeById } from "../../services/homeService";
-import { GetJobsByHomeId } from "../../services/jobsService";
+import { GetAllAreas, GetJobsByHomeId } from "../../services/jobsService";
 import { JobCards } from "../JobCards/JobCards";
+import { AreaDropdown } from "../Filter/AreaDropdown";
 
 export const JobsFilteredByHome = ({currentUser}) => {
   const { currentHomeId } = useParams();
   const [home, setHome] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [finishedJobs, setFinishedJobs] = useState([]);
+  const [filteredJobs, setFilteredJobs] = useState([])
+  const [areas, setAreas] = useState([])
   useEffect(() => {
     GetHomeById(currentHomeId).then((data) => {
-      console.log("data from api:", data); //debug log
+      console.log("HOMEDATA:", data); //debug log
 
       setHome(data);
     });
@@ -21,7 +24,7 @@ export const JobsFilteredByHome = ({currentUser}) => {
   useEffect(() => {
     GetJobsByHomeId(currentHomeId).then((jobsArray) => {
       console.log("jobsArray from api:", jobsArray); //debug log
-      console.log("GPT LOG",new Date(jobsArray[0]?.startDate * 1000).toLocaleDateString());
+      
 
       setJobs(jobsArray);
       const numberFinishedJobs = jobsArray.filter((job) => job.endDate).length;
@@ -29,19 +32,29 @@ export const JobsFilteredByHome = ({currentUser}) => {
     });
   }, [currentHomeId]);
 
+  useEffect(() => {
+    GetAllAreas().then((areaArray) => {
+      setAreas(areaArray);
+    });
+  }, [currentUser]);
+
+  useEffect(() => {
+    setFilteredJobs(jobs)
+  },[jobs])
 
 
-  return (<>
+
+  return (<><AreaDropdown areas={areas} jobs = {jobs} setFilteredJobs={setFilteredJobs} />
     <div className="home">
       {home.length > 0 ? (
         <div id="home_card">
-          <Link to={`/homeJobs/${home[0]?.homeId}`}>
+          <Link to={`/homeDetails/${home[0].homeId}`}>
             <div id="home_card_title">{home[0].home?.name}</div>
           </Link>
           <div id="home_card_img">
             <img src={home[0].home?.imgUrl} alt={home[0].home?.name} />
           </div>
-
+          
           <div>
             <p className="home-info">{home[0].home?.description}</p>
           </div>
@@ -70,6 +83,6 @@ export const JobsFilteredByHome = ({currentUser}) => {
         "Loading..."
       )}
     </div>
-    <JobCards currentUser={currentUser} jobs = {jobs}/>
+    <JobCards currentUser={currentUser} jobs = {filteredJobs}  currentHomeId = {currentHomeId}/>
   </>)
 };
