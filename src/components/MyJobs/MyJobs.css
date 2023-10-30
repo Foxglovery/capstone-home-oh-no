@@ -1,18 +1,25 @@
 .home_card_container {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  width: 20%;
 }
 
 .home_title_card {
-
-border: black 2px solid;
-border-radius: 20px;
-
-padding: 20px;
-background-color: rgb(134, 5, 89);
+  border: black 2px solid;
+  border-radius: 20px;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background-color: rgb(134, 5, 89);
 }
 
 .home_title {
-color: white;
+  color: white;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

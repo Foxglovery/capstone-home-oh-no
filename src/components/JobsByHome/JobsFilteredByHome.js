@@ -44,7 +44,10 @@ export const JobsFilteredByHome = ({currentUser}) => {
 
 
 
-  return (<><AreaDropdown areas={areas} jobs = {jobs} setFilteredJobs={setFilteredJobs} />
+  return (<>
+  <div>
+    <AreaDropdown areas={areas} jobs = {jobs} setFilteredJobs={setFilteredJobs} />
+    </div>
     <div className="home">
       {home.length > 0 ? (
         <div id="home_card">

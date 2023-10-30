@@ -36,6 +36,7 @@ export const ApplicationViews = () => {
           element={
             <>
               <NavBar currentUser = {currentUser} />
+              
               <Outlet />
             </>
           }

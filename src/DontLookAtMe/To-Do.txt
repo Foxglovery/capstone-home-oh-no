@@ -8,3 +8,7 @@
 
 
 add check to delete job btn
+
+~CSS~
+make job cards smaller
+cut neg space off logo

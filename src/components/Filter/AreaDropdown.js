@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "./AreaDropdown.css"
+import 'font-awesome/css/font-awesome.min.css';
 
 export const AreaDropdown = ({areas, jobs, setFilteredJobs}) => {
     const [selectedArea, setSelectedArea] = useState(0)
@@ -19,7 +21,7 @@ export const AreaDropdown = ({areas, jobs, setFilteredJobs}) => {
 
     return (
         <div className="dropdown-container">
-            <label htmlFor="area">Filter Job By Area</label>
+            
             <select id="area"
             name="selectedArea"
             value={selectedArea}

@@ -4,6 +4,7 @@ import { GetAllJobs } from "../../services/jobsService";
 import "./AllHomesList.css";
 import { Link } from "react-router-dom";
 import { FilterBar } from "../Filter/FilterBar";
+import { Logo } from "../Logo/Logo";
 
 
 export const AllHomesList = () => {
@@ -59,6 +60,7 @@ export const AllHomesList = () => {
       setFilteredHomes(homeSearch)
     } else {
       setFilteredHomes(allHomes)
+      console.log("filteredHomes", filteredHomes)
     }
   },[searchTerm, allHomes])
 
@@ -95,27 +97,44 @@ export const AllHomesList = () => {
   }, []);
 
   return (<>
-    <FilterBar setSearchTerm={setSearchTerm} />
-    <ul className="cards">
-      {filteredHomes.map((home) => {
-        return (
-          <li className="cards__item" key={home.homeId}>
-              <div className="card">
-                <Link to={`/homeDetails/${home.homeId}`}>
-                <div className="card__image card__image--fence"></div>
-                </Link>
-                <div className="card__content">
-                  <div className="card__title">{home.home.name}</div>
-                  {/* <p className="card__text">{home.home.description}</p> */}
-                  <p>Ongoing Projects: {homeJobCount[home.home.name]?.ongoing}</p>
-                  <p>Completed Projects: {homeJobCount[home.home.name]?.completed}</p>
-                  <p>Owners: {home.owners.map(owner => owner.user.name).join(', ')}</p>
-                  
-                </div>
-              </div>
-            </li>
-      )
-      })}
-    </ul>
+    <div className="main_container">
+      <Logo />
+    <div><FilterBar setSearchTerm={setSearchTerm} /></div>
+    <div className="home">
+      {filteredHomes.map((home) => (
+        
+          <div className="home_card" key={home.homeId}>
+          <Link to={`/homeDetails/${home.homeId}`}>
+            <div className="home_card_title">{home.home.name}</div>
+          </Link>
+          <div className="home_card_img">
+            <img src={home.home.imgUrl} alt={home.home.name} />
+          </div>
+          
+          
+          <div>
+            <span className="home-info">
+              <p>
+                Owners:{" "}
+                {home.owners.map(owner => owner.user.name).join(', ')}
+              </p>
+            </span>
+          </div>
+          <div className="card_btm_wrapper">
+            <div className="home_card_topic">
+              
+            </div>
+            <div>
+              <span className="home-info">Ongoing Jobs:{homeJobCount[home.home.name]?.ongoing} </span>
+            </div>
+            <div>
+              <span className="home-info">Finished Jobs:{homeJobCount[home.home.name]?.completed} </span>
+            </div>
+            
+          </div>
+        </div>
+      ))}
+    </div>
+    </div>
   </>);
 };

@@ -5,15 +5,15 @@ body {
 }
 
 .dropdown-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  margin-top: 10px;
+ 
+  
 }
 
 .dropdown-container select {
-  background-color: #0563af;
-  color: white;
+  background-color: rgb(134, 5, 89);
+  color: rgb(181, 197, 203);
   padding: 12px;
   border-radius: 20px;
   width: 250px;
@@ -26,9 +26,9 @@ body {
 }
 
 .dropdown-container::before {
-  content: "\f13a";
+  content: "\f0b0";
   font-family: FontAwesome;
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
   width: 20%;
@@ -36,14 +36,14 @@ body {
   text-align: center;
   font-size: 28px;
   line-height: 45px;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(15, 3, 3, 0.5);
+  
   pointer-events: none;
 }
 
 .dropdown-container:hover::before {
   color: rgba(255, 255, 255, 0.6);
-  background-color: rgba(255, 255, 255, 0.2);
+  
 }
 
 .dropdown-container select option {
