@@ -5,3 +5,6 @@
 
 
 //figure out how to add owners
+
+
+add check to delete job btn

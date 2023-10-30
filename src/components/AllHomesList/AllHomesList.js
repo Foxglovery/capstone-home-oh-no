@@ -27,18 +27,18 @@ export const AllHomesList = () => {
           acc.push(homeObj);
         }
         return acc;
-        //this is not a dependency, it tells accumulator what data type to be: array
+        //this is not a dependency, it tells accumulator the initial value and data type
       }, []);
   
-      //  Promises will be a copy of the home object where for each unique home, fetches home owners and stores in ownerArray 
+      //  Promises will be a copy of the home object where for each unique home,the next line fetches home owners and stores in ownerArray 
       const promises = uniqueHomes.map((home) => 
         GetOwnersByHomeId(home.homeId).then((ownerArray) => {
-          //returns copy of home with added "owners" key and "ownerArray" as value
+          //returns copy of home with added "owners" key and "ownerArray" as value for each home entry
           return { ...home, owners: ownerArray };
         })
       );
   
-      // Wait for all promises to resolve then set state with conjoined array
+      // Wait for all promises to resolve then set state with now conjoined and happy array
       Promise.all(promises).then((uniqueHomesWithOwners) => {
         setAllHomes(uniqueHomesWithOwners);
         console.log("homeArray",allHomes)
@@ -46,7 +46,7 @@ export const AllHomesList = () => {
     });
   }, []);
 
- 
+ //search bar logic
   useEffect(() => {
     if (searchTerm) {
       
@@ -67,22 +67,24 @@ export const AllHomesList = () => {
       setJobs(jobArray);
       console.log("jobs",jobs)
 
-      //to count the jobs for each home, reduce array
+      //to count the jobs for each home, reduce array of all jobs
           const jobCount = jobArray.reduce((acc, job) => {
             //declares the home name ref for the key
             const homeName = job.home.name;
-            //checks if acc has an entry for this home, if not it prepares the object to accept the counts
+            //checks if acc has an entry for this home, if not it prepares the object with initial values
             if (!acc[homeName]) {
               acc[homeName] = { ongoing: 0, completed: 0}
             }
+            //if job entry has an end date, acc gets a special treat(completed job)
             if (job.endDate) {
               acc[homeName].completed += 1
             } else {
+              //otherwise, acc still gets a treat, just not a special one(ongoing job)
               acc[homeName].ongoing += 1
             }
             //returns an object key value pair with home name and job count
             return acc;
-            //acc is an object here
+            //initial value is an empty object here
           }, {});
 
           

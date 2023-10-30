@@ -15,10 +15,11 @@ export const UpdateHome = ({ currentUser }) => {
 
     useEffect(() => {
         GetHomesByUserId(currentUser.id).then((currentHomeData) => {
+          console.log("homesArray", currentHomeData )
             setHome({
-                name:currentHomeData.name,
-                description: currentHomeData.description,
-                imgUrl: currentHomeData.imgUrl
+                name:currentHomeData[0]?.home.name,
+                description: currentHomeData[0]?.home.description,
+                imgUrl: currentHomeData[0]?.home.imgUrl
             })
         })
     },[currentUser])
