@@ -46,3 +46,8 @@ export const submitDeleteJob = (jobId) => {
 export const GetAllAreas = () => {
   return fetch(`http://localhost:8088/areas`).then((res) => res.json());
 };
+
+export const numToWord = (num) => {
+  const words = ["None", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"];
+  return words[num] || num;
+}

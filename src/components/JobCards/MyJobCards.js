@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./JobCards.css";
+import "./MyJobCards.css";
 
 export const MyJobCards = ({ jobs }) => {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -41,7 +41,7 @@ export const MyJobCards = ({ jobs }) => {
                 {console.log(job)}
               </div>
               <div className="update-btn-container">
-                <button onClick={() => {navigate(`/updateJob/${job.id}`)}}>Update Job</button>
+                <button className="button-78" onClick={() => {navigate(`/updateJob/${job.id}`)}}>Update Job</button>
               </div>
             </div>
           ))}

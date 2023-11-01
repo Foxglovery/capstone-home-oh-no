@@ -1,0 +1,59 @@
+/* JobsFilteredByHome.css */
+.home {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+  }
+  
+  .area-dropdown-container {
+     
+  }
+  
+  #home_card {
+    
+    padding: 20px;
+    color: white;
+    width: 500px; /* Adjusted width to fit content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    background-color: rgb(134, 5, 89);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  a {
+    color: rgb(144, 191, 210);
+    text-decoration: none; /* This will remove underlines from links */
+  }
+  
+  #home_card_title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  #home_card_img img {
+    width: 150px; /* Adjusted to the original size */
+    height: auto;
+    margin-right: 20px;
+  }
+  .home-description-container {
+    margin-top: 20px;
+  }
+
+  .home-info {
+    margin: 10px 0;
+    margin-top: 60px;
+  }
+  
+  .card_btm_wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .home_card_topic {
+    margin-bottom: 10px;
+  }
+  

@@ -40,7 +40,7 @@ export const JobCards = ({ currentUser, jobs, currentHomeId }) => {
               
               <div className="job-card-start">Started on: {new Date(job.startDate).toLocaleDateString("en-US")}</div>
               <div className="job-card-start">Current Step: {job.currentStep}</div>
-              <div id="job_card_img">
+              <div className="job_card_img">
                 <img src={job.imgUrl} alt={job.title} />
               </div>
               <div className="job-card-description">

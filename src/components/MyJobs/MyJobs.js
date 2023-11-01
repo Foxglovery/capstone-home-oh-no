@@ -56,23 +56,26 @@ export const MyJobs = ({ currentUser }) => {
   return (
     <>
       {isHomeOwner ? (
-        <><div>
+        <>
+            
+          <div className="main-container">
+            <Logo />
+            
+            <div className="dropdown_title_container">
+            <div>
               <AreaDropdown
                 jobs={jobs}
                 areas={areas}
                 setFilteredJobs={setFilteredJobs}
               />
             </div>
-            
-          <div className="main-container">
-            <Logo />
-            
-
             <div className="home_card_container">
               <div className="home_title_card">
-                <div className="home_title">{home[0]?.home.name}</div>
+                <h2 className="home_title">{home[0]?.home.name}</h2>
               </div>
             </div>
+            </div>
+            
             <MyJobCards
               isHomeOwner={isHomeOwner}
               currentUser={currentUser}

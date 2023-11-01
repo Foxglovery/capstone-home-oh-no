@@ -5,7 +5,7 @@ export const Logo = () => {
     <div className="logo-container">
       <div className="logo">
         <img
-          src="../../assets/transparent-home-logo.png"
+          src="../../assets/logo/logo-fixed-text.png"
           alt="Your Logo"
           
         />

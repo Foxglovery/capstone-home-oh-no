@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import "./JobsFilteredByHome.css";
 import { useEffect, useState } from "react";
 import { GetHomeById } from "../../services/homeService";
-import { GetAllAreas, GetJobsByHomeId } from "../../services/jobsService";
+import { GetAllAreas, GetJobsByHomeId, numToWord } from "../../services/jobsService";
 import { JobCards } from "../JobCards/JobCards";
 import { AreaDropdown } from "../Filter/AreaDropdown";
 
@@ -12,6 +12,7 @@ export const JobsFilteredByHome = ({currentUser}) => {
   const [jobs, setJobs] = useState([]);
   const [finishedJobs, setFinishedJobs] = useState([]);
   const [filteredJobs, setFilteredJobs] = useState([])
+  const [ongoingJobs, setOngoingJobs] = useState([])
   const [areas, setAreas] = useState([])
   useEffect(() => {
     GetHomeById(currentHomeId).then((data) => {
@@ -23,12 +24,16 @@ export const JobsFilteredByHome = ({currentUser}) => {
   
   useEffect(() => {
     GetJobsByHomeId(currentHomeId).then((jobsArray) => {
-      console.log("jobsArray from api:", jobsArray); //debug log
       
+      
+      const numberOngoingJobs = jobsArray.filter((job) => !job.endDate).length;
+      const stringOngoingJob = numToWord(numberOngoingJobs)
+      setOngoingJobs(stringOngoingJob)
 
       setJobs(jobsArray);
       const numberFinishedJobs = jobsArray.filter((job) => job.endDate).length;
-      setFinishedJobs(numberFinishedJobs);
+      const stringFinishedJobs = numToWord(numberFinishedJobs)
+      setFinishedJobs(stringFinishedJobs);
     });
   }, [currentHomeId]);
 
@@ -42,10 +47,11 @@ export const JobsFilteredByHome = ({currentUser}) => {
     setFilteredJobs(jobs)
   },[jobs])
 
+  
 
 
   return (<>
-  <div>
+  <div className="area-dropdown-container">
     <AreaDropdown areas={areas} jobs = {jobs} setFilteredJobs={setFilteredJobs} />
     </div>
     <div className="home">
@@ -58,14 +64,14 @@ export const JobsFilteredByHome = ({currentUser}) => {
             <img src={home[0].home?.imgUrl} alt={home[0].home?.name} />
           </div>
           
-          <div>
+          <div className="home-description-container">
             <p className="home-info">{home[0].home?.description}</p>
           </div>
           <div>
             <span className="home-info">
               <p>
-                Owners:{" "}
-                {home.map((homeEntry) => homeEntry.user?.name).join(", ")}
+                ~Owners~{" "}
+                <div>{home.map((homeEntry) => homeEntry.user?.name).join(" & ")}</div>
               </p>
             </span>
           </div>
@@ -74,10 +80,10 @@ export const JobsFilteredByHome = ({currentUser}) => {
               
             </div>
             <div>
-              <span className="home-info">Ongoing Jobs:{jobs.length} </span>
+              <span className="home-info">Currently Working On <span className="underline">{ongoingJobs}</span> Of Our Jobs </span>
             </div>
             <div>
-              <span className="home-info">Finished Jobs:{finishedJobs} </span>
+              <span className="home-info">We Have Finished <span className="underline">{finishedJobs}</span> Of Our Jobs </span>
             </div>
             
           </div>

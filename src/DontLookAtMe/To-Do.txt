@@ -11,4 +11,20 @@ add check to delete job btn
 
 ~CSS~
 make job cards smaller
+make string number conditionaly render the word job as singular or plural
+
+
+
+Done:
 cut neg space off logo
+shortened allhome --> jobsByHome by removing homeDetails bypass
+
+
+
+
+
+
+
+
+
+

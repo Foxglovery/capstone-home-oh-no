@@ -96,6 +96,10 @@ export const AllHomesList = () => {
     });
   }, []);
 
+  const numToWord = (num) => {
+    const words = ["None", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"];
+    return words[num] || num;
+  }
   return (<>
     <div className="main_container">
       <Logo />
@@ -104,7 +108,7 @@ export const AllHomesList = () => {
       {filteredHomes.map((home) => (
         
           <div className="home_card" key={home.homeId}>
-          <Link to={`/homeDetails/${home.homeId}`}>
+          <Link to={`/homeJobs/${home.homeId}`}>
             <div className="home_card_title">{home.home.name}</div>
           </Link>
           <div className="home_card_img">
@@ -115,8 +119,8 @@ export const AllHomesList = () => {
           <div>
             <span className="home-info">
               <p>
-                Owners:{" "}
-                {home.owners.map(owner => owner.user.name).join(', ')}
+                ~Owners~{" "}
+                <div>{home.owners.map(owner => owner.user.name).join(' & ')}</div>
               </p>
             </span>
           </div>
@@ -125,10 +129,10 @@ export const AllHomesList = () => {
               
             </div>
             <div>
-              <span className="home-info">Ongoing Jobs:{homeJobCount[home.home.name]?.ongoing} </span>
+              <span className="home-info">Currently Working On <span className="underline">{numToWord(homeJobCount[home.home.name]?.ongoing)}</span> Of Our Jobs </span>
             </div>
             <div>
-              <span className="home-info">Finished Jobs:{homeJobCount[home.home.name]?.completed} </span>
+              <span className="home-info">We Have Finished <span className="underline">{numToWord(homeJobCount[home.home.name]?.completed)} </span> Of Our Jobs</span>
             </div>
             
           </div>

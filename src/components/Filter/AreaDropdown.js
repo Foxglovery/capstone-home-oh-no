@@ -8,13 +8,16 @@ export const AreaDropdown = ({areas, jobs, setFilteredJobs}) => {
     const handleInputChange = (e) => {
         console.log("handleInputChange called");
         const selectedAreaId = e.target.value;
-        console.log("selectedAreaId:", selectedAreaId);
-    console.log("jobs:", jobs);
-    console.log("areas:", areas);
+        
         setSelectedArea(selectedAreaId)
         if (jobs) {
-         setFilteredJobs(jobs.filter(job => job.areaId === parseInt(selectedAreaId)))
-         console.log("Filtered jobs set");   
+            if(selectedAreaId === "") {
+                setFilteredJobs(jobs)
+            } else {
+                setFilteredJobs(jobs.filter(job => job.areaId === parseInt(selectedAreaId)))
+         console.log("Filtered jobs set");
+            }
+            
         }
         
     }
