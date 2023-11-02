@@ -11,13 +11,14 @@
   
   padding: 20px;
   color: white;
-  width: 20%;
+  width: calc(20% - 20px);  /* 40px accounts for left and right padding */
   /* this fixed the width shift after filtering */
   min-width: 300px; 
   min-height: fit-content;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 20px;
   background-color: rgb(134, 5, 89);
+  
   
 }
 div  p {

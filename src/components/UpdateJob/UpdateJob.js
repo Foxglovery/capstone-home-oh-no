@@ -19,8 +19,8 @@ export const UpdateJob = ({ currentUser }) => {
     title: "",
     description: "",
     imgUrl: "",
-    budgetGoal: 0,
-    budget: 0,
+    budgetGoal: "",
+    budget: "",
     selectedArea: "",
     currentStep: "",
   });
@@ -63,8 +63,8 @@ export const UpdateJob = ({ currentUser }) => {
         areaId: parseInt(job.selectedArea),
         startDate: Date.now(),
         endDate: false,
-        budgetGoal: job.budgetGoal,
-        budget: job.budget,
+        budgetGoal: job.budgetGoal ? parseInt(job.budgetGoal, 10) : 0,
+        budget: job.budget ? parseInt(job.budget, 10) : 0,
         currentStep: job.currentStep,
         imgUrl: job.imgUrl,
       };
@@ -112,137 +112,143 @@ export const UpdateJob = ({ currentUser }) => {
   };
 
   return (
-    <div className="card">
-      <div className="card-body">
-        <h5 className="card-title">Update Job</h5>
-        {/* having the submit be in the form html preserves the native HTML submit function and keeps it pretty. NO ALERTS! */}
+    <div id="main_container">
+    <div id="card">
+      <div>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="title">Title:</label>
-            <input
-              type="text"
-              id="title"
-              required
-              name="title"
-              className="form-control"
-              placeholder="Enter title"
-              value={job.title}
-              onChange={handleInputChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="imgUrl">Image URL:</label>
-            <input
-              type="text"
-              id="imgUrl"
-              name="imgUrl"
-              className="form-control"
-              placeholder="Enter image URL"
-              value={job.imgUrl}
-              onChange={handleInputChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="description">Description:</label>
-            <input
-              type="text"
-              required
-              id="description"
-              name="description"
-              className="form-control"
-              placeholder="Enter description"
-              value={job.description}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="budgetGoal">Budget Goal</label>
-            <input
-              type="text"
-              id="budgetGoal"
-              name="budgetGoal"
-              className="form-control"
-              placeholder="How Much $$$"
-              value={job.budgetGoal}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="budget">Budget</label>
-            <input
-              type="text"
-              id="budget"
-              name="budget"
-              className="form-control"
-              placeholder="$$$ Saved"
-              value={job.budget}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="currentStep">First Step</label>
-            <input
-              type="text"
-              required
-              id="currentStep"
-              name="currentStep"
-              className="form-control"
-              placeholder="What's The First Step?"
-              value={job.currentStep}
-              onChange={handleInputChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="area">Select an Area:</label>
-            <select
-              id="area"
-              required
-              name="selectedArea"
-              className="form-control"
-              value={job.selectedArea}
-              onChange={handleInputChange}
-            >
-              <option value="">-- Select Area --</option>
-              {areas.map((area, index) => (
-                <option key={index} value={area.id}>
-                  {area.areaName}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="form-group">
-            <button className="form-btn btn-info" type="submit">
-              Submit Job
-            </button>
-          </div>
-          {console.log("whatIsCurrentJob", currentJob)}      
-          {!currentJob.endDate && (
-            <div className="form-group">
-              <button
-                className="form-btn btn-info"
-                type="button"
-                onClick={handleFinishJob}
-              >
-                Finish Job
-              </button>
+      <h2>Update A Job</h2>
+      <ul>
+        <li>
+          <div id="label_title">
+            <label htmlFor="title"> Title</label>
             </div>
-          )}
+          <input
+            type="text"
+            required
+            id="title"
+            
+            name="title"
+            placeholder="Enter title"
+            value={job.title}
+            onChange={handleInputChange}
+            className=""
+          />
+          <div id="label_imgUrl">
+            <label htmlFor="imgUrl"> Image URL</label>
+            </div>
+          <input
+            type="url"
+            id="imgUrl"
+            name="imgUrl"
+            placeholder="Enter image URL"
+            value={job.imgUrl}
+            onChange={handleInputChange}
+            className=""
+          />
+        </li>
 
-          <div className="form-group">
+        <li>
+        <div id="label_current_step">
+            <label htmlFor="currentStep"> Current Step</label>
+            </div>
+          <input
+            className=""
+            type="text"
+            required
+            name="currentStep"
+            placeholder="What's The First Step?"
+            value={job.currentStep}
+            onChange={handleInputChange}
+          />
+          <div id="label_budget_goal">
+            <label htmlFor="budgetGoal"> Budget Goal</label>
+            </div>
+          <input
+            type="text"
+            className=""
+            name="budgetGoal"
+            placeholder="How Much $$$"
+            value={job.budgetGoal}
+            onChange={handleInputChange}
+          />
+        </li>
+        <li>
+        
+          <div id="label_budget">
+            <label htmlFor="title"> Currently Saved</label>
+            </div>
+          <input
+            type="text"
+            className=""
+            name="budget"
+            placeholder="How Much $$$"
+            value={job.budget}
+            onChange={handleInputChange}
+          /><div id="label_area">
+            <label htmlFor="area">Area</label>
+            </div>
+          <select
+            id="area"
+            required
+            name="selectedArea"
+            className=""
+            value={job.selectedArea}
+            onChange={handleInputChange}
+          >
+            <option value="">-- Select Area --</option>
+            {areas.map((area, index) => (
+              <option key={index} value={area.id}>
+                {area.areaName}
+              </option>
+            ))}
+          </select>
+        </li>
+        <li>
+        <div id="label_description">
+            <label htmlFor="description">Description</label>
+            </div>
+          <textarea
+            name="description"
+            className="field-style"
+            maxLength={84}
+            placeholder="Enter description"
+            value={job.description}
+            onChange={handleInputChange}
+          ></textarea>
+        </li>
+      </ul>
+      {/* Here Be Buttons */}
+      <div className="btn-wrapper">
+        
+
+        {console.log("whatIsCurrentJob", currentJob)}
+        {!currentJob.endDate && (
+          
             <button
-              className="form-btn btn-warning"
+              className="form-btn button-79"
               type="button"
-              onClick={handleDeleteJob}
+              onClick={handleFinishJob}
             >
-              Delete Job
+              Finish Job
             </button>
-          </div>
-        </form>
+          
+        )}
+<button className="form-btn button-78 " type="submit">
+          Submit Job
+        </button>
+        
+          <button
+            className="form-btn button-80"
+            type="button"
+            onClick={handleDeleteJob}
+          >
+            Delete Job
+          </button>
+        
       </div>
+    </form>
+      </div>
+    </div>
     </div>
   );
 };

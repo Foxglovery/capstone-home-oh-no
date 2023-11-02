@@ -12,9 +12,10 @@ font-family: "Roboto", sans-serif;
 /* COLOR PALETTE */
 /* Feel free to change these values and create your own color palette! https://coolors.co/ is a great resource */
 :root {
-  --primary: #ffb400;
-  --secondary: #00a6ed;
-  --info: #7fb800;
+  --primary: rgb(134, 5, 89);
+  --secondary: rgb(144, 191, 210);
+  --backgroundGradient: linear-gradient(92.83deg, rgb(231, 162, 72) 0, #f93a13 100%)
+  --info: #fff;
   --warning: #f6511d;
   --white: #ffffff;
   --offWhite: #f2f2f3;
@@ -77,7 +78,7 @@ button {
 }
 
 .btn-primary:hover {
-  background-color: #e5a000;
+  background-color: var(--appBackground);
 }
 
 .btn-secondary {
@@ -85,7 +86,7 @@ button {
 }
 
 .btn-secondary:hover {
-  background-color: #0097d7;
+  background-color: var(--appBackground);
 }
 
 .btn-warning {
@@ -93,7 +94,9 @@ button {
 }
 
 .btn-warning:hover {
-  background-color: #e14617;
+  background-color: #141212;
+  color: var(--warning);
+  font-weight: bold;
 }
 
 .btn-info {
@@ -104,6 +107,10 @@ button {
   background-color: #71a500;
 }
 
+/* to disable scrollbar visibility */
+::-webkit-scrollbar {
+  display: none;
+}
 
 
 

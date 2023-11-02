@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./JobCards.css";
 import { GetOwnersByHomeId } from "../../services/homeService";
+import { BudgetProgressBar } from "../Progress/BudgetProgressBar";
 
 export const JobCards = ({ currentUser, jobs, currentHomeId }) => {
   const [isLoading, setIsLoading] = useState(false)
@@ -45,12 +46,13 @@ export const JobCards = ({ currentUser, jobs, currentHomeId }) => {
               </div>
               <div className="job-card-description">
                 <p>{job.description}</p>
+                <BudgetProgressBar current = {job.budget} goal={job.budgetGoal}/>
                 <div className="job-card-area">Category: {job.area?.areaName}</div>
                 {console.log("jobMapObject",job)}
               </div>
               {isHomeOwner ? (
                 <div className="btn-container">
-                  <button onClick={() => navigate(`/updateJob/${job.id}`)}>Update Job</button>
+                  <button className="button-78" onClick={() => navigate(`/updateJob/${job.id}`)}>Update Job</button>
                 </div>
               ) : ("")}
               

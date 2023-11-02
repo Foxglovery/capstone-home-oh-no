@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./MyJobCards.css";
+import { BudgetProgressBar } from "../Progress/BudgetProgressBar";
 
 export const MyJobCards = ({ jobs }) => {
   const [isLoaded, setIsLoaded] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
-    console.log("jobs",jobs)
+    
     // checks if jobs has been populated, if so it sets is loaded to true to render the content or not
     if (jobs.length > 0) {
       setIsLoaded(true)
@@ -29,6 +30,7 @@ export const MyJobCards = ({ jobs }) => {
               {job.endDate ? (
                 <div>~COMPLETED~</div>
               ) : ("")}
+              {console.log("job",job)}
               
               <div className="job-card-start">Started on: {new Date(job.startDate).toLocaleDateString("en-US")}</div>
               <div className="job-card-start">Current Step: {job.currentStep}</div>
@@ -37,6 +39,7 @@ export const MyJobCards = ({ jobs }) => {
               </div>
               <div className="job-card-description">
                 <p>{job.description}</p>
+                <BudgetProgressBar current = {job.budget} goal={job.budgetGoal}/>
                 <div className="job-card-area">Category: {job.area?.areaName}</div>
                 {console.log(job)}
               </div>

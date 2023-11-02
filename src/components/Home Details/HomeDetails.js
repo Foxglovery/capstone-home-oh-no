@@ -39,45 +39,60 @@ export const HomeDetails = ({ currentUser }) => {
 
   return (
     <div className="home">
-  {home.length > 0 ? (
-    <div id="home_card">
-      <div id="home_card_title">{home[0].home?.name}</div>
-      <div id="home_card_img">
-        <img src={home[0].home?.imgUrl} alt={home[0].home?.name} />
-      </div>
-      <div className="home-info-wrapper">
-        <Link to={`/homeJobs/${home[0]?.homeId}`}></Link>
-        <div>
-          <p className="home-info">{home[0].home?.description}</p>
-        </div>
-        <div>
-          <span className="home-info">
-            Owners:{" "}
-            {home.map((homeEntry) => homeEntry.user?.name).join(", ")}
-          </span>
-        </div>
-        <div className="card_btm_wrapper">
-          <div className="home_card_topic"></div>
-          <div>
-          <span className="home-info">Currently Working On <span className="underline">{ongoingJobs}</span> Of Our Jobs </span>
-          </div>
-          <div>
-          <span className="home-info">We Have Finished <span className="underline">{finishedJobs}</span> Of Our Jobs </span>
-          </div>
-        </div>
-        {isCurrentUserOwner && (
+          {home.length > 0 ? (
+            <div id="home_card">
+              <Link to={`/homeDetails/${home[0].homeId}`}>
+                <div id="home_card_title">{home[0].home?.name}</div>
+              </Link>
+              <div id="home_card_img">
+                <img src={home[0].home?.imgUrl} alt={home[0].home?.name} />
+              </div>
+
+              <div className="home-description-container">
+                <p className="home-info">{home[0].home?.description}</p>
+              </div>
+              <div>
+                <span className="home-info">
+                  <p>
+                    ~Owners~{" "}
+                    <div>
+                      {home
+                        .map((homeEntry) => homeEntry.user?.name)
+                        .join(" & ")}
+                    </div>
+                  </p>
+                </span>
+              </div>
+              <div className="card_btm_wrapper">
+                <div className="home_card_topic"></div>
+                <div>
+                  <span className="home-info">
+                    Currently Working On{" "}
+                    <span className="underline">{ongoingJobs}</span> Of Our Jobs{" "}
+                  </span>
+                </div>
+                <div>
+                  <span className="home-info">
+                    We Have Finished{" "}
+                    <span className="underline">{finishedJobs}</span> Of Our
+                    Jobs{" "}
+                  </span>
+                </div>
+              </div>
+              {isCurrentUserOwner && (
           <div className="btn-container">
-            <button onClick={() => {
+            <button className="details_button-78" onClick={() => {
               navigate(`/updateHome/${home[0]?.homeId}`)
             }}>Change Something About Your Home</button>
           </div>
         )}
-      </div>
-    </div>
-  ) : (
-    "Loading..."
-  )}
-</div>
+            </div>
+            
+          ) : (
+            //TODO: this needs to move to include the jobCard component
+            "Loading..."
+          )}
+        </div>
 
   );
 };

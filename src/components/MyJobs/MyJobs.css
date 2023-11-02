@@ -19,9 +19,9 @@ h2 {
   background-color: rgb(134, 5, 89);
   
 }
-.dropdown_title_container {
+.dropdown_container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   position: relative;
   width: 100%;
@@ -40,12 +40,12 @@ h2 {
   outline: none;
 }
 
-.dropdown-container {
+/* .dropdown-container {
   position: absolute;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-}
+} */
 
 
 .home_title {

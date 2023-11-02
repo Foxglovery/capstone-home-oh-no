@@ -9,13 +9,15 @@ export const AddAJob = ({ currentUser }) => {
     title: "",
     description: "",
     imgUrl: "",
-    budgetGoal: 0,
+    budgetGoal: "",
     selectedArea: "",
-    currentStep: ""
+    currentStep: "",
   });
+
 
   const [areas, setAreas] = useState([]);
   const [home, setHome] = useState({});
+  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,7 +26,6 @@ export const AddAJob = ({ currentUser }) => {
     });
     GetHomesByUserId(currentUser.id).then((homeObj) => {
       setHome(homeObj);
-      
     });
   }, [currentUser]);
 
@@ -38,10 +39,10 @@ export const AddAJob = ({ currentUser }) => {
         areaId: parseInt(job.selectedArea),
         startDate: Date.now(),
         endDate: false,
-        budgetGoal: job.budgetGoal,
+        budgetGoal: job.budgetGoal ? parseInt(job.budgetGoal) : 0,
         budget: 0,
         currentStep: job.currentStep,
-        imgUrl: job.imgUrl
+        imgUrl: job.imgUrl,
       };
       submitJob(newJob).then(() => {
         navigate(`/myJobs/${currentUser.id}`);
@@ -60,84 +61,53 @@ export const AddAJob = ({ currentUser }) => {
   };
 
   return (
-    <div className="card">
-      <div className="card-body">
-        <h5 className="card-title">Add A Job</h5>
-        {/* HTML provides a native submit function for forms. */}
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="title">Title:</label>
-            <input
-              type="text"
-              id="title"
-              required
-              name="title"
-              className="form-control"
-              placeholder="Enter title"
-              value={job.title}
-              onChange={handleInputChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="imgUrl">Image URL:</label>
-            <input
-              type="text"
-              id="imgUrl"
-              name="imgUrl"
-              className="form-control"
-              placeholder="Enter image URL"
-              value={job.imgUrl}
-              onChange={handleInputChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="description">Description:</label>
-            <input
-              type="text"
-              required
-              id="description"
-              name="description"
-              className="form-control"
-              placeholder="Enter description"
-              value={job.description}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="budgetGoal">Budget Goal</label>
-            <input
-              type="text"
-              id="budgetGoal"
-              name="budgetGoal"
-              className="form-control"
-              placeholder="How Much $$$"
-              value={job.budgetGoal}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="currentStep">First Step</label>
-            <input
-              type="text"
-              required
-              id="currentStep"
-              name="currentStep"
-              className="form-control"
-              placeholder="What's The First Step?"
-              value={job.currentStep}
-              onChange={handleInputChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="area">Select an Area:</label>
-            <select
+    <form onSubmit={handleSubmit} class="form-style-9">
+      <h2>Add A Job</h2>
+      <ul>
+        <li>
+          <input
+            type="text"
+            required
+            name="title"
+            placeholder="Enter title"
+            value={job.title}
+            onChange={handleInputChange}
+            className="field-style field-split align-left"
+          />
+          <input
+            type="url"
+            className="field-style field-split align-right"
+            name="imgUrl"
+            placeholder="Enter image URL"
+            value={job.imgUrl}
+            onChange={handleInputChange}
+          />
+        </li>
+        <li>
+          <input
+            type="text"
+            className="field-style field-split align-left"
+            name="budgetGoal"
+            placeholder="How Much $$$"
+            value={job.budgetGoal}
+            onChange={handleInputChange}
+          />
+          <input
+            className="field-style field-split align-right"
+            type="text"
+            required
+            name="currentStep"
+            placeholder="What's The First Step?"
+            value={job.currentStep}
+            onChange={handleInputChange}
+          />
+        </li>
+        <li>
+        <select
               id="area"
               required
               name="selectedArea"
-              className="form-control"
+              className="field-style field-split align-left"
               value={job.selectedArea}
               onChange={handleInputChange}
             >
@@ -148,15 +118,21 @@ export const AddAJob = ({ currentUser }) => {
                 </option>
               ))}
             </select>
-          </div>
-
-          <div className="form-group">
-            <button className="form-btn btn-info" type="submit">
-              Submit Job
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+        </li>
+        <li>
+          <textarea
+            name="description"
+            className="field-style"
+            maxLength={84}
+            placeholder="Enter description"
+            value={job.description}
+            onChange={handleInputChange}
+          ></textarea>
+        </li>
+        <li>
+          <button type="submit" className="button-78">Submit Job</button>
+        </li>
+      </ul>
+    </form>
   );
 };

@@ -5,9 +5,28 @@
     margin: 20px;
   }
   
-  .area-dropdown-container {
-     
-  }
+ .dropdown-container {
+  position: relative;
+  margin-top: 4vh;
+  margin-left: 15px;
+  
+ 
+  
+}
+#area-dropdown-container {
+  align-self: flex-start;
+}
+
+#dropdown {
+  
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
   
   #home_card {
     
@@ -39,7 +58,8 @@
     margin-right: 20px;
   }
   .home-description-container {
-    margin-top: 20px;
+    margin-top: 1vh;
+  
   }
 
   .home-info {
