@@ -3,6 +3,7 @@
     margin: 3rem 15rem;
     padding: 2rem;
     border-radius: 1rem;
+    background-color: var(--primary);
   }
   
   .header {
@@ -25,5 +26,6 @@
   
   .auth-fieldset {
     margin: 0.25rem 0rem;
+    border: none;
   }
   
