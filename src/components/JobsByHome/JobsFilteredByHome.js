@@ -53,15 +53,7 @@ export const JobsFilteredByHome = ({ currentUser }) => {
   return (
     <>
       <div className="main_container">
-        <div id="area-dropdown-container">
-          <div id="dropdown">
-            <AreaDropdown
-            areas={areas}
-            jobs={jobs}
-            setFilteredJobs={setFilteredJobs}
-          />
-            </div>
-        </div>
+        
         <Logo />
         <div className="home">
           {home.length > 0 ? (
@@ -109,6 +101,15 @@ export const JobsFilteredByHome = ({ currentUser }) => {
             //TODO: this needs to move to include the jobCard component
             "Loading..."
           )}
+        </div>
+        <div id="area-dropdown-container">
+          <div id="dropdown">
+            <AreaDropdown
+            areas={areas}
+            jobs={jobs}
+            setFilteredJobs={setFilteredJobs}
+          />
+            </div>
         </div>
         <JobCards
           currentUser={currentUser}
