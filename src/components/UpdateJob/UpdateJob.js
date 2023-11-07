@@ -13,6 +13,8 @@ export const UpdateJob = ({ currentUser }) => {
   const [areas, setAreas] = useState([]);
   const [home, setHome] = useState({});
   const [currentJob, setCurrentJob] = useState({});
+  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
+  const [isFinishModalVisible, setIsFinishModalVisible] = useState(false)
   const { jobId } = useParams();
   const navigate = useNavigate();
   const [job, setJob] = useState({
@@ -98,6 +100,7 @@ export const UpdateJob = ({ currentUser }) => {
 
   const handleDeleteJob = () => {
     submitDeleteJob(jobId).then(() => {
+      closeDeleteModal()
       navigate(`/myJobs/${currentUser.id}`);
     });
   };
@@ -111,144 +114,215 @@ export const UpdateJob = ({ currentUser }) => {
     });
   };
 
+  const openDeleteModal = () => {
+    setIsDeleteModalVisible(true)
+  }
+
+  const closeDeleteModal = () => {
+    setIsDeleteModalVisible(false)
+  }
+
+  const openFinishModal = () => {
+    setIsFinishModalVisible(true)
+  }
+
+  const closeFinishModal = () => {
+    setIsFinishModalVisible(false)
+  }
+
+
   return (
     <div id="main_container">
-    <div id="card">
-      <div>
-        <form onSubmit={handleSubmit}>
-      <h2>Update A Job</h2>
-      <ul>
-        <li>
-          <div id="label_title">
-            <label htmlFor="title"> Title</label>
-            </div>
-          <input
-            type="text"
-            required
-            id="title"
-            
-            name="title"
-            placeholder="Enter title"
-            value={job.title}
-            onChange={handleInputChange}
-            className=""
-          />
-          <div id="label_imgUrl">
-            <label htmlFor="imgUrl"> Image URL</label>
-            </div>
-          <input
-            type="url"
-            id="imgUrl"
-            name="imgUrl"
-            placeholder="Enter image URL"
-            value={job.imgUrl}
-            onChange={handleInputChange}
-            className=""
-          />
-        </li>
+      <div id="card">
+        <div>
+          <form onSubmit={handleSubmit}>
+            <h2>Update A Job</h2>
+            <ul>
+              <li>
+                <div id="label_title">
+                  <label htmlFor="title"> Title</label>
+                </div>
+                <input
+                  type="text"
+                  required
+                  id="title"
+                  name="title"
+                  placeholder="Enter title"
+                  value={job.title}
+                  onChange={handleInputChange}
+                  className=""
+                />
+                <div id="label_imgUrl">
+                  <label htmlFor="imgUrl"> Image URL</label>
+                </div>
+                <input
+                  type="url"
+                  id="imgUrl"
+                  name="imgUrl"
+                  placeholder="Enter image URL"
+                  value={job.imgUrl}
+                  onChange={handleInputChange}
+                  className=""
+                />
+              </li>
 
-        <li>
-        <div id="label_current_step">
-            <label htmlFor="currentStep"> Current Step</label>
-            </div>
-          <input
-            className=""
-            type="text"
-            required
-            name="currentStep"
-            placeholder="What's The First Step?"
-            value={job.currentStep}
-            onChange={handleInputChange}
-          />
-          <div id="label_budget_goal">
-            <label htmlFor="budgetGoal"> Budget Goal</label>
-            </div>
-          <input
-            type="text"
-            className=""
-            name="budgetGoal"
-            placeholder="How Much $$$"
-            value={job.budgetGoal}
-            onChange={handleInputChange}
-          />
-        </li>
-        <li>
-        
-          <div id="label_budget">
-            <label htmlFor="title"> Currently Saved</label>
-            </div>
-          <input
-            type="text"
-            className=""
-            name="budget"
-            placeholder="How Much $$$"
-            value={job.budget}
-            onChange={handleInputChange}
-          /><div id="label_area">
-            <label htmlFor="area">Area</label>
-            </div>
-          <select
-            id="area"
-            required
-            name="selectedArea"
-            className=""
-            value={job.selectedArea}
-            onChange={handleInputChange}
-          >
-            <option value="">-- Select Area --</option>
-            {areas.map((area, index) => (
-              <option key={index} value={area.id}>
-                {area.areaName}
-              </option>
-            ))}
-          </select>
-        </li>
-        <li>
-        <div id="label_description">
-            <label htmlFor="description">Description</label>
-            </div>
-          <textarea
-            name="description"
-            className="field-style"
-            maxLength={84}
-            placeholder="Enter description"
-            value={job.description}
-            onChange={handleInputChange}
-          ></textarea>
-        </li>
-      </ul>
-      {/* Here Be Buttons */}
-      <div className="btn-wrapper">
-        
+              <li>
+                <div id="label_current_step">
+                  <label htmlFor="currentStep"> Next Step</label>
+                </div>
+                <input
+                  className=""
+                  type="text"
+                  required
+                  name="currentStep"
+                  placeholder="What's The First Step?"
+                  value={job.currentStep}
+                  onChange={handleInputChange}
+                />
+                <div id="label_budget_goal">
+                  <label htmlFor="budgetGoal"> Budget Goal</label>
+                </div>
+                <input
+                  type="text"
+                  className=""
+                  name="budgetGoal"
+                  placeholder="How Much $$$"
+                  value={job.budgetGoal}
+                  onChange={handleInputChange}
+                />
+              </li>
+              <li>
+                <div id="label_budget">
+                  <label htmlFor="title"> Currently Saved</label>
+                </div>
+                <input
+                  type="text"
+                  className=""
+                  name="budget"
+                  placeholder="How Much $$$"
+                  value={job.budget}
+                  onChange={handleInputChange}
+                />
+                <div id="label_area">
+                  <label htmlFor="area">Area</label>
+                </div>
+                <select
+                  id="area"
+                  required
+                  name="selectedArea"
+                  className=""
+                  value={job.selectedArea}
+                  onChange={handleInputChange}
+                >
+                  <option value="">-- Select Area --</option>
+                  {areas.map((area, index) => (
+                    <option key={index} value={area.id}>
+                      {area.areaName}
+                    </option>
+                  ))}
+                </select>
+              </li>
+              <li>
+                <div id="label_description">
+                  <label htmlFor="description">Description</label>
+                </div>
+                <textarea
+                  name="description"
+                  className="field-style"
+                  maxLength={84}
+                  placeholder="Enter description"
+                  value={job.description}
+                  onChange={handleInputChange}
+                ></textarea>
+              </li>
+            </ul>
+            {/* Here Be Buttons */}
+            <div className="btn-wrapper">
+              {console.log("whatIsCurrentJob", currentJob)}
+              {!currentJob.endDate && (
+                <button
+                  className="form-btn button-79"
+                  type="button"
+                  onClick={openFinishModal}
+                >
+                  Finish Job
+                </button>
+                
+              )}
+              {isFinishModalVisible && (
+                
+                <div id="id02" className="modal" style={{ display: isFinishModalVisible ? 'flex': 'none' }}>
+                <span
+                  onClick={closeFinishModal}
+                  className="close"
+                  title="Close Modal"
+                >
+                  &times;
+                </span>
+                <form className="modal-content" >
+                  <div className="container">
+                    <h1>Finish Job</h1>
+                    <p>Are you sure you want to finish out this job?</p>
 
-        {console.log("whatIsCurrentJob", currentJob)}
-        {!currentJob.endDate && (
-          
-            <button
-              className="form-btn button-79"
-              type="button"
-              onClick={handleFinishJob}
-            >
-              Finish Job
-            </button>
-          
-        )}
-<button className="form-btn button-78 " type="submit">
-          Submit Job
-        </button>
-        
-          <button
-            className="form-btn button-80"
-            type="button"
-            onClick={handleDeleteJob}
-          >
-            Delete Job
-          </button>
-        
+                    <div className="clearfix">
+                      <div id="modal-btn-container">
+                      <button type="button" className="cancel-btn" onClick={closeFinishModal}>
+                        Cancel
+                      </button>
+                      <button type="button" className="finish-btn" onClick={handleFinishJob}>
+                        Finish
+                      </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              )}
+              <button className="form-btn button-78 " type="submit">
+                Submit Job
+              </button>
+
+              <button
+                className="form-btn button-80"
+                type="button"
+                onClick={openDeleteModal}
+              >
+                Delete Job
+              </button>
+              {isDeleteModalVisible && (
+                
+                <div id="id01" className="modal" style={{ display: isDeleteModalVisible ? 'flex': 'none' }}>
+                <span
+                  onClick={closeDeleteModal}
+                  className="close"
+                  title="Close Modal"
+                >
+                  &times;
+                </span>
+                <form className="modal-content" >
+                  <div className="container">
+                    <h1>Delete Job</h1>
+                    <p>Are you sure you want to delete this job?</p>
+
+                    <div className="clearfix">
+                      <div id="modal-btn-container">
+                      <button type="button" className="cancel-btn" onClick={closeDeleteModal}>
+                        Cancel
+                      </button>
+                      <button type="button" className="delete-btn" onClick={handleDeleteJob}>
+                        Delete
+                      </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              )}
+              
+            </div>
+          </form>
+        </div>
       </div>
-    </form>
-      </div>
-    </div>
     </div>
   );
 };

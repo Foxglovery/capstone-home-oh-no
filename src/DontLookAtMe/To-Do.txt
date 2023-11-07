@@ -6,18 +6,16 @@
 
 //figure out how to add owners
 
+--display username in nav
 
-add check to delete job btn
 
 ~CSS~
-make job cards smaller
+
 make string number conditionaly render the word job as singular or plural
-!!edit form
-!!add job form
-!!job details
+
 On jobsbyhome, make home card appear in upper right corner, so can see job cards from the rip
 stop user from being able to highlight with cursor
-if user is on jobcards, edit button needs to be button 78
+
 
 
 

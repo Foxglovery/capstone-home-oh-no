@@ -37,7 +37,13 @@ body {
   /* background: radial-gradient(circle, rgba(231,162,72,1) 0%, rgba(249,57,19,1) 37%, rgba(231,162,72,1) 89%); */
   background-color: var(--appBackground);
   margin: 0;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+  
 }
+
 
 h1,
 h2,
@@ -112,6 +118,6 @@ button {
   display: none;
 }
 
-
+/* Start https://www.cursors-4u.com */ * {cursor: url(https://cur.cursors-4u.net/others/oth-7/oth691.ani), url(https://cur.cursors-4u.net/others/oth-7/oth691.png), auto !important;} /* End https://www.cursors-4u.com */
 
 

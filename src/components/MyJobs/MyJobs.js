@@ -10,6 +10,7 @@ import { MyJobCards } from "../JobCards/MyJobCards";
 import { AreaDropdown } from "../Filter/AreaDropdown";
 import { Logo } from "../Logo/Logo";
 
+
 export const MyJobs = ({ currentUser }) => {
   const { userId } = useParams();
   const [home, setHome] = useState([]);
@@ -53,6 +54,9 @@ export const MyJobs = ({ currentUser }) => {
   //can this be replaced ith a boolean
   const isHomeOwner = owners.some((owner) => owner.userId === currentUser.id);
 
+
+
+
   return (
     <>
       {isHomeOwner ? (
@@ -80,6 +84,7 @@ export const MyJobs = ({ currentUser }) => {
               currentUser={currentUser}
               jobs={filteredJobs}
             />
+            
           </div>{" "}
         </>
       ) : (

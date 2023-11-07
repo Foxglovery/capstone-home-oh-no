@@ -22,6 +22,26 @@ export const GetHomesByUserId = (userId) => {
   ).then((res) => res.json());
 };
 
+export const createHome = (home) => {
+  return fetch("http://localhost:8088/homes", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(home),
+  });
+};
+
+export const createUserHome = (userHome) => {
+  return fetch("http://localhost:8088/userHomes", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userHome),
+  });
+};
+
 
 
 

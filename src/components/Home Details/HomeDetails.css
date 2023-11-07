@@ -52,10 +52,10 @@ a {
   margin-top: 10px;
 }
 
-.btn-container {
+.details_btn_container {
   margin-top: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   
 }
 

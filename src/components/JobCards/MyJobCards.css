@@ -1,4 +1,4 @@
-.button-78, .button-79, .button-80 {
+.button-78, .button-79, .button-80, .button-81 {
     align-items: center;
     align-self: flex-end;
     appearance: none;
@@ -38,7 +38,7 @@
   }
   
   @media (min-width: 768px) {
-    .button-78 , .button-79, .button-80 {
+    .button-78 , .button-79, .button-80, .button-81 {
       padding: 10px 32px;
     }
   }
@@ -48,13 +48,16 @@
   .button-79:before,
   .button-79:after,
   .button-80:before,
-  .button-80:after {
+  .button-80:after,
+  .button-81:before,
+  .button-81:after {
     border-radius: 80px;
   }
   
   .button-78:before,
   .button-79:before,
-  .button-80:before {
+  .button-80:before,
+  .button-81:before {
     background-image: linear-gradient(92.83deg, rgb(231, 162, 72) 0, #f93a13 100%);
     content: "";
     display: block;
@@ -69,7 +72,8 @@
   
   .button-78:after,
   .button-79:after,
-  .button-80:after {
+  .button-80:after,
+  .button-81:after {
     background-color: initial;
     background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
     bottom: 4px;
@@ -109,10 +113,19 @@
 .button-80:hover {
   color: rgb(12, 12, 11);
 }
+
+.button-81:hover:not(:disabled):before
+ {
+  background: linear-gradient(92.83deg, rgb(211, 189, 189) 0%, rgb(86, 81, 89) 100%);
+}
+.button-81:hover {
+  color: rgb(12, 12, 11);
+}
   
   .button-78:hover:not(:disabled):after,
   .button-79:hover:not(:disabled):after,
-  .button-80:hover:not(:disabled):after {
+  .button-80:hover:not(:disabled):after,
+  .button-81:hover:not(:disabled):after {
     bottom: 0;
     left: 0;
     right: 0;
@@ -123,19 +136,23 @@
   
   .button-78:active:not(:disabled),
   .button-79:active:not(:disabled),
-  .button-80:active:not(:disabled) {
+  .button-80:active:not(:disabled),
+  .button-81:active:not(:disabled)
+   {
     color: #ccc;
   }
   
   .button-78:active:not(:disabled):before,
   .button-79:active:not(:disabled):before,
-  .button-80:active:not(:disabled):before {
+  .button-80:active:not(:disabled):before,
+  .button-81:active:not(:disabled):before {
     background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
   }
   
   .button-78:active:not(:disabled):after,
   .button-79:active:not(:disabled)::after,
-  .button-80:active:not(:disabled):after {
+  .button-80:active:not(:disabled):after,
+  .button-81:active:not(:disabled):after {
     background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
     bottom: 4px;
     left: 4px;
@@ -145,7 +162,8 @@
   
   .button-78:disabled,
   .button-79:disabled,
-  .button-80:disabled {
+  .button-80:disabled,
+  .button-81:disabled {
     cursor: default;
     opacity: .24;
   }
@@ -163,10 +181,10 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    padding-bottom: 20px; /* Optional: add some space at the bottom */
+    padding-bottom: 20px; 
     z-index: 1;
     min-height: 72vh ;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */    
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);     
   }
 
   .job-card:hover {

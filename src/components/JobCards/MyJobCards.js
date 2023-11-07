@@ -24,13 +24,13 @@ export const MyJobCards = ({ jobs }) => {
     <div className="jobs-container">
       {jobs.map((job, index) => (
             <div key={index} className="job-card">
+              {job.endDate && (
+                <div className="ribbon-overlay"><span className="ribbon">Finished</span></div>
+              )}
               <Link to={`/jobDetails/${job.id}`}>
                 <div className="job-card-title">{job.title}</div>
               </Link>
-              {job.endDate ? (
-                <div>~COMPLETED~</div>
-              ) : ("")}
-              {console.log("job",job)}
+              
               
               <div className="job-card-start">Started on: {new Date(job.startDate).toLocaleDateString("en-US")}</div>
               <div className="job-card-start">Current Step: {job.currentStep}</div>
