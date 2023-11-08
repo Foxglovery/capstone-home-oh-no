@@ -33,7 +33,7 @@ export const Carousel = ({ images }) => {
   const slidersVariants = {
     hover: {
       scale: 1.2,
-      backgroundColor: "#ff00008e",
+      backgroundColor: "rgba(134, 5, 89, 0.525)",
     },
   };
   const dotsVariants = {

@@ -13,10 +13,11 @@ export const AddAJob = ({ currentUser }) => {
     selectedArea: "",
     currentStep: "",
   });
+  const [selectedHomeId, setSelectedHomeId] = useState(0)
 
 
   const [areas, setAreas] = useState([]);
-  const [home, setHome] = useState({});
+  const [home, setHome] = useState([]);
   
   const navigate = useNavigate();
 
@@ -24,8 +25,11 @@ export const AddAJob = ({ currentUser }) => {
     GetAllAreas().then((areaArray) => {
       setAreas(areaArray);
     });
-    GetHomesByUserId(currentUser.id).then((homeObj) => {
-      setHome(homeObj);
+    GetHomesByUserId(currentUser.id).then((homeArray) => {
+      if (homeArray.length > 0) {
+        setHome(homeArray);
+        setSelectedHomeId(homeArray[0].homeId); // Use the first home's ID from the array
+      }
     });
   }, [currentUser]);
 
@@ -33,7 +37,7 @@ export const AddAJob = ({ currentUser }) => {
     event.preventDefault();
     if (job.title) {
       const newJob = {
-        homeId: home[0].homeId,
+        homeId: selectedHomeId,
         title: job.title,
         description: job.description,
         areaId: parseInt(job.selectedArea),
@@ -43,6 +47,7 @@ export const AddAJob = ({ currentUser }) => {
         budget: 0,
         currentStep: job.currentStep,
         imgUrl: job.imgUrl,
+        imgArray: [job.imgUrl]
       };
       submitJob(newJob).then(() => {
         navigate(`/myJobs/${currentUser.id}`);
@@ -59,6 +64,10 @@ export const AddAJob = ({ currentUser }) => {
       [name]: value,
     });
   };
+
+  const handleHomeChange = (event) => {
+    setSelectedHomeId(event.target.value)
+  }
 
   return (
     <form onSubmit={handleSubmit} class="form-style-9">
@@ -115,6 +124,22 @@ export const AddAJob = ({ currentUser }) => {
               {areas.map((area, index) => (
                 <option key={index} value={area.id}>
                   {area.areaName}
+                </option>
+              ))}
+            </select>
+                
+            <select
+              id="selectedHome"
+              required
+              name="selectedHome"
+              className="field-style field-split align-right"
+              value={selectedHomeId}
+              onChange={handleHomeChange}
+            >
+              <option value="">-- Select Home --</option>
+              {home.map((homeEntry) => (
+                <option key={homeEntry.homeId} value={homeEntry.homeId}>
+                  {homeEntry.home.name}
                 </option>
               ))}
             </select>

@@ -42,7 +42,7 @@ export const UpdateJob = ({ currentUser }) => {
       setJob({
         title: currentJobData.title,
         description: currentJobData.description,
-
+        
         //changing this from areaId: to selectedArea let the update form populate the select with the previous choice
         selectedArea: currentJobData.areaId,
         startDate: Date.now(),
@@ -51,6 +51,7 @@ export const UpdateJob = ({ currentUser }) => {
         budget: currentJobData.budget || 0,
         currentStep: currentJobData.currentStep,
         imgUrl: currentJobData.imgUrl,
+        imgArray: currentJobData.imgArray
       });
     });
   }, [jobId]);
@@ -69,6 +70,7 @@ export const UpdateJob = ({ currentUser }) => {
         budget: job.budget ? parseInt(job.budget, 10) : 0,
         currentStep: job.currentStep,
         imgUrl: job.imgUrl,
+        imgArray: job.imgArray
       };
       console.log("Sending this updatedJob", updatedJob); //debug log
       submitUpdateJob(updatedJob, jobId).then(() => {
@@ -91,6 +93,7 @@ export const UpdateJob = ({ currentUser }) => {
       budget: job.budget,
       currentStep: job.currentStep,
       imgUrl: job.imgUrl,
+      imgArray: job.imgArray
     };
     console.log("Sending this finishedJob", finishedJob); //debug log
     submitUpdateJob(finishedJob, jobId).then(() => {

@@ -22,9 +22,12 @@ export const MyJobs = ({ currentUser }) => {
   const navigate = useNavigate();
   useEffect(() => {
     GetHomesByUserId(userId).then((data) => {
-      console.log("data from api", data); //debug log
+      console.log("Home data from api", data); //debug log
       setHome(data);
-      setHomeId(data[0]?.homeId);
+      if (data.length > 0) {
+        setHomeId(data[0]?.homeId);
+      }
+      
     });
   }, [userId]);
 
@@ -54,6 +57,11 @@ export const MyJobs = ({ currentUser }) => {
   //can this be replaced ith a boolean
   const isHomeOwner = owners.some((owner) => owner.userId === currentUser.id);
 
+  const handleHomeChange = (e) => {
+    const selectedHomeId = e.target.value
+    setHomeId(selectedHomeId)
+  }
+
 
 
 
@@ -64,11 +72,19 @@ export const MyJobs = ({ currentUser }) => {
           <div className="main-container">
             
             <Logo />
+            <div className="home_card_container dropdown">
+              <h2 className="home_title_card dropbtn">{home.find(h => h.homeId === homeId)?.home.name || 'Select a Home'}</h2>
+              <div className="dropdown-content">
+                {home.map((homeEntry) => (
+                  <a key={homeEntry.homeId} onClick={() => handleHomeChange({ target: { value: homeEntry.homeId } })}>
+                    {homeEntry.home.name}
+                  </a>
+                ))}
+              </div>
+            </div>
 
             <div className="home_card_container">
-              <div className="home_title_card">
-                <h2 className="home_title">{home[0]?.home.name}</h2>
-              </div>
+              
             </div>
             <div className="dropdown_container">
               <div id="dropdown">
@@ -85,7 +101,7 @@ export const MyJobs = ({ currentUser }) => {
               jobs={filteredJobs}
             />
             
-          </div>{" "}
+          </div>
         </>
       ) : (
         <div>

@@ -1,13 +1,16 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "./HomeDetails.css";
 import { useEffect, useState } from "react";
-import { GetHomeById } from "../../services/homeService";
+import { GetHomeById, GetHomesByUserId } from "../../services/homeService";
 import { GetJobsByHomeId, numToWord } from "../../services/jobsService";
+import { Carousel } from "../Carousel/Carousel";
 
 export const HomeDetails = ({ currentUser }) => {
   const { currentHomeId } = useParams();
   const [home, setHome] = useState([]);
-  const [jobs, setJobs] = useState([]);
+  const [userHomes, setUserHomes] = useState([])
+  const [homeId, setHomeId] = useState(0)
+  const [completeImgs, setCompleteImgs] = useState([]);
   const [finishedJobs, setFinishedJobs] = useState([]);
   const [ongoingJobs, setOngoingJobs] = useState([]);
   const navigate = useNavigate();
@@ -15,7 +18,10 @@ export const HomeDetails = ({ currentUser }) => {
     GetHomeById(currentHomeId).then((data) => {
       console.log("data from api:", data); //debug log
 
-      setHome(data);
+      setHome(data); 
+      if (data.length > 0) {
+        setHomeId(data[0]?.homeId);
+      }
     });
   }, [currentHomeId]);
   //uses .some to check all the objects in the array. my new darling child
@@ -23,33 +29,57 @@ export const HomeDetails = ({ currentUser }) => {
     (homeEntry) => homeEntry.userId === currentUser.id
   );
 
+  //this will change dependence when I select home from dropdown
   useEffect(() => {
     GetJobsByHomeId(currentHomeId).then((jobsArray) => {
       const numberOngoingJobs = jobsArray.filter((job) => !job.endDate).length;
       const stringOngoingJob = numToWord(numberOngoingJobs);
       setOngoingJobs(stringOngoingJob);
-
-      setJobs(jobsArray);
-
       const numberFinishedJobs = jobsArray.filter((job) => job.endDate).length;
       const stringFinishedJobs = numToWord(numberFinishedJobs);
       setFinishedJobs(stringFinishedJobs);
-    });
-  }, [currentHomeId]);
 
-  return (
-    <div className="home">
-      {home.length > 0 ? (
+      const completeJobsFilter = jobsArray.filter(job => job.endDate)
+      const completeImgArray = completeJobsFilter.map(job => job.imgUrl)
+      setCompleteImgs(completeImgArray);
+    });
+  }, [currentHomeId, homeId]);
+
+  useEffect(() => {
+    GetHomesByUserId(currentUser.id).then((data) => {
+      console.log("Home data from api", data); //debug log
+      setUserHomes(data);
+     
+      
+    });
+  }, [currentUser]);
+
+  const handleHomeChange = (selectedHomeId) => {
+    
+    navigate(`/homeDetails/${selectedHomeId}`)
+  }
+
+  return (<>
+    <div className="home home-container">
+      {home.length > 0 ? (<>
         <div id="home_card">
-          <Link to={`/homeDetails/${home[0].homeId}`}>
-            <div id="home_card_title">{home[0].home?.name}</div>
-          </Link>
+          {/* <div><span>&#127968;</span><span>Choose Your Home</span></div> */}
+          {isCurrentUserOwner && (
+            <div className=" details_dropdown">
+            <h2 className=" details_dropbtn">Select Your Home</h2>
+            <div className="details_dropdown_content">
+              {userHomes.map((homeEntry) => (
+                <a key={homeEntry.homeId} onClick={() => handleHomeChange(homeEntry.homeId)}>
+                  {homeEntry.home.name}
+                </a>
+              ))}
+            </div>
+          </div>
+          )}
+            <h2 id="home_details_card_title" >{home.find(h => h.homeId === homeId)?.home.name || 'Select a Home'}</h2>
+          
           <div id="home_card_img">
             <img src={home[0].home?.imgUrl} alt={home[0].home?.name} />
-          </div>
-
-          <div className="home-description-container">
-            <p className="home-info">{home[0].home?.description}</p>
           </div>
           <div>
             <span className="home-info">
@@ -61,6 +91,10 @@ export const HomeDetails = ({ currentUser }) => {
               </p>
             </span>
           </div>
+          <div className="home-description-container">
+            <p className="home-info">{home[0].home?.description}</p>
+          </div>
+
           <div className="card_btm_wrapper">
             <div className="home_card_topic"></div>
             <div>
@@ -98,10 +132,16 @@ export const HomeDetails = ({ currentUser }) => {
             </div>
           )}
         </div>
-      ) : (
+        {completeImgs.length > 0 && (
+
+          <div><Carousel images={completeImgs}/></div>
+        )} 
+        
+          
+      </>) : (
         //TODO: this needs to move to include the jobCard component
         "Loading..."
       )}
     </div>
-  );
+  </>);
 };

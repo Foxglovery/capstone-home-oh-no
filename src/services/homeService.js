@@ -16,6 +16,13 @@ export const GetHomeById = (homeId) => {
   ).then((res) => res.json());
 };
 
+export const GetOneHomeById = (homeId) => {
+  return fetch(
+    `http://localhost:8088/homes?id=${homeId}`
+  ).then((res) => res.json());
+};
+
+
 export const GetHomesByUserId = (userId) => {
   return fetch(
     `http://localhost:8088/userHomes?userId=${userId}&_expand=user&_expand=home`

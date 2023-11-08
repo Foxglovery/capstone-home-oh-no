@@ -61,14 +61,11 @@ export const JobsFilteredByHome = ({ currentUser }) => {
               <Link to={`/homeDetails/${home[0].homeId}`}>
                 <div id="home_card_title">{home[0].home?.name}</div>
               </Link>
+              
               <div id="home_card_img">
                 <img src={home[0].home?.imgUrl} alt={home[0].home?.name} />
               </div>
-
-              <div className="home-description-container">
-                <p className="home-info">{home[0].home?.description}</p>
-              </div>
-              <div>
+<div>
                 <span className="home-info">
                   <p>
                     ~Owners~{" "}
@@ -80,7 +77,11 @@ export const JobsFilteredByHome = ({ currentUser }) => {
                   </p>
                 </span>
               </div>
-              <div className="card_btm_wrapper">
+              <div className="home-description-container">
+                <p className="home-info">{home[0].home?.description}</p>
+              </div>
+              
+              {/* <div className="card_btm_wrapper">
                 <div className="home_card_topic"></div>
                 <div>
                   <span className="home-info">
@@ -95,7 +96,7 @@ export const JobsFilteredByHome = ({ currentUser }) => {
                     Jobs{" "}
                   </span>
                 </div>
-              </div>
+              </div> */}
             </div>
           ) : (
             //TODO: this needs to move to include the jobCard component
