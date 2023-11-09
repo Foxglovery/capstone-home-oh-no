@@ -1,19 +1,25 @@
 import "./BudgetProgressBar.css";
 
-export const BudgetProgressBar = ({ current, goal }) => {
+export const BudgetProgressBar = ({ current, goal, owners, isHomeOwner, currentUser }) => {
   let percent;
   let progressBarClass;
   let displayText;
+  
   
 
   if (goal === 0) {
     percent = 'N/A';
     progressBarClass = 'progress progress-na';
-    displayText = "We Don't Need Money!"
+    displayText = "We Don't Need $ For This!"
   } else {
-    percent = Math.floor((current / goal) * 100);
+    if (isHomeOwner) {
+      percent = Math.floor((current / goal) * 100);
     progressBarClass = `progress progress-${percent}`;
-    displayText = `${percent}% Saved`
+    displayText = `$${current} / $${goal}`
+    } else {percent = Math.floor((current / goal) * 100);
+    progressBarClass = `progress progress-${percent}`;
+    displayText = `${percent}% Saved`}
+    
   }
 
   return (

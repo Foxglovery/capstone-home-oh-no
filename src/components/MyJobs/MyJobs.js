@@ -97,6 +97,7 @@ export const MyJobs = ({ currentUser }) => {
             </div>
             <MyJobCards
               isHomeOwner={isHomeOwner}
+              owners={owners}
               currentUser={currentUser}
               jobs={filteredJobs}
             />

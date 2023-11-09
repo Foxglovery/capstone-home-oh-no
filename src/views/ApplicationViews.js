@@ -15,10 +15,11 @@ import { UpdateJob } from "../components/UpdateJob/UpdateJob";
 import { UpdateHome } from "../components/UpdateHome/UpdateHome";
 import { GetHomesByUserId } from "../services/homeService";
 import { AddAHome } from "../components/AddAHome/AddAHome";
+import { Greeting } from "../components/Greeting/Greeting";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
-  const [homeId, setHomeId] = useState()
+  
 
   useEffect(() => {
     const localLearningUser = localStorage.getItem("home_oh_no_user");
@@ -37,6 +38,7 @@ export const ApplicationViews = () => {
           element={
             <>
               <NavBar currentUser = {currentUser} />
+              <Greeting currentUser = {currentUser}/>
               
               <Outlet />
             </>

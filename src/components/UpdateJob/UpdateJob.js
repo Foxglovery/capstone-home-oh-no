@@ -6,7 +6,7 @@ import {
   submitDeleteJob,
   submitUpdateJob,
 } from "../../services/jobsService";
-import { GetHomesByUserId } from "../../services/homeService";
+import { GetHomeByJobId, GetHomesByUserId } from "../../services/homeService";
 import { useNavigate, useParams } from "react-router-dom";
 
 export const UpdateJob = ({ currentUser }) => {
@@ -31,10 +31,11 @@ export const UpdateJob = ({ currentUser }) => {
     GetAllAreas().then((areaArray) => {
       setAreas(areaArray);
     });
-    GetHomesByUserId(currentUser.id).then((homeObj) => {
+    GetHomeByJobId(jobId).then((homeObj) => {
+      console.log("homeoeoeo",homeObj ) //debug log
       setHome(homeObj);
     });
-  }, [currentUser]);
+  }, [jobId]);
 
   useEffect(() => {
     GetJobById(jobId).then((currentJobData) => {

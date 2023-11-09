@@ -1,0 +1,46 @@
+.greeting_container {
+    /* width: 25%; */
+    position: absolute;
+    padding: 10px;
+    
+}
+
+.greeting_outer {
+    background-image: linear-gradient(92.83deg, rgb(112, 182, 210) 0%, var(--primary) 100%);
+    padding: 4px;
+    border-radius: 40px;
+    display: inline-flex; /* Change this to inline-flex so it only takes up space needed */
+    justify-content: center; /* Center the items horizontally */
+}
+
+.greeting_inner {
+    background-color: #fd9c81;
+    padding: 10px;
+    border-radius: 40px;
+    display: inline-flex; /* Change this to inline-flex so it only takes up space needed */
+    justify-content: center; /* Center the items horizontally */
+}
+
+.circle {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    text-align: center;
+  }
+
+.circle_text {
+    font-size: 38px;
+    color: var(--secondary);
+}
+
+.greeting_sliced_name {
+    margin-top: 10%;
+    margin-left: 2px;
+    font-size: 18px;
+    white-space: nowrap;
+    
+}

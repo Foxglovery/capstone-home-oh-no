@@ -22,12 +22,24 @@ export const GetOneHomeById = (homeId) => {
   ).then((res) => res.json());
 };
 
+export const GetHomeByJobId = (jobId) => {
+  return fetch(
+    `http://localhost:8088/jobs?id=${jobId}&_expand=home`
+  ).then((res) => res.json());
+};
+
 
 export const GetHomesByUserId = (userId) => {
   return fetch(
     `http://localhost:8088/userHomes?userId=${userId}&_expand=user&_expand=home`
   ).then((res) => res.json());
 };
+
+export const GetUserByUserId = (userId) => {
+  return fetch(
+    `http://localhost:8088/users?id=${userId}`
+  ).then((res) => res.json());
+}
 
 export const createHome = (home) => {
   return fetch("http://localhost:8088/homes", {
