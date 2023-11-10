@@ -1,11 +1,11 @@
 export const getUserByEmail = (email) => {
-  return fetch(`http://localhost:8088/users?email=${email}`).then((res) =>
+  return fetch(`https://home-oh-no-api.onrender.com/users?email=${email}`).then((res) =>
     res.json()
   );
 };
 
 export const createUser = (user) => {
-  return fetch("http://localhost:8088/users", {
+  return fetch("https://home-oh-no-api.onrender.com/users", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -16,6 +16,6 @@ export const createUser = (user) => {
 
 export const GetUsersByHomeId = (homeId) => {
   return fetch(
-    `http://localhost:8088/userHomes?homeId=${homeId}&_expand=user`
+    `https://home-oh-no-api.onrender.com/userHomes?homeId=${homeId}&_expand=user`
   ).then((res) => res.json());
 };
