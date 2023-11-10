@@ -43,24 +43,24 @@ export const JobDetails = ({ currentUser }) => {
                     {/* fetch payload is specific object. To check length I make an array of the key (properties) on job and check that length! */}
                     {Object.keys(job).length > 0 ? (
                         <div className="job-detail-container">
-                            <div id="home_card">
+                            <div id="job_detail_card">
                                 <div id="job_card_title">
                                     <h3>{job.title}</h3>
                                 </div>
-                                <div id="job-card-start">
+                                <div id="job_start">
                                     Started on:{" "}
                                     {new Date(job.startDate).toLocaleDateString(
                                         "en-US"
                                     )}
                                 </div>
-                                <div id="home_info">At: {job.home.name}</div>
+                                <div id="job_house">At: {job.home.name}</div>
 
-                                <div id="home_card_img">
+                                <div id="job_card_img">
                                     <img src={job.imgUrl} alt={job.title} />
                                 </div>
 
                                 <div>
-                                    <p className="home-info">
+                                    <p className="job_description">
                                         {job.description}
                                     </p>
                                 </div>
@@ -73,14 +73,11 @@ export const JobDetails = ({ currentUser }) => {
                                     </div>
                                 )}
                                 <div className="card_btm_wrapper">
-                                    <div className="home_card_topic">
+                                    <div className="job_topic">
                                         Category: {job.area.areaName}
                                     </div>
-                                    <div className="home_card_topic">
-                                        Next Step: {job.currentStep}
-                                    </div>
-                                </div>
-                                <div id="back-btn-container">
+
+                                    <div id="back-btn-container">
                                     <span
                                         onClick={() => navigate(-1)}
                                         className="back"
@@ -89,6 +86,11 @@ export const JobDetails = ({ currentUser }) => {
                                         &#8619;
                                     </span>
                                 </div>
+                                    <div className="job_step">
+                                        Next Step: {job.currentStep}
+                                    </div>
+                                </div>
+                                
                             </div>
                             <Carousel images={jobImgArray} />
                         </div>

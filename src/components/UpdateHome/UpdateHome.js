@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
-import { GetHomesByUserId, submitUpdateHome } from "../../services/homeService";
+import { GetHomesByUserId, GetOneHomeById, submitUpdateHome } from "../../services/homeService";
 
 export const UpdateHome = ({ currentUser }) => {
     const { currentHomeId } = useParams();
@@ -14,13 +14,15 @@ export const UpdateHome = ({ currentUser }) => {
     })
 
     useEffect(() => {
-        GetHomesByUserId(currentUser.id).then((currentHomeData) => {
-          console.log("homesArray", currentHomeData )
-            setHome({
-                name:currentHomeData[0]?.home.name,
-                description: currentHomeData[0]?.home.description,
-                imgUrl: currentHomeData[0]?.home.imgUrl
+        GetOneHomeById(currentHomeId).then((homeObj) => {
+          console.log("Home Obj", homeObj )
+            if (homeObj.length > 0) {
+              setHome({
+                name:homeObj[0]?.name,
+                description: homeObj[0]?.description,
+                imgUrl: homeObj[0]?.imgUrl
             })
+            } 
         })
     },[currentUser])
 
