@@ -53,50 +53,40 @@ export const JobsFilteredByHome = ({ currentUser }) => {
   return (
     <>
       <div className="main_container">
-        
         <Logo />
         <div className="home">
           {home.length > 0 ? (
             <div id="home_card">
               <Link to={`/homeDetails/${home[0].homeId}`}>
-                <div id="home_card_title">{home[0].home?.name}</div>
+                <div>
+                  <div id="home_card_title">{home[0].home?.name}</div>
+                </div>
+                
               </Link>
-              
+
               <div id="home_card_img">
                 <img src={home[0].home?.imgUrl} alt={home[0].home?.name} />
               </div>
-<div>
-                <span className="home-info">
-                  <p>
-                    ~Owners~{" "}
+
+              <div>
+                  <div className="filtered_owner_chip">
+                    <div className="filtered_owner_text">~Owned By~ </div>
+
                     <div>
                       {home
                         .map((homeEntry) => homeEntry.user?.name)
                         .join(" & ")}
                     </div>
-                  </p>
-                </span>
-              </div>
-              <div className="home-description-container">
+                  </div>
+                </div>
+                <div>
+                  <div className="filtered_description">
                 <p className="home-info">{home[0].home?.description}</p>
               </div>
+                </div>
               
-              {/* <div className="card_btm_wrapper">
-                <div className="home_card_topic"></div>
-                <div>
-                  <span className="home-info">
-                    Currently Working On{" "}
-                    <span className="underline">{ongoingJobs}</span> Of Our Jobs{" "}
-                  </span>
-                </div>
-                <div>
-                  <span className="home-info">
-                    We Have Finished{" "}
-                    <span className="underline">{finishedJobs}</span> Of Our
-                    Jobs{" "}
-                  </span>
-                </div>
-              </div> */}
+
+              
             </div>
           ) : (
             //TODO: this needs to move to include the jobCard component
@@ -106,11 +96,11 @@ export const JobsFilteredByHome = ({ currentUser }) => {
         <div id="area-dropdown-container">
           <div id="dropdown">
             <AreaDropdown
-            areas={areas}
-            jobs={jobs}
-            setFilteredJobs={setFilteredJobs}
-          />
-            </div>
+              areas={areas}
+              jobs={jobs}
+              setFilteredJobs={setFilteredJobs}
+            />
+          </div>
         </div>
         <JobCards
           currentUser={currentUser}

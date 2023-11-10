@@ -86,7 +86,7 @@ export const MyJobs = ({ currentUser }) => {
             <div className="home_card_container">
               
             </div>
-            <div className="dropdown_container">
+            <div className="mydropdown_container">
               <div id="dropdown">
                 <AreaDropdown
                   jobs={jobs}

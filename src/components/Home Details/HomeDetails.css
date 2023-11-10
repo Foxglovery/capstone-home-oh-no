@@ -1,4 +1,4 @@
- .main-container {
+.main-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,14 +55,77 @@ a {
   margin-left: 155px;
 }
 
+.home_details_title_wrapper {
+  background-color: var(--appBackground);
+  border-radius: 20px;
+  width: auto;
+  padding: 10px;
+  display: inline-block;
+  color: #0c0d0d;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+#home_details_card_title {
+  display: inline;
+  width: auto;
+}
+
 .home-info {
   margin-top: 10px;
+}
+
+.owner_chip {
+  background-color: var(--secondary);
+  border-radius: 20px;
+  width: auto;
+  padding: 10px;
+  display: inline-block;
+  color: #0c0d0d;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+}
+
+.owner_text {
+}
+
+.owner,
+.details_description {
+}
+
+.details_description {
+  display: inline;
+  width: auto;
+}
+
+.details_home_description_container {
+  background-color: var(--appBackground);
+  border-radius: 20px;
+  width: auto;
+  margin-top: 10px;
+  /* align self cut the excess off the div */
+  align-self: center;
+  padding: 10px;
+  display: inline-block;
+  color: #0c0d0d;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
 }
 
 .details_btn_container {
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
+}
+
+.details_home_jobs_container {
+  background-color: var(--secondary);
+  border-radius: 20px;
+  width: auto;
+  margin-top: 10px;
+  /* align self cut the excess off the div */
+  align-self: center;
+  padding: 10px;
+  display: inline-block;
+  color: #0c0d0d;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
 }
 
 .details_button-78 {
@@ -198,18 +261,18 @@ a {
 /* Home Drop Down */
 .details_dropbtn {
   background-color: var(--primary);
-  color: var(--secondary);
+  color: var(--appBackground);
   padding: 16px;
   display: flex;
   justify-content: flex-end;
-  
+
   border: none;
 }
 
 .details_dropdown {
   position: absolute;
   right: 10px; /* Adjust as needed */
-  top: 10px;   /* Adjust as needed */
+  top: 10px; /* Adjust as needed */
   z-index: 10; /* To ensure it sits above other content */
 }
 

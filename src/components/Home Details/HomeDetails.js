@@ -1,7 +1,11 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "./HomeDetails.css";
 import { useEffect, useState } from "react";
-import { GetHomeById, GetHomesByUserId, GetOneHomeById } from "../../services/homeService";
+import {
+  GetHomeById,
+  GetHomesByUserId,
+  GetOneHomeById,
+} from "../../services/homeService";
 import { GetJobsByHomeId, numToWord } from "../../services/jobsService";
 import { Carousel } from "../Carousel/Carousel";
 import { Logo } from "../Logo/Logo";
@@ -14,12 +18,10 @@ export const HomeDetails = ({ currentUser }) => {
   const [completeImgs, setCompleteImgs] = useState([]);
   const [finishedJobs, setFinishedJobs] = useState([]);
   const [ongoingJobs, setOngoingJobs] = useState([]);
-  
+
   const navigate = useNavigate();
   useEffect(() => {
     GetHomeById(currentHomeId).then((data) => {
-      
-
       setHome(data);
       if (data.length > 0) {
         setHomeId(data[0]?.homeId);
@@ -27,14 +29,14 @@ export const HomeDetails = ({ currentUser }) => {
     });
   }, [currentHomeId]);
 
-//   useEffect(() => {
-//     GetOneHomeById(currentHomeId).then((data) => {
-//         console.log("detailsHome from api:", data); //debug log
-//         if (data.length > 0) {
-//             setSwitchedHomeId(data.id)
-//         }
-//     })
-//   },[])
+  //   useEffect(() => {
+  //     GetOneHomeById(currentHomeId).then((data) => {
+  //         console.log("detailsHome from api:", data); //debug log
+  //         if (data.length > 0) {
+  //             setSwitchedHomeId(data.id)
+  //         }
+  //     })
+  //   },[])
   //uses .some to check all the objects in the array. my new darling child
   const isCurrentUserOwner = home.some(
     (homeEntry) => homeEntry.userId === currentUser.id
@@ -91,6 +93,7 @@ export const HomeDetails = ({ currentUser }) => {
                     </div>
                   </div>
                 )}
+
                 <h2 id="home_details_card_title">
                   {home.find((h) => h.homeId === homeId)?.home.name ||
                     "Select a Home"}
@@ -99,47 +102,40 @@ export const HomeDetails = ({ currentUser }) => {
                 <div id="home_card_img">
                   <img src={home[0].home?.imgUrl} alt={home[0].home?.name} />
                 </div>
+                
                 <div>
-                  <span className="home-info">
-                    <p>
-                      ~Owners~{" "}
-                      <div>
-                        {home
-                          .map((homeEntry) => homeEntry.user?.name)
-                          .join(" & ")}
-                      </div>
-                    </p>
-                  </span>
-                </div>
-                <div className="home-description-container">
-                  <p className="home-info">{home[0].home?.description}</p>
+                  <div className="owner_chip">
+                    <div className="owner_text">~Owned By~ </div>
+
+                    <div className="owner">
+                      {home
+                        .map((homeEntry) => homeEntry.user?.name)
+                        .join(" & ")}
+                    </div>
+                  </div>
                 </div>
 
-                <div className="card_btm_wrapper">
-                  <div className="home_card_topic"></div>
-                  <div>
+                <div className="home_card_btm_wrapper">
+                  <div className="details_home_jobs_container">
                     <span className="home-info">
                       Currently Working On{" "}
                       <span className="underline">{ongoingJobs}</span> Of Our
                       Jobs{" "}
                     </span>
+
+                    <div>
+                      <span className="home-info">
+                        We Have Finished{" "}
+                        <span className="underline">{finishedJobs}</span> Of Our
+                        Jobs{" "}
+                      </span>
+                    </div>
                   </div>
-                  <div>
-                    <span className="home-info">
-                      We Have Finished{" "}
-                      <span className="underline">{finishedJobs}</span> Of Our
-                      Jobs{" "}
-                    </span>
-                  </div>
-                  <div id="back-btn-container">
-                    <span
-                      onClick={() => navigate(-1)}
-                      className="back"
-                      title="Go Back"
-                    >
-                      &#8619;
-                    </span>
-                  </div>
+                </div>
+                <div className="details_home_description_container">
+                  <p className="home-info details_description">
+                    {home[0].home?.description}
+                  </p>
                 </div>
                 {isCurrentUserOwner && (
                   <div className="details_btn_container">
@@ -151,7 +147,15 @@ export const HomeDetails = ({ currentUser }) => {
                     >
                       Update Home
                     </button>
-
+                    <div id="back-btn-container">
+                      <span
+                        onClick={() => navigate(-1)}
+                        className="back"
+                        title="Go Back"
+                      >
+                        &#8619;
+                      </span>
+                    </div>
                     <button
                       className="details_button-78"
                       onClick={() => {

@@ -15,14 +15,35 @@
   /* this fixed the width shift after filtering */
   min-width: 300px; 
   min-height: fit-content;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */    
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4); /* More noticeable shadow */    
   margin: 20px;
   background-color: rgb(134, 5, 89); 
   border-radius: 20px;
 }
 
+.owners_container {
+  background-color: var(--appBackground);
+  border-radius: 20px;
+  color: black;
+  padding: 5px;
+  display: inline-block;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4); /* More noticeable shadow */    
+}
+
+
+
+.owners_list {
+  background-color: var(--appBackground);
+  border-radius: 10px;
+  padding: 0px 10px 0px 10px;
+  color: black;
+  display: inline-block;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4); /* More noticeable shadow */    
+  
+}
+
 .home_card:hover {
-  box-shadow: 0px 10px 28px  rgba(0,0,0,0.5); /* This makes the shadow more pronounced on hover */
+  box-shadow: 0px 10px 28px  rgba(0,0,0,0.4); /* This makes the shadow more pronounced on hover */
 }
 div  p {
   
@@ -54,6 +75,18 @@ a {
 .btn-container {
   margin-top: 20px;
 }
+.allhomes_card_btm_wrapper {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  background-color: var(--appBackground);
+  border-radius: 20px;
+  padding: 0px 10px 0px 10px;
+  color: black;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* More noticeable shadow */    
+  
+}
+
 
 .main_container {
   display: flex;

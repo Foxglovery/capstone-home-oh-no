@@ -7,18 +7,39 @@
   
  .dropdown-container {
   position: relative;
-  margin-top: 4vh;
-  margin-left: 15px;
+  
+  
   
  
   
 }
-#area-dropdown-container {
+.area-dropdown-container {
   align-self: center;
 }
 
 #dropdown {
   
+}
+
+.filtered_owner_chip {
+  background-color: var(--secondary);
+  border-radius: 20px;
+  width: auto;
+  padding: 10px;
+  display: inline-block;
+  color: #0c0d0d;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+}
+
+.filtered_description {
+  background-color: var(--secondary);
+  border-radius: 20px;
+  width: auto;
+  padding: 5px 10px 5px 10px;
+  display: inline-block;
+  margin-top: 10px;
+  color: #0c0d0d;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
 }
 
 .main-container {
@@ -29,7 +50,7 @@
 }
   
   #home_card {
-    
+    border-radius: 20px;
     padding: 20px;
     color: white;
     width: 75vw; /* Adjusted width to fit content */
@@ -56,6 +77,7 @@
     width: 150px; /* Adjusted to the original size */
     height: auto;
     margin-right: 20px;
+    border-radius: 20px;
     
   }
   .home-description-container {

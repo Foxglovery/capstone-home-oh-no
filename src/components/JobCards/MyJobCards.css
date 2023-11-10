@@ -1,200 +1,274 @@
-.button-78, .button-79, .button-80, .button-81 {
-    align-items: center;
-    align-self: flex-end;
-    appearance: none;
-    background-clip: padding-box;
-    background-color: initial;
-    background-image: none;
-    border-style: none;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    flex-direction: row;
-    flex-shrink: 0;
-    font-family: Forum,sans-serif;
-    font-size: 16px;
-    font-weight: 800;
-    justify-content: center;
-    line-height: 24px;
-    margin: 0;
-    margin-top: 20px;
-    min-height: 44px;
-    outline: none;
-    overflow: visible;
-    padding: 10px 32px;
-    pointer-events: auto;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    text-transform: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: middle;
-    width: auto;
-    word-break: keep-all;
-    z-index: 0;
-  }
-  
-  @media (min-width: 768px) {
-    .button-78 , .button-79, .button-80, .button-81 {
-      padding: 10px 32px;
-    }
-  }
-  
-  .button-78:before,
-  .button-78:after,
-  .button-79:before,
-  .button-79:after,
-  .button-80:before,
-  .button-80:after,
-  .button-81:before,
-  .button-81:after {
-    border-radius: 80px;
-  }
-  
-  .button-78:before,
-  .button-79:before,
-  .button-80:before,
-  .button-81:before {
-    background-image: linear-gradient(92.83deg, rgb(231, 162, 72) 0, #f93a13 100%);
-    content: "";
-    display: block;
-    height: 100%;
-    left: 0;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: -2;
-  }
-  
-  .button-78:after,
-  .button-79:after,
-  .button-80:after,
-  .button-81:after {
-    background-color: initial;
-    background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
-    bottom: 4px;
-    content: "";
-    display: block;
-    left: 4px;
-    overflow: hidden;
-    position: absolute;
-    right: 4px;
-    top: 4px;
-    transition: all 100ms ease-out;
-    z-index: -1;
-  }
-  
-  /* these change the hover gradient */
-  .button-78:hover:not(:disabled):before
-   {
-    background: linear-gradient(92.83deg, rgb(231, 162, 72) 0%, rgb(249, 57, 19) 100%);
-  }
-  .button-78:hover {
-    color: #0c0d0d;
+.myJobs_card_start {
+  background-color: var(--appBackground);
+  padding: 0px 5px 0px 5px;
+  display: inline-block;
+  color: black;
+  border-radius: 20px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
 }
 
-  .button-79:hover:not(:disabled):before
-  {
-   background: linear-gradient(92.83deg, rgb(11, 126, 171) 0%, rgb(154, 203, 223) 100%);
- }
- .button-79:hover {
+.myJobs_card_step {
+  background-color: var(--appBackground);
+  padding: 0px 5px 0px 5px;
+  display: inline-block;
+  color: black;
+  border-radius: 20px;
+  margin-top: 5px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+}
+
+.myjobs_card_description {
+  background-color: var(--appBackground);
+  padding: 1px 5px 1px 5px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+  color: black;
+  border-radius: 20px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.myjob_card_area {
+  background-color: var(--appBackground);
+  padding: 1px 5px 1px 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6); /* More noticeable shadow */
+  color: black;
+  border-radius: 20px;
+  margin-bottom: 2px;
+  text-align: center;
+  display: inline;
+}
+
+.myjobs_area_container {
+  margin-bottom: 5px
+}
+
+.button-78,
+.button-79,
+.button-80,
+.button-81 {
+  align-items: center;
+  align-self: flex-end;
+  appearance: none;
+  background-clip: padding-box;
+  background-color: initial;
+  background-image: none;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: Forum, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  justify-content: center;
+  line-height: 24px;
+  margin: 0;
+  margin-top: 20px;
+  min-height: 44px;
+  outline: none;
+  overflow: visible;
+  padding: 10px 32px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: auto;
+  word-break: keep-all;
+  z-index: 0;
+}
+
+@media (min-width: 768px) {
+  .button-78,
+  .button-79,
+  .button-80,
+  .button-81 {
+    padding: 10px 32px;
+  }
+}
+
+.button-78:before,
+.button-78:after,
+.button-79:before,
+.button-79:after,
+.button-80:before,
+.button-80:after,
+.button-81:before,
+.button-81:after {
+  border-radius: 80px;
+}
+
+.button-78:before,
+.button-79:before,
+.button-80:before,
+.button-81:before {
+  background-image: linear-gradient(
+    92.83deg,
+    rgb(231, 162, 72) 0,
+    #f93a13 100%
+  );
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -2;
+}
+
+.button-78:after,
+.button-79:after,
+.button-80:after,
+.button-81:after {
+  background-color: initial;
+  background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
+  bottom: 4px;
+  content: "";
+  display: block;
+  left: 4px;
+  overflow: hidden;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  transition: all 100ms ease-out;
+  z-index: -1;
+}
+
+/* these change the hover gradient */
+.button-78:hover:not(:disabled):before {
+  background: linear-gradient(
+    92.83deg,
+    rgb(231, 162, 72) 0%,
+    rgb(249, 57, 19) 100%
+  );
+}
+.button-78:hover {
+  color: #0c0d0d;
+}
+
+.button-79:hover:not(:disabled):before {
+  background: linear-gradient(
+    92.83deg,
+    rgb(11, 126, 171) 0%,
+    rgb(154, 203, 223) 100%
+  );
+}
+.button-79:hover {
   color: #0c0d0d;
   font-weight: bold;
 }
 
- .button-80:hover:not(:disabled):before
- {
-  background: linear-gradient(92.83deg, rgb(237, 98, 98) 0%, rgb(225, 15, 15) 100%);
+.button-80:hover:not(:disabled):before {
+  background: linear-gradient(
+    92.83deg,
+    rgb(237, 98, 98) 0%,
+    rgb(225, 15, 15) 100%
+  );
 }
 .button-80:hover {
   color: rgb(12, 12, 11);
 }
 
-.button-81:hover:not(:disabled):before
- {
-  background: linear-gradient(92.83deg, rgb(211, 189, 189) 0%, rgb(86, 81, 89) 100%);
+.button-81:hover:not(:disabled):before {
+  background: linear-gradient(
+    92.83deg,
+    rgb(211, 189, 189) 0%,
+    rgb(86, 81, 89) 100%
+  );
 }
 .button-81:hover {
   color: rgb(12, 12, 11);
 }
-  
-  .button-78:hover:not(:disabled):after,
-  .button-79:hover:not(:disabled):after,
-  .button-80:hover:not(:disabled):after,
-  .button-81:hover:not(:disabled):after {
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    transition-timing-function: ease-in;
-    opacity: 0;
-  }
-  
-  .button-78:active:not(:disabled),
-  .button-79:active:not(:disabled),
-  .button-80:active:not(:disabled),
-  .button-81:active:not(:disabled)
-   {
-    color: #ccc;
-  }
-  
-  .button-78:active:not(:disabled):before,
-  .button-79:active:not(:disabled):before,
-  .button-80:active:not(:disabled):before,
-  .button-81:active:not(:disabled):before {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
-  }
-  
-  .button-78:active:not(:disabled):after,
-  .button-79:active:not(:disabled)::after,
-  .button-80:active:not(:disabled):after,
-  .button-81:active:not(:disabled):after {
-    background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
-    bottom: 4px;
-    left: 4px;
-    right: 4px;
-    top: 4px;
-  }
-  
-  .button-78:disabled,
-  .button-79:disabled,
-  .button-80:disabled,
-  .button-81:disabled {
-    cursor: default;
-    opacity: .24;
-  }
 
-  .jobs-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
+.button-78:hover:not(:disabled):after,
+.button-79:hover:not(:disabled):after,
+.button-80:hover:not(:disabled):after,
+.button-81:hover:not(:disabled):after {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  transition-timing-function: ease-in;
+  opacity: 0;
+}
+
+.button-78:active:not(:disabled),
+.button-79:active:not(:disabled),
+.button-80:active:not(:disabled),
+.button-81:active:not(:disabled) {
+  color: #ccc;
+}
+
+.button-78:active:not(:disabled):before,
+.button-79:active:not(:disabled):before,
+.button-80:active:not(:disabled):before,
+.button-81:active:not(:disabled):before {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ),
+    linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+}
+
+.button-78:active:not(:disabled):after,
+.button-79:active:not(:disabled)::after,
+.button-80:active:not(:disabled):after,
+.button-81:active:not(:disabled):after {
+  background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  top: 4px;
+}
+
+.button-78:disabled,
+.button-79:disabled,
+.button-80:disabled,
+.button-81:disabled {
+  cursor: default;
+  opacity: 0.24;
+}
+
+.jobs-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 
 /* Add.job-card rules */
 
-  .job-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    padding-bottom: 20px; 
-    z-index: 1;
-    min-height: 72vh ;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);     
-  }
-
-  .job-card:hover {
-    box-shadow: 0px 10px 28px  rgba(0,0,0,0.5); /* This makes the shadow more pronounced on hover */
+.job-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding-bottom: 20px;
+  z-index: 1;
+  min-height: 72vh;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
 }
-  
 
-  .update-btn-container {
-    margin-top: auto;
-  }
-  .job-card-title a:visited {
-    color: inherit;
-  }
+.job-card:hover {
+  box-shadow: 0px 10px 28px rgba(0, 0, 0, 0.5); /* This makes the shadow more pronounced on hover */
+}
+
+.update-btn-container {
+  margin-top: auto;
+}
+
+.job-card-title {
+  text-align: center;
+  color: white;
+}
+.job-card-title a:visited {
+  color: inherit;
+}

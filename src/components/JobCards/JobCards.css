@@ -53,6 +53,37 @@
     height: 100;
   }
 
+  .job_card_area {
+    background-color: var(--appBackground);
+    padding: 1px 5px 1px 5px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+    color: black;
+    border-radius: 20px;
+    margin-bottom: 2px;
+    text-align: center;
+    display: inline;
+  }
+
+  .job_card_start {
+    background-color: var(--appBackground);
+    padding: 0px 5px 0px 5px;
+    display: inline-block;
+    color: black;
+    border-radius: 20px;
+    margin-top: 6px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+  }
+
+  .job_card_step {
+    background-color: var(--appBackground);
+    padding: 0px 10px 0px 10px;
+    display: inline-block;
+    color: black;
+    border-radius: 20px;
+    margin-top: 6px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+  }
+
   .ribbon {
     width: 60px;
     font-size: 14px;
@@ -72,6 +103,7 @@
       top: 0;
       margin-top: 10px;
       margin-right: 8px;
+      
       right: 0; /* Adjust these values as needed */
       z-index: 10; /* Make sure this is above everything else in the card */
       /* Your existing styles... */
