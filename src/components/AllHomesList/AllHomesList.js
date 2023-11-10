@@ -120,7 +120,7 @@ export const AllHomesList = () => {
             <span className="home-info">
               <p>
                 ~Owners~{" "}
-                <div>{home.owners.map(owner => owner.user.name).join(' & ')}</div>
+                <span>{home.owners.map(owner => owner.user.name).join(' & ')}</span>
               </p>
             </span>
           </div>
