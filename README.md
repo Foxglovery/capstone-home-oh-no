@@ -1,3 +1,26 @@
+# Home-Oh-No
+
+Welcome to **Home-Oh-No**, the fun and easy way to track and share your home improvement adventures! Whether you're repainting the living room, landscaping the garden, or finally fixing that squeaky door, Home-Oh-No is your companion to stave off the option paralysis of having too many projects to work on.
+
+## Features
+
+- **Project Tracking**: Keep tabs on your ongoing projects, with details on progress, materials needed, and deadlines.
+- **Community Sharing**: See what projects your friends are working on and share your own. Get inspired and motivate each other!
+- **Photo Updates**: Snap and share photos of your project stages.
+- **Task Lists**: Organize your projects with customizable task lists.
+
+## Screenshots
+
+![Screenshot 1](url-to-screenshot1.jpg)
+![Screenshot 2](url-to-screenshot2.jpg)
+
+## Installation
+
+To get started with Home-Oh-No:
+
+```bash
+# Instructions on how to install your app
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
