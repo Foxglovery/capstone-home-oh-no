@@ -154,20 +154,22 @@ export const AllHomesList = () => {
                 
                 <div>
                   <span className="home-info">
-                    Currently Working On{" "}
-                    <span className="underline">
-                      {numToWord(homeJobCount[home.home.name]?.ongoing)}
+                    {" "}
+                    <span className="big_number">
+                      {homeJobCount[home.home.name]?.ongoing}
+                      {/* {numToWord(homeJobCount[home.home.name]?.ongoing)} */}
                     </span>{" "}
-                    Of Our Jobs{" "}
+                    Jobs{" "}
                   </span>
                 </div>
                 <div>
                   <span className="home-info">
-                    We Have Finished{" "}
-                    <span className="underline">
-                      {numToWord(homeJobCount[home.home.name]?.completed)}{" "}
+                    {" "}
+                    <span className="big_number">
+                      {homeJobCount[home.home.name]?.completed}
+                      {/* {numToWord(homeJobCount[home.home.name]?.completed)}{" "} */}
                     </span>{" "}
-                    Of Our Jobs
+                    Finished
                   </span>
                 </div>
               </div>

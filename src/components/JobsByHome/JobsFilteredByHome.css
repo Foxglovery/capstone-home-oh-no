@@ -26,15 +26,17 @@
   border-radius: 20px;
   width: auto;
   padding: 10px;
+  font-size: 20px;
   display: inline-block;
   color: #0c0d0d;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
 }
 
 .filtered_description {
-  background-color: var(--secondary);
+  background-color: var(--appBackground);
   border-radius: 20px;
   width: auto;
+  font-size: 20px;
   padding: 5px 10px 5px 10px;
   display: inline-block;
   margin-top: 10px;
@@ -53,7 +55,7 @@
     border-radius: 20px;
     padding: 20px;
     color: white;
-    width: 75vw; /* Adjusted width to fit content */
+    width: 50vw; /* Adjusted width to fit content */
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
     background-color: rgb(134, 5, 89);

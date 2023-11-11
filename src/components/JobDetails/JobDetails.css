@@ -3,6 +3,11 @@
     text-align: center;
 }
 
+.details_job {
+    display: flex;
+    text-align: center;
+}
+
 #job_detail_card {
     border-radius: 20px;
     padding: 20px;
@@ -16,8 +21,13 @@
     justify-content: space-between;
     margin: 20px;
     position: relative;
-  
-}
+  }
+
+  .job_detail_container {
+
+  }
+
+
 #job_card_title {
     
     display: flex;
@@ -27,7 +37,48 @@
 }
 
 #job_start {
+    background-color: var(--appBackground);
+    padding: 1px 10px 1px 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+    color: black;
+    border-radius: 20px;
     
+    ;
+    text-align: center;
+    display: inline;
+}
+
+.job_step {
+    background-color: var(--secondary);
+    padding: 1px 10px 1px 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+    color: black;
+    border-radius: 20px;
+    font-size: 18px;
+    ;
+    
+    text-align: center;
+    display: inline;
+}
+
+.job_detail_info_blurb {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+#job_house {
+    background-color: var(--appBackground);
+    padding: 1px 10px 1px 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+    color: black;
+    border-radius: 20px;
+    font-size: ;
+    ;
+    
+    text-align: center;
+    display: inline;
 }
 
 #job_house {
@@ -35,7 +86,7 @@
 }
 
 .job_description {
-
+font-size: 20px;
 }
 
 #job_card_img {
@@ -51,6 +102,36 @@
     margin-right: 20px;
 }
 
+.job_budget {
+     background-color: var(--appBackground);
+    padding: 1px 10px 1px 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+    color: black;
+    border-radius: 20px;
+    
+    ;
+    text-align: center;
+    display: inline;
+}
+
+.job_budget_container {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.job_topic {
+    align-self: flex-end;
+    background-color: var(--appBackground);
+    padding: 1px 10px 1px 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+    color: black;
+    border-radius: 20px;
+    
+    ;
+    text-align: center;
+    display: inline;
+}
+
 
 
 
@@ -58,15 +139,17 @@
 .back {
     position: relative;
     
-    top: 15px;
+    ;
     font-size: 40px;
     font-weight: bold;
+    justify-content: center;
     color: #f1f1f1;
   }
 
   .card_btm_wrapper {
     display: flex;
     flex-direction: row;
+    justify-content: space-between
   }
 
   #back-btn-container {

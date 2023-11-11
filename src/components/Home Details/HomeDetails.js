@@ -115,7 +115,7 @@ export const HomeDetails = ({ currentUser }) => {
                   </div>
                 </div>
 
-                <div className="home_card_btm_wrapper">
+                {/* <div className="home_card_btm_wrapper">
                   <div className="details_home_jobs_container">
                     <span className="home-info">
                       Currently Working On{" "}
@@ -131,7 +131,7 @@ export const HomeDetails = ({ currentUser }) => {
                       </span>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="details_home_description_container">
                   <p className="home-info details_description">
                     {home[0].home?.description}

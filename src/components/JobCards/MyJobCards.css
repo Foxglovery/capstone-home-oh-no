@@ -18,13 +18,7 @@
 }
 
 .myjobs_card_description {
-  background-color: var(--appBackground);
-  padding: 1px 5px 1px 5px;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
-  color: black;
-  border-radius: 20px;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  font-size: 20px;
 }
 
 .myjob_card_area {

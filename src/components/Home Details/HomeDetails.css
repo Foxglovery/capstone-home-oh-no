@@ -94,6 +94,7 @@ a {
 .details_description {
   display: inline;
   width: auto;
+  font-size: 20px;
 }
 
 .details_home_description_container {
