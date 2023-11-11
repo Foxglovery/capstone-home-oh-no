@@ -1,13 +1,17 @@
 # Home-Oh-No
 
-Welcome to **Home-Oh-No**, the fun and easy way to track and share your home improvement adventures! Whether you're repainting the living room, landscaping the garden, or finally fixing that squeaky door, Home-Oh-No is your companion to stave off the option paralysis of having too many projects to work on.
+Welcome to **Home-Oh-No**, the fun and easy way to track and share your home improvement adventures! Whether you're repainting the living room, landscaping the garden, or finally fixing that squeaky door, Home-Oh-No is your companion to stave off the option paralysis of having too many projects to work on in your soon-to-be dream home.
+
+## Why I Needed It
+
+Just two months after diving into my coding bootcamp, we took the exciting leap of buying a house. It's this charming place that, with just a touch of TLC, has the potential to truly sparkle. Managing my ADHD means I need a clear, at-a-glance view of all my ongoing projects. And, as it turns out, lots of my friends are also stepping into the world of homeownership. So, this seemed like the perfect opportunity to create something that not only helps me stay organized but also connects us as a community of budding homeowners
 
 ## Features
 
-- **Project Tracking**: Keep tabs on your ongoing projects, with details on progress, materials needed, and deadlines.
-- **Community Sharing**: See what projects your friends are working on and share your own. Get inspired and motivate each other!
+- **Project Tracking**: Keep tabs on your ongoing projects, with details on progress, next steps, and money saved.
+- **Community Sharing**: See what projects your friends are working on and share your own. 
 - **Photo Updates**: Snap and share photos of your project stages.
-- **Task Lists**: Organize your projects with customizable task lists.
+
 
 ## Screenshots
 
