@@ -75,7 +75,7 @@ export const UpdateJob = ({ currentUser }) => {
       };
       console.log("Sending this updatedJob", updatedJob); //debug log
       submitUpdateJob(updatedJob, jobId).then(() => {
-        navigate(`/myJobs/${currentUser.id}`);
+        navigate(-1);
       });
     } else {
       window.alert("Please Select and Area");
@@ -112,10 +112,21 @@ export const UpdateJob = ({ currentUser }) => {
   //when change is made, the property name specified in the form-name is given the value and set in the job state
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setJob({
-      ...job,
-      [name]: value,
-    });
+    //if imgUrl is field being changed
+    if (name === 'imgUrl') {
+      // sets state with value pair effectively pushing imgUrl to ImgArray
+      setJob((prevJob) => ({
+        ...prevJob,
+        imgArray: [...prevJob.imgArray, prevJob.imgUrl],
+        [name]: value,
+      }));
+    } else {
+      // otherwise, set state with good to go job object
+      setJob({
+        ...job,
+        [name]: value,
+      });
+    }
   };
 
   const openDeleteModal = () => {

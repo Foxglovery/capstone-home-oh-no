@@ -70,7 +70,7 @@ export const AddAJob = ({ currentUser }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} class="form-style-9">
+    <form onSubmit={handleSubmit} className="form-style-9">
       <h2>Add A Job</h2>
       <ul>
         <li>

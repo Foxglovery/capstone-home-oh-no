@@ -50,15 +50,15 @@ export const JobCards = ({ currentUser, jobs, currentHomeId }) => {
             <div className="job-card-title">{job.title}</div>
           </Link>
           <div>
-            <div className="job_card_area">Category: {job.area?.areaName}</div>
+            <div className="job_card_area"><span className="underline">Area:</span> {job.area?.areaName}</div>
           </div>
           <div>
             <div className="job_card_start">
-              Started on: {new Date(job.startDate).toLocaleDateString("en-US")}
+              <span className="underline">Started on:</span> {new Date(job.startDate).toLocaleDateString("en-US")}
             </div>
           </div>
             <div>
-                <div className="job_card_step">Current Step: {job.currentStep}</div>
+                <div className="job_card_step"><span className="underline">To Do:</span> {job.currentStep}</div>
             </div>
           
           <div className="job_card_img">

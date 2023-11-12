@@ -21,25 +21,30 @@
   border-radius: 20px;
 }
 
-.owners_container {
-  background-color: var(--appBackground);
-  border-radius: 20px;
-  color: black;
-  padding: 5px;
-  display: inline-block;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4); /* More noticeable shadow */    
+
+
+.owners_list_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
 }
-
-
 
 .owners_list {
   background-color: var(--secondary);
   border-radius: 10px;
   padding: 0px 10px 0px 10px;
   font-size: 20px;
+  min-height: 6vh;
+  ;
+  
   color: black;
   display: inline-block;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4); /* More noticeable shadow */    
+  
+}
+
+.owners_list > span {
   
 }
 

@@ -135,10 +135,8 @@ export const AllHomesList = () => {
                 <img src={home.home.imgUrl} alt={home.home.name} />
               </div>
 
-              <div className="owners_container">
-                <div className="owners_title">~Owners~</div>
-                </div>
-                <div>
+              
+                <div className="owners_list_container">
                   <p className="owners_list">
                   {home.owners.map((owner, index) => (
                     <span key={owner.id}>

@@ -1,48 +1,47 @@
 export const GetAllHomes = () => {
   return fetch(
-    `https://home-oh-no-api.onrender.com/userHomes?_expand=user&_expand=home`
+    `http://localhost:8088/userHomes?_expand=user&_expand=home`
   ).then((res) => res.json());
 };
 
 export const GetOwnersByHomeId = (homeId) => {
   return fetch(
-    `https://home-oh-no-api.onrender.com/userHomes?homeId=${homeId}&_expand=user`
+    `http://localhost:8088/userHomes?homeId=${homeId}&_expand=user`
   ).then((res) => res.json());
 };
 
 export const GetHomeById = (homeId) => {
   return fetch(
-    `https://home-oh-no-api.onrender.com/userHomes?homeId=${homeId}&_expand=user&_expand=home`
+    `http://localhost:8088/userHomes?homeId=${homeId}&_expand=user&_expand=home`
   ).then((res) => res.json());
 };
 
 export const GetOneHomeById = (homeId) => {
-  return fetch(
-    `https://home-oh-no-api.onrender.com/homes?id=${homeId}`
-  ).then((res) => res.json());
+  return fetch(`http://localhost:8088/homes?id=${homeId}`).then((res) =>
+    res.json()
+  );
 };
 
 export const GetHomeByJobId = (jobId) => {
-  return fetch(
-    `https://home-oh-no-api.onrender.com/jobs?id=${jobId}&_expand=home`
-  ).then((res) => res.json());
+  return fetch(`http://localhost:8088/jobs?id=${jobId}&_expand=home`).then(
+    (res) => res.json()
+  );
 };
-
 
 export const GetHomesByUserId = (userId) => {
   return fetch(
-    `https://home-oh-no-api.onrender.com/userHomes?userId=${userId}&_expand=user&_expand=home`
+    `http://localhost:8088/userHomes?userId=${userId}&_expand=user&_expand=home`
   ).then((res) => res.json());
 };
 
 export const GetUserByUserId = (userId) => {
-  return fetch(
-    `https://home-oh-no-api.onrender.com/users?id=${userId}`
-  ).then((res) => res.json());
-}
+  return fetch(`http://localhost:8088/users?id=${userId}`).then((res) =>
+    res.json()
+  );
+};
 
 export const createHome = (home) => {
-  return fetch("https://home-oh-no-api.onrender.com/homes", {
+  return fetch("http://localhost:8088/homes", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -52,7 +51,7 @@ export const createHome = (home) => {
 };
 
 export const createUserHome = (userHome) => {
-  return fetch("https://home-oh-no-api.onrender.com/userHomes", {
+  return fetch("http://localhost:8088/userHomes", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -61,13 +60,8 @@ export const createUserHome = (userHome) => {
   });
 };
 
-
-
-
-
-
 export const submitUpdateHome = (home, homeId) => {
-  return fetch(`https://home-oh-no-api.onrender.com/homes/${homeId}`, {
+  return fetch(`http://localhost:8088/homes/${homeId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

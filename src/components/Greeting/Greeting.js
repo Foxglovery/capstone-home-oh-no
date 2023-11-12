@@ -11,8 +11,9 @@ export const Greeting = ({ currentUser }) => {
             setLoggedInUser(data[0]);
         });
     }, [currentUser]);
-    return (
-        <div className="greeting_container">
+    return (<>
+        {loggedInUser ? (
+           <div className="greeting_container">
             <div className="greeting_outer">
                 <div className="greeting_inner">
                     <div className="circle">
@@ -28,6 +29,10 @@ export const Greeting = ({ currentUser }) => {
                     </div>
                 </div>
             </div>
-        </div>
-    );
+        </div> 
+        ) : (
+            ""
+        )}
+        
+   </> );
 };

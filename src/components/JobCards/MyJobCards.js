@@ -40,17 +40,17 @@ export const MyJobCards = ({ jobs, owners, isHomeOwner, currentUser }) => {
             <div className="job-card-title">{job.title}</div>
           </Link>
           <div className="myjobs_area_container">
-                <div className="myjob_card_area">Category: {job.area?.areaName}</div>
+                <div className="myjob_card_area"><span className="underline">Area:</span> {job.area?.areaName}</div>
             {console.log(job)}
           </div>
           <div>
             <div className="myJobs_card_start">
-              Started on: {new Date(job.startDate).toLocaleDateString("en-US")}
+              <span className="underline">Started on:</span> {new Date(job.startDate).toLocaleDateString("en-US")}
             </div>
           </div>
           <div>
             <div className="myJobs_card_step">
-              Current Step: {job.currentStep}
+              <span className="underline">To Do:</span> {job.currentStep}
             </div>
           </div>
 

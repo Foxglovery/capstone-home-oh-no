@@ -11,6 +11,7 @@ export const JobDetails = ({ currentUser }) => {
   const { jobId } = useParams();
   const [home, setHome] = useState([]);
   const [jobImgArray, setJobImageArray] = useState([]);
+  const [isImageModalVisible, setIsImageModalVisible] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,8 +34,14 @@ export const JobDetails = ({ currentUser }) => {
     (homeEntry) => homeEntry?.userId === currentUser.id
   );
 
-  //cat,step,homename,
-  //if user is owner, display $$$
+  const openImageModal = () => {
+    setIsImageModalVisible(true);
+  };
+
+  const closeImageModal = () => {
+    setIsImageModalVisible(false);
+  };
+
   return (
     <>
       <div className="main_container">
@@ -52,18 +59,45 @@ export const JobDetails = ({ currentUser }) => {
                     Started on:{" "}
                     {new Date(job.startDate).toLocaleDateString("en-US")}
                   </div>
-                
-                
+
                   <div id="job_house">At: {job.home.name}</div>
                 </div>
 
                 <div id="job_card_img">
-                  <img src={job.imgUrl} alt={job.title} />
+                  <img
+                    id="myImg"
+                    className="fadein"
+                    onClick={openImageModal}
+                    src={job.imgUrl}
+                    alt={job.title}
+                  />
                 </div>
-{isCurrentUserOwner && (
+                {isImageModalVisible && (
+                  <div
+                    id="myModal"
+                    className="modal"
+                    style={{ display: isImageModalVisible ? "flex" : "none" }}
+                  >
+                    <span
+                      onClick={closeImageModal}
+                      className="close"
+                      title="Close Modal"
+                    >
+                      &times;
+                    </span>
+                    <img
+                      src={job.imgUrl}
+                      alt="a job"
+                      className="modal_content"
+                      id="img01"
+                    />
+                    <div id="caption">{job.description}</div>
+                  </div>
+                )}
+                {isCurrentUserOwner && (
                   <div className="job_budget_container">
                     <div className="job_budget">
-                        <span></span>
+                      <span></span>
                       Currently Saved: ${job.budget} / ${job.budgetGoal}
                     </div>
                   </div>
@@ -72,10 +106,9 @@ export const JobDetails = ({ currentUser }) => {
                   <p className="job_description">{job.description}</p>
                 </div>
                 <div>
-                    <div className="job_step">Next Step: {job.currentStep}</div>
+                  <div className="job_step">Next Step: {job.currentStep}</div>
                 </div>
-                
-                
+
                 <div className="card_btm_wrapper">
                   <div className="job_topic">Category: {job.area.areaName}</div>
 
@@ -88,10 +121,9 @@ export const JobDetails = ({ currentUser }) => {
                       &#8619;
                     </span>
                   </div>
-                  
                 </div>
               </div>
-              <Carousel images={jobImgArray} />
+              {jobImgArray.length > 0 && <Carousel images={jobImgArray} />}
             </div>
           ) : (
             "Loading..."

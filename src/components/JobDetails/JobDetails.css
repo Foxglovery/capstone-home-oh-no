@@ -98,7 +98,7 @@ font-size: 20px;
 #job_card_img img {
     border-radius: 10px;
     width: 150px;
-    height: auto;
+    height: 120px;
     margin-right: 20px;
 }
 
@@ -144,6 +144,11 @@ font-size: 20px;
     font-weight: bold;
     justify-content: center;
     color: #f1f1f1;
+    transition: .3s ease-in;
+  }
+
+  .back:hover {
+    color: var(--appBackground);
   }
 
   .card_btm_wrapper {
@@ -155,4 +160,96 @@ font-size: 20px;
   #back-btn-container {
     ;
     
+  }
+
+  /* Style the Image Used to Trigger the Modal */
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 1;
+    transition: 1s ease;
+  }
+  
+  #myImg:hover {
+    opacity:1.5;
+    transition: 1s ease;
+  }
+  
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-left: 00px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  }
+
+  #myModal {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;padding-top: 15vh;
+  }
+  
+  /* Modal Content (Image) */
+  .modal_content {
+    margin: auto;
+    display: block;
+    width: 80%;;
+    max-width: 700px;
+  }
+  
+  /* Caption of Modal Image (Image Text) - Same Width as the Image */
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    font-size: 20px;
+    color: #eadddd;
+    padding: 10px 0;
+    height: 150px;
+  }
+  
+  /* Add Animation - Zoom in the Modal */
+  .modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  
+  @keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+  }
+  
+  /* The Close Button */
+  .close {
+    position: relative;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* 100% Image Width on Smaller Screens */
+  @media only screen and (max-width: 700px){
+    .modal-content {
+      width: 100%;
+    }
   }
