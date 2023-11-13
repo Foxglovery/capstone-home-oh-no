@@ -13,10 +13,35 @@ Just two months after diving into my coding bootcamp, we took the exciting leap 
 - **Photo Updates**: Snap and share photos of your project stages.
 
 
+## Loom For To Watch
+
+<div>
+    <a href="https://www.loom.com/share/9ef53d61a54d4d25a663f40909a9327f">
+      <p>Home Ono: A New App for Homeowners - Watch Video</p>
+    </a>
+    <a href="https://www.loom.com/share/9ef53d61a54d4d25a663f40909a9327f">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/9ef53d61a54d4d25a663f40909a9327f-1699894942035-with-play.gif">
+    </a>
+  </div>
+
 ## Screenshots
 
-![Screenshot 1](url-to-screenshot1.jpg)
-![Screenshot 2](url-to-screenshot2.jpg)
+<a href="https://ibb.co/0fW6fgj"><img src="https://i.ibb.co/mHY2HLC/SH-1.png" alt="SH-1" border="0"></a>
+   <a href="https://ibb.co/4T5Kpt1"><img src="https://i.ibb.co/C7TmQ8P/SH-2.png" alt="SH-2" border="0"></a>
+<a href="https://ibb.co/59FYn84"><img src="https://i.ibb.co/g7VvPT9/SH-7.png" alt="SH-7" border="0"></a>
+<a href="https://ibb.co/2gPYDx3"><img src="https://i.ibb.co/D5kgxhf/SH-4.png" alt="SH-4" border="0"></a>
+<a href="https://ibb.co/g7T91WQ"><img src="https://i.ibb.co/fSpFRNZ/SH-3.png" alt="SH-3" border="0"></a>
+<a href="https://ibb.co/Kx642cN"><img src="https://i.ibb.co/B2LWyH4/SH-5.png" alt="SH-5" border="0"></a>
+
+## Challenges Faced During Creation
+As this was my first solo react project, I did hit a number of snags. Some notable ones included: 
+<ul>
+    <li>Honing api fetch calls to get the tables needed</li>
+    <li>Keeping elements positioned in my cards</li>
+    <li>File structure conventions</li>
+    <li>CSS naming to stop wonky inheritance</li>
+    <li>And so many more, but I had a great time doing it!</li>
+</ul>
 
 ## Installation
 
