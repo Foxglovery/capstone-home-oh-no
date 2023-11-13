@@ -26,7 +26,12 @@ Just two months after diving into my coding bootcamp, we took the exciting leap 
 
 ## Screenshots
 
-    <a href="https://ibb.co/0fW6fgj"><img src="https://i.ibb.co/mHY2HLC/SH-1.png" alt="SH-1" border="0"></a>
+   <a href="https://ibb.co/0fW6fgj"><img src="https://i.ibb.co/0fW6fgj/SH-1.png" alt="SH-1" border="0"></a>
+   <a href="https://ibb.co/4T5Kpt1"><img src="https://i.ibb.co/4T5Kpt1/SH-2.png" alt="SH-2" border="0"></a> 
+   <a href="https://ibb.co/g7T91WQ"><img src="https://i.ibb.co/g7T91WQ/SH-3.png" alt="SH-3" border="0"></a> 
+   <a href="https://ibb.co/2gPYDx3"><img src="https://i.ibb.co/2gPYDx3/SH-4.png" alt="SH-4" border="0"></a>
+   <a href="https://ibb.co/Kx642cN"><img src="https://i.ibb.co/Kx642cN/SH-5.png" alt="SH-5" border="0"></a>
+   <a href="https://ibb.co/XkRmT7b"><img src="https://i.ibb.co/XkRmT7b/SH-6.png" alt="SH-6" border="0"></a>
 
 ## Installation
 
