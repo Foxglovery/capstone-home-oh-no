@@ -34,7 +34,14 @@ Just two months after diving into my coding bootcamp, we took the exciting leap 
 <a href="https://ibb.co/Kx642cN"><img src="https://i.ibb.co/B2LWyH4/SH-5.png" alt="SH-5" border="0"></a>
 
 ## Challenges Faced During Creation
-As this was my first solo react project, I did hit a number of snags. Some notable ones included: <ul><li>getting the dom</li></ul>
+As this was my first solo react project, I did hit a number of snags. Some notable ones included: 
+<ul>
+    <li>Dealing with a api fetch calls to get the tables needed</li>
+    <li>Keeping elements positioned in my cards</li>
+    <li>File structure conventions</li>
+    <li>CSS naming to stop wonky inheritance</li>
+    <li>And so many more, but I had a great time doing it!</li>
+</ul>
 
 ## Installation
 
