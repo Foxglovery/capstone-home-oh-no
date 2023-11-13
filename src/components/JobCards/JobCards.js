@@ -26,7 +26,6 @@ export const JobCards = ({ currentUser, jobs, currentHomeId }) => {
 
   useEffect(() => {
     GetOwnersByHomeId(currentHomeId).then((ownerArray) => {
-      console.log("ownerArray", ownerArray); //debug log
       setOwners(ownerArray);
     });
   }, [currentHomeId]);
@@ -49,21 +48,25 @@ export const JobCards = ({ currentUser, jobs, currentHomeId }) => {
           <Link to={`/jobDetails/${job.id}`}>
             <div className="job-card-title">{job.title}</div>
           </Link>
-          <div>
-            <div className="job_card_area"><span className="underline">Area:</span> {job.area?.areaName}</div>
+          <div className="job_area_div">
+            <div className="job_card_area">
+              <span className="underline">Area:</span> {job.area?.areaName}
+            </div>
           </div>
           <div>
             <div className="job_card_start">
-              <span className="underline">Started on:</span> {new Date(job.startDate).toLocaleDateString("en-US")}
+              <span className="underline">Started on:</span>{" "}
+              {new Date(job.startDate).toLocaleDateString("en-US")}
             </div>
           </div>
           {job.currentStep && (
             <div>
-                <div className="job_card_step"><span className="underline">To Do:</span> {job.currentStep}</div>
+              <div className="job_card_step">
+                <span className="underline">To Do:</span> {job.currentStep}
+              </div>
             </div>
           )}
-            
-          
+
           <div className="job_card_img">
             <img src={job.imgUrl} alt={job.title} />
           </div>
@@ -76,8 +79,6 @@ export const JobCards = ({ currentUser, jobs, currentHomeId }) => {
               owners={owners}
               currentUser={currentUser}
             />
-
-            {console.log("jobMapObject", job)}
           </div>
           {isHomeOwner ? (
             <div className="btn-container">

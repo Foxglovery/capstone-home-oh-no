@@ -1,8 +1,3 @@
-
-
-
-
-
 .dropdown-container::before {
   content: "\f0b0";
   font-family: FontAwesome;
@@ -15,13 +10,12 @@
   font-size: 28px;
   line-height: 45px;
   color: rgba(15, 3, 3, 0.5);
-  
+
   pointer-events: none;
 }
 
 .dropdown-container:hover::before {
   color: rgba(255, 255, 255, 0.6);
-  
 }
 
 .dropdown-container select option {

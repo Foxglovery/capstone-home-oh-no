@@ -25,7 +25,7 @@ export const JobDetails = ({ currentUser }) => {
   //anytime homeId changes, fetch the new home info
   useEffect(() => {
     GetHomeById(homeId).then((homeData) => {
-      console.log("jobDetailsHomeState", homeData); //debug log
+      
       setHome(homeData);
     });
   }, [homeId]);

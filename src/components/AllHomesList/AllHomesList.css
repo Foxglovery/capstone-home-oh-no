@@ -82,7 +82,7 @@ a {
   justify-content: space-around;
   padding: 0px 10px 0px 10px;
   color: black;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* More noticeable shadow */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); 
 }
 
 .main_container {

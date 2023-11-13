@@ -1,238 +1,245 @@
 .jobs-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px; /* Spacing between cards */
-    margin-left: 10px;
-  }
-  
-  .job-card {
-    
-    padding: 20px;
-    color: white;
-    position: relative;
-    width: 300px; /* Or whatever width you want */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px; /* Adjust as needed */
-    background-color: rgb(134, 5, 89);
-    min-height: 465px;
-    border-radius: 20px;
-  }
-  
-  .job-card a {
-    color: rgb(144, 191, 210);
-  }
-  
-  .job-card-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-    margin-top: 5px;
-    color: white
-  }
-  
-  .job-card-description {
-    margin-top: 10px;
-    font-size: 20px;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-left: 10px;
+}
 
-  .job-card-area {
-    margin-top: 50px;
-  }
-  
-  .job-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 20px;
-    margin-top: 10px;
-  }
-  
-  .btn-container {
-    margin-top: 0px;
-  }
-  
-  .job_card_img img {
-   display: block;
-  width:300px;
-  height:200px;
-  
-  }
+.job-card {
+  padding: 20px;
+  color: white;
+  position: relative;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  background-color: rgb(134, 5, 89);
+  min-height: 465px;
+  border-radius: 20px;
+}
 
-  .job_card_area {
-    background-color: var(--appBackground);
-    padding: 1px 5px 1px 5px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
-    color: black;
-    border-radius: 6px;
-    font-size: 18px;
-    margin-bottom: 5px;
-    text-align: center;
-    display: inline-block;
-  }
+.job-card a {
+  color: rgb(144, 191, 210);
+}
 
-  .job_card_start {
-    background-color: var(--appBackground);
-    padding: 0px 5px 0px 5px;
-    display: inline-block;
-    color: black;
-    border-radius: 6px;
-    font-size: 18px;
-    margin-bottom: 6px;
-    
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
-  }
+.job-card-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  color: white;
+}
 
-  .job_card_step_container {
-    
-  }
+.job-card-description {
+  margin-top: 10px;
+  font-size: 20px;
+}
 
-  .job_card_step {
-    background-color: var(--appBackground);
-    padding: 0px 5px 0px 5px;
-    display: inline-block;
-    color: black;
-    border-radius: 8px;
-    font-size: 18px;
-    
-    
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
-  }
+.job-card-area {
+  margin-top: 0px;
+}
 
-  .ribbon {
-    width: 60px;
-    font-size: 14px;
-    padding: 4px;
-    position: relative;
-    right: 0px;
-    top: 0px;
-    
-    
-    text-align: center;
-    border-radius: 25px;
-    z-index: 10;
-    transform: rotate(20deg);
-    background-color: #ff9800;
-    color: white;}
+.job-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  margin-top: 10px;
+}
 
-    .ribbon-overlay {
-      position: absolute;
-      top: 0;
-      margin-top: 10px;
-      margin-right: 8px;
-      
-      
-      right: 0; /* Adjust these values as needed */
-      z-index: 10; /* Make sure this is above everything else in the card */
-      /* Your existing styles... */
-    }
+.btn-container {
+  margin-top: 0px;
+}
 
+.job_card_img img {
+  display: block;
+  width: 300px;
+  height: 200px;
+}
+
+.job_card_area {
+  background-color: var(--appBackground);
+  padding: 1px 5px 1px 5px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+  color: black;
+  border-radius: 6px;
+  font-size: 18px;
+  margin-bottom: 5px;
+  text-align: center;
+  display: inline-block;
+}
+
+.job_card_start {
+  background-color: var(--appBackground);
+  padding: 0px 5px 0px 5px;
+  display: inline-block;
+  color: black;
+  border-radius: 6px;
+  font-size: 18px;
+  margin-bottom: 6px;
+
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.job_card_step_container {
+}
+
+.job_card_step {
+  background-color: var(--appBackground);
+  padding: 0px 5px 0px 5px;
+  display: inline-block;
+  color: black;
+  border-radius: 8px;
+  font-size: 18px;
+
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.ribbon {
+  width: 60px;
+  font-size: 14px;
+  padding: 4px;
+  position: relative;
+  right: 0px;
+  top: 0px;
+
+  text-align: center;
+  border-radius: 25px;
+  z-index: 10;
+  transform: rotate(20deg);
+  background-color: #ff9800;
+  color: white;
+}
+
+.ribbon-overlay {
+  position: absolute;
+  top: 0;
+  margin-top: 10px;
+  margin-right: 8px;
+
+  right: 0;
+  z-index: 10;
+}
+
+.button-78 {
+  align-items: center;
+  align-self: flex-end;
+  appearance: none;
+  background-clip: padding-box;
+  background-color: initial;
+  background-image: none;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: Forum, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  justify-content: center;
+  line-height: 24px;
+  margin: 0;
+  margin-top: 20px;
+  min-height: 44px;
+  outline: none;
+  overflow: visible;
+  padding: 10px 32px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: auto;
+  word-break: keep-all;
+  z-index: 0;
+}
+
+@media (min-width: 768px) {
   .button-78 {
-    align-items: center;
-    align-self: flex-end;
-    appearance: none;
-    background-clip: padding-box;
-    background-color: initial;
-    background-image: none;
-    border-style: none;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    flex-direction: row;
-    flex-shrink: 0;
-    font-family: Forum,sans-serif;
-    font-size: 16px;
-    font-weight: 800;
-    justify-content: center;
-    line-height: 24px;
-    margin: 0;
-    margin-top: 20px;
-    min-height: 44px;
-    outline: none;
-    overflow: visible;
     padding: 10px 32px;
-    pointer-events: auto;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    text-transform: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: middle;
-    width: auto;
-    word-break: keep-all;
-    z-index: 0;
   }
-  
-  @media (min-width: 768px) {
-    .button-78 {
-      padding: 10px 32px;
-    }
-  }
-  
-  .button-78:before,
-  .button-78:after {
-    border-radius: 80px;
-  }
-  
-  .button-78:before {
-    background-image: linear-gradient(92.83deg, rgb(231, 162, 72) 0, #f93a13 100%);
-    content: "";
-    display: block;
-    height: 100%;
-    left: 0;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: -2;
-  }
-  
-  .button-78:after {
-    background-color: initial;
-    background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
-    bottom: 4px;
-    content: "";
-    display: block;
-    left: 4px;
-    overflow: hidden;
-    position: absolute;
-    right: 4px;
-    top: 4px;
-    transition: all 100ms ease-out;
-    z-index: -1;
-  }
-  
-  .button-78:hover:not(:disabled):before {
-    background: linear-gradient(92.83deg, rgb(231, 162, 72) 0%, rgb(249, 57, 19) 100%);
-  }
-  
-  .button-78:hover:not(:disabled):after {
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    transition-timing-function: ease-in;
-    opacity: 0;
-  }
-  
-  .button-78:active:not(:disabled) {
-    color: #ccc;
-  }
-  
-  .button-78:active:not(:disabled):before {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
-  }
-  
-  .button-78:active:not(:disabled):after {
-    background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
-    bottom: 4px;
-    left: 4px;
-    right: 4px;
-    top: 4px;
-  }
-  
-  .button-78:disabled {
-    cursor: default;
-    opacity: .24;
-  }
+}
+
+.button-78:before,
+.button-78:after {
+  border-radius: 80px;
+}
+
+.button-78:before {
+  background-image: linear-gradient(
+    92.83deg,
+    rgb(231, 162, 72) 0,
+    #f93a13 100%
+  );
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -2;
+}
+
+.button-78:after {
+  background-color: initial;
+  background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
+  bottom: 4px;
+  content: "";
+  display: block;
+  left: 4px;
+  overflow: hidden;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  transition: all 100ms ease-out;
+  z-index: -1;
+}
+
+.button-78:hover:not(:disabled):before {
+  background: linear-gradient(
+    92.83deg,
+    rgb(231, 162, 72) 0%,
+    rgb(249, 57, 19) 100%
+  );
+}
+
+.button-78:hover:not(:disabled):after {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  transition-timing-function: ease-in;
+  opacity: 0;
+}
+
+.button-78:active:not(:disabled) {
+  color: #ccc;
+}
+
+.button-78:active:not(:disabled):before {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ),
+    linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+}
+
+.button-78:active:not(:disabled):after {
+  background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  top: 4px;
+}
+
+.button-78:disabled {
+  cursor: default;
+  opacity: 0.24;
+}

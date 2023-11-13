@@ -3,7 +3,7 @@ export const GetAllJobs = () => {
     res.json()
   );
 };
-// failed to fetch error debug
+
 export const GetJobsByHomeId = (homeId) => {
   return fetch(
     `http://localhost:8088/jobs?homeId=${homeId}&_expand=home&_expand=area`
@@ -45,30 +45,4 @@ export const submitDeleteJob = (jobId) => {
 
 export const GetAllAreas = () => {
   return fetch(`http://localhost:8088/areas`).then((res) => res.json());
-};
-
-export const numToWord = (num) => {
-  const words = [
-    "None",
-    "One",
-    "Two",
-    "Three",
-    "Four",
-    "Five",
-    "Six",
-    "Seven",
-    "Eight",
-    "Nine",
-    "Ten",
-    "Eleven",
-    "Twelve",
-    "Thirteen",
-    "Fourteen",
-    "Fifteen",
-    "Sixteen",
-    "Seventeen",
-    "Eighteen",
-    "Nineteen",
-  ];
-  return words[num] || num;
 };

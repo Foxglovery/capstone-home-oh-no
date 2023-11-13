@@ -10,7 +10,6 @@ import { MyJobCards } from "../JobCards/MyJobCards";
 import { AreaDropdown } from "../Filter/AreaDropdown";
 import { Logo } from "../Logo/Logo";
 
-
 export const MyJobs = ({ currentUser }) => {
   const { userId } = useParams();
   const [home, setHome] = useState([]);
@@ -19,28 +18,24 @@ export const MyJobs = ({ currentUser }) => {
   const [owners, setOwners] = useState([]);
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [areas, setAreas] = useState([]);
-  const navigate = useNavigate();
+
   useEffect(() => {
     GetHomesByUserId(userId).then((data) => {
-      console.log("Home data from api", data); //debug log
       setHome(data);
       if (data.length > 0) {
         setHomeId(data[0]?.homeId);
       }
-      
     });
   }, [userId]);
 
   useEffect(() => {
     GetJobsByHomeId(homeId).then((jobsArray) => {
-      console.log("jobsArray", jobsArray); //debug log
       setJobs(jobsArray);
     });
   }, [homeId]);
 
   useEffect(() => {
     GetOwnersByHomeId(homeId).then((ownerArray) => {
-      console.log("ownerArray", ownerArray); //debug log
       setOwners(ownerArray);
     });
   }, [homeId]);
@@ -58,34 +53,36 @@ export const MyJobs = ({ currentUser }) => {
   const isHomeOwner = owners.some((owner) => owner.userId === currentUser.id);
 
   const handleHomeChange = (e) => {
-    const selectedHomeId = e.target.value
-    setHomeId(selectedHomeId)
-  }
-
-
-
+    const selectedHomeId = e.target.value;
+    setHomeId(selectedHomeId);
+  };
 
   return (
     <>
       {isHomeOwner ? (
         <>
           <div className="main-container">
-            
             <Logo />
             <div className="home_card_container dropdown">
-              <h2 className="home_title_card dropbtn">{home.find(h => h.homeId === homeId)?.home.name || 'Select a Home'}</h2>
+              <h2 className="home_title_card dropbtn">
+                {home.find((h) => h.homeId === homeId)?.home.name ||
+                  "Select a Home"}
+              </h2>
               <div className="dropdown-content">
                 {home.map((homeEntry) => (
-                  <a key={homeEntry.homeId} onClick={() => handleHomeChange({ target: { value: homeEntry.homeId } })}>
+                  <a
+                    key={homeEntry.homeId}
+                    onClick={() =>
+                      handleHomeChange({ target: { value: homeEntry.homeId } })
+                    }
+                  >
                     {homeEntry.home.name}
                   </a>
                 ))}
               </div>
             </div>
 
-            <div className="home_card_container">
-              
-            </div>
+            <div className="home_card_container"></div>
             <div className="mydropdown_container">
               <div id="dropdown">
                 <AreaDropdown
@@ -101,7 +98,6 @@ export const MyJobs = ({ currentUser }) => {
               currentUser={currentUser}
               jobs={filteredJobs}
             />
-            
           </div>
         </>
       ) : (

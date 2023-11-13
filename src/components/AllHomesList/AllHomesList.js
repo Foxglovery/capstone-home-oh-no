@@ -8,7 +8,7 @@ import { Logo } from "../Logo/Logo";
 
 export const AllHomesList = () => {
   const [allHomes, setAllHomes] = useState([]);
-  const [jobs, setJobs] = useState([]);
+  
   const [homeJobCount, setHomeJobCount] = useState([]);
   const [filteredHomes, setFilteredHomes] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,10 +35,10 @@ export const AllHomesList = () => {
         })
       );
 
-      // Wait for all promises to resolve then set state with now conjoined and happy array
+      // Waits for all promises to resolve then set state with now conjoined and happy array
       Promise.all(promises).then((uniqueHomesWithOwners) => {
         setAllHomes(uniqueHomesWithOwners);
-        console.log("homeArray", allHomes);
+        
       });
     });
   }, []);
@@ -58,14 +58,14 @@ export const AllHomesList = () => {
       setFilteredHomes(homeSearch);
     } else {
       setFilteredHomes(allHomes);
-      console.log("filteredHomes", filteredHomes);
+      
     }
   }, [searchTerm, allHomes]);
 
   useEffect(() => {
     GetAllJobs().then((jobArray) => {
-      setJobs(jobArray);
-      console.log("jobs", jobs);
+      
+      
 
       //to count the jobs for each home, reduce array of all jobs
       const jobCount = jobArray.reduce((acc, job) => {
@@ -89,7 +89,7 @@ export const AllHomesList = () => {
 
       //set state to count
       setHomeJobCount(jobCount);
-      console.log("homeJobCount", homeJobCount);
+      
     });
   }, []);
 

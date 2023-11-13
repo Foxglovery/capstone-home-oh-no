@@ -1,256 +1,237 @@
 .home {
-    display: flex;
-    text-align: center;
+  display: flex;
+  text-align: center;
 }
 
 .details_job {
-    display: flex;
-    text-align: center;
+  display: flex;
+  text-align: center;
 }
 
 #job_detail_card {
-    border-radius: 20px;
-    padding: 20px;
-    color: white;
-    width: 50vw; /* Adjusted width to fit content */
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-    margin-bottom: 20px;
-    background-color: rgb(134, 5, 89);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 20px;
-    position: relative;
-  }
-
-  .job_detail_container {
-
-  }
-
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  width: 50vw; /* Adjusted width to fit content */
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+  background-color: rgb(134, 5, 89);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px;
+  position: relative;
+}
 
 #job_card_title {
-    
-    display: flex;
-    justify-content: center;
-    
-
+  display: flex;
+  justify-content: center;
 }
 
 #job_start {
-    background-color: var(--appBackground);
-    padding: 1px 10px 1px 10px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
-    color: black;
-    border-radius: 20px;
-    
-    ;
-    text-align: center;
-    display: inline;
+  background-color: var(--appBackground);
+  padding: 1px 10px 1px 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+  color: black;
+  border-radius: 20px;
+
+  text-align: center;
+  display: inline;
 }
 
 .job_step {
-    background-color: var(--secondary);
-    padding: 1px 10px 1px 10px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
-    color: black;
-    border-radius: 20px;
-    font-size: 18px;
-    ;
-    
-    text-align: center;
-    display: inline;
+  background-color: var(--secondary);
+  padding: 1px 10px 1px 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+  color: black;
+  border-radius: 20px;
+  font-size: 18px;
+
+  text-align: center;
+  display: inline;
 }
 
 .job_detail_info_blurb {
-    font-size: 18px;
-    display: flex;
-    justify-content: center;
-    gap: 50px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
 }
 
 #job_house {
-    background-color: var(--appBackground);
-    padding: 1px 10px 1px 10px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
-    color: black;
-    border-radius: 20px;
-    font-size: ;
-    ;
-    
-    text-align: center;
-    display: inline;
-}
+  background-color: var(--appBackground);
+  padding: 1px 10px 1px 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+  color: black;
+  border-radius: 20px;
 
-#job_house {
-
+  text-align: center;
+  display: inline;
 }
 
 .job_description {
-font-size: 20px;
+  font-size: 20px;
 }
 
 #job_card_img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
 }
 #job_card_img img {
-    border-radius: 10px;
-    width: 150px;
-    height: 120px;
-    margin-right: 20px;
+  border-radius: 10px;
+  width: 150px;
+  height: 120px;
+  margin-right: 20px;
 }
 
 .job_budget {
-     background-color: var(--appBackground);
-    padding: 1px 10px 1px 10px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
-    color: black;
-    border-radius: 20px;
-    
-    ;
-    text-align: center;
-    display: inline;
+  background-color: var(--appBackground);
+  padding: 1px 10px 1px 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+  color: black;
+  border-radius: 20px;
+
+  text-align: center;
+  display: inline;
 }
 
 .job_budget_container {
-    margin-top: 10px;
-    font-size: 20px;
+  margin-top: 10px;
+  font-size: 20px;
 }
 
 .job_topic {
-    align-self: flex-end;
-    background-color: var(--appBackground);
-    padding: 1px 10px 1px 10px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
-    color: black;
-    border-radius: 20px;
-    
-    ;
-    text-align: center;
-    display: inline;
+  align-self: flex-end;
+  background-color: var(--appBackground);
+  padding: 1px 10px 1px 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+  color: black;
+  border-radius: 20px;
+
+  text-align: center;
+  display: inline;
 }
 
-
-
-
-
 .back {
-    position: relative;
-    
-    ;
-    font-size: 40px;
-    font-weight: bold;
-    justify-content: center;
-    color: #f1f1f1;
-    transition: .3s ease-in;
-  }
+  position: relative;
 
-  .back:hover {
-    color: var(--appBackground);
-  }
+  font-size: 40px;
+  font-weight: bold;
+  justify-content: center;
+  color: #f1f1f1;
+  transition: 0.3s ease-in;
+}
 
-  .card_btm_wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between
-  }
+.back:hover {
+  color: var(--appBackground);
+}
 
-  #back-btn-container {
-    ;
-    
-  }
+.card_btm_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
-  /* Style the Image Used to Trigger the Modal */
+/* image used to trigger modal */
 #myImg {
-    border-radius: 5px;
-    cursor: pointer;
-    opacity: 1;
-    transition: 1s ease;
-  }
-  
-  #myImg:hover {
-    opacity:1.5;
-    transition: 1s ease;
-  }
-  
-  
-  /* The Modal (background) */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-left: 00px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-  }
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 1;
+  transition: 1s ease;
+}
 
-  #myModal {
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;padding-top: 15vh;
+#myImg:hover {
+  opacity: 1.5;
+  transition: 1s ease;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* hidden by default */
+  position: fixed; /* stay in place */
+  z-index: 1; /* sit on top */
+  padding-left: 00px;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto;
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+}
+
+#myModal {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 15vh;
+  z-index: 2;
+}
+
+/* modal content image */
+.modal_content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+
+  border-radius: 20px;
+}
+
+/* modal caption*/
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  font-size: 20px;
+  color: #eadddd;
+  padding: 10px 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  margin-bottom: 20vh;
+}
+
+/* modal animation */
+.modal-content,
+#caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0);
   }
-  
-  /* Modal Content (Image) */
-  .modal_content {
-    margin: auto;
-    display: block;
-    width: 80%;;
-    max-width: 700px;
-    border-radius: 20px;
+  to {
+    transform: scale(1);
   }
-  
-  /* Caption of Modal Image (Image Text) - Same Width as the Image */
-  #caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    font-size: 20px;
-    color: #eadddd;
-    padding: 10px 0;
-    height: 150px;
+}
+
+/* close btn */
+.close {
+  position: relative;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+  .modal-content {
+    width: 100%;
   }
-  
-  /* Add Animation - Zoom in the Modal */
-  .modal-content, #caption {
-    animation-name: zoom;
-    animation-duration: 0.6s;
-  }
-  
-  @keyframes zoom {
-    from {transform:scale(0)}
-    to {transform:scale(1)}
-  }
-  
-  /* The Close Button */
-  .close {
-    position: relative;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  /* 100% Image Width on Smaller Screens */
-  @media only screen and (max-width: 700px){
-    .modal-content {
-      width: 100%;
-    }
-  }
+}

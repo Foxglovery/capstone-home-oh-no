@@ -2,11 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import "./JobsFilteredByHome.css";
 import { useEffect, useState } from "react";
 import { GetHomeById } from "../../services/homeService";
-import {
-  GetAllAreas,
-  GetJobsByHomeId,
-  numToWord,
-} from "../../services/jobsService";
+import { GetAllAreas, GetJobsByHomeId } from "../../services/jobsService";
 import { JobCards } from "../JobCards/JobCards";
 import { AreaDropdown } from "../Filter/AreaDropdown";
 import { Logo } from "../Logo/Logo";
@@ -15,28 +11,19 @@ export const JobsFilteredByHome = ({ currentUser }) => {
   const { currentHomeId } = useParams();
   const [home, setHome] = useState([]);
   const [jobs, setJobs] = useState([]);
-  const [finishedJobs, setFinishedJobs] = useState([]);
   const [filteredJobs, setFilteredJobs] = useState([]);
-  const [ongoingJobs, setOngoingJobs] = useState([]);
   const [areas, setAreas] = useState([]);
+  const [isImageModalVisible, setIsImageModalVisible] = useState(false);
+  
   useEffect(() => {
     GetHomeById(currentHomeId).then((data) => {
-      console.log("HOMEDATA:", data); //debug log
-
       setHome(data);
     });
   }, [currentHomeId]);
 
   useEffect(() => {
     GetJobsByHomeId(currentHomeId).then((jobsArray) => {
-      const numberOngoingJobs = jobsArray.filter((job) => !job.endDate).length;
-      const stringOngoingJob = numToWord(numberOngoingJobs);
-      setOngoingJobs(stringOngoingJob);
-
       setJobs(jobsArray);
-      const numberFinishedJobs = jobsArray.filter((job) => job.endDate).length;
-      const stringFinishedJobs = numToWord(numberFinishedJobs);
-      setFinishedJobs(stringFinishedJobs);
     });
   }, [currentHomeId]);
 
@@ -50,6 +37,14 @@ export const JobsFilteredByHome = ({ currentUser }) => {
     setFilteredJobs(jobs);
   }, [jobs]);
 
+  const openImageModal = () => {
+    setIsImageModalVisible(true);
+  };
+
+  const closeImageModal = () => {
+    setIsImageModalVisible(false);
+  };
+
   return (
     <>
       <div className="main_container">
@@ -61,32 +56,55 @@ export const JobsFilteredByHome = ({ currentUser }) => {
                 <div>
                   <div id="home_card_title">{home[0].home?.name}</div>
                 </div>
-                
               </Link>
 
               <div id="home_card_img">
-                <img src={home[0].home?.imgUrl} alt={home[0].home?.name} />
+                <img
+                  id="myImg"
+                  className="fadein"
+                  onClick={openImageModal}
+                  src={home[0].home?.imgUrl}
+                  alt={home[0].home?.name}
+                />
               </div>
+              {isImageModalVisible && (
+                <div
+                  id="myModal"
+                  className="modal"
+                  style={{ display: isImageModalVisible ? "flex" : "none" }}
+                >
+                  <span
+                    onClick={closeImageModal}
+                    className="close"
+                    title="Close Modal"
+                  >
+                    &times;
+                  </span>
+                  <img
+                    src={home[0].home?.imgUrl}
+                    alt={home[0].home?.name}
+                    className="modal_content"
+                    id="img01"
+                  />
+                  <div className="caption_cont"></div>
+                  <div id="caption">{home[0].home?.description}</div>
+                </div>
+              )}
 
               <div>
-                  <div className="filtered_owner_chip">
-                    <div className="filtered_owner_text">~Owned By~ </div>
+                <div className="filtered_owner_chip">
+                  <div className="filtered_owner_text">~Owned By~ </div>
 
-                    <div>
-                      {home
-                        .map((homeEntry) => homeEntry.user?.name)
-                        .join(" & ")}
-                    </div>
+                  <div>
+                    {home.map((homeEntry) => homeEntry.user?.name).join(" & ")}
                   </div>
                 </div>
-                <div>
-                  <div className="filtered_description">
-                <p className="home-info">{home[0].home?.description}</p>
               </div>
+              <div>
+                <div className="filtered_description">
+                  <p className="home-info">{home[0].home?.description}</p>
                 </div>
-              
-
-              
+              </div>
             </div>
           ) : (
             //TODO: this needs to move to include the jobCard component

@@ -1,6 +1,6 @@
 import "./BudgetProgressBar.css";
 
-export const BudgetProgressBar = ({ current, goal, owners, isHomeOwner, currentUser }) => {
+export const BudgetProgressBar = ({ current, goal, isHomeOwner, currentUser }) => {
   let percent;
   let progressBarClass;
   let displayText;

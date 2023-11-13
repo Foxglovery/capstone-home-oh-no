@@ -1,24 +1,14 @@
-/* JobsFilteredByHome.css */
 .home {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-  }
-  
- .dropdown-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.dropdown-container {
   position: relative;
-  
-  
-  
- 
-  
 }
 .area-dropdown-container {
   align-self: center;
-}
-
-#dropdown {
-  
 }
 
 .filtered_owner_chip {
@@ -29,7 +19,7 @@
   font-size: 20px;
   display: inline-block;
   color: #0c0d0d;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 .filtered_description {
@@ -41,7 +31,7 @@
   display: inline-block;
   margin-top: 10px;
   color: #0c0d0d;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 .main-container {
@@ -50,55 +40,48 @@
   justify-content: center;
   align-items: center;
 }
-  
-  #home_card {
-    border-radius: 20px;
-    padding: 20px;
-    color: white;
-    width: 50vw; /* Adjusted width to fit content */
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-    margin-bottom: 20px;
-    background-color: rgb(134, 5, 89);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  a {
-    color: rgb(144, 191, 210);
-    text-decoration: none; /* This will remove underlines from links */
-  }
-  
-  #home_card_title {
-    font-size: 24px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  #home_card_img img {
-    width: 150px; /* Adjusted to the original size */
-    height: auto;
-    margin-right: 20px;
-    border-radius: 20px;
-    
-  }
-  .home-description-container {
-    
-  
-  }
 
-  .home-info {
-    
-    margin-top: 0px;
-  }
-  
-  .card_btm_wrapper {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .home_card_topic {
-    margin-bottom: 10px;
-  }
-  
+#home_card {
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  width: 50vw; /* Adjusted width to fit content */
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+  background-color: rgb(134, 5, 89);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+a {
+  color: rgb(144, 191, 210);
+  text-decoration: none; /* This removes underlines from links */
+}
+
+#home_card_title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#home_card_img img {
+  width: 150px; /* Adjusted to the original size */
+  height: auto;
+  margin-right: 20px;
+  border-radius: 20px;
+}
+
+.home-info {
+  margin-top: 0px;
+}
+
+.card_btm_wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.home_card_topic {
+  margin-bottom: 10px;
+}

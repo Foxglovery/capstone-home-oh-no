@@ -6,15 +6,15 @@ import {
   submitDeleteJob,
   submitUpdateJob,
 } from "../../services/jobsService";
-import { GetHomeByJobId, GetHomesByUserId } from "../../services/homeService";
+import { GetHomeByJobId } from "../../services/homeService";
 import { useNavigate, useParams } from "react-router-dom";
 
 export const UpdateJob = ({ currentUser }) => {
   const [areas, setAreas] = useState([]);
   const [home, setHome] = useState({});
   const [currentJob, setCurrentJob] = useState({});
-  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
-  const [isFinishModalVisible, setIsFinishModalVisible] = useState(false)
+  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+  const [isFinishModalVisible, setIsFinishModalVisible] = useState(false);
   const { jobId } = useParams();
   const navigate = useNavigate();
   const [job, setJob] = useState({
@@ -32,7 +32,6 @@ export const UpdateJob = ({ currentUser }) => {
       setAreas(areaArray);
     });
     GetHomeByJobId(jobId).then((homeObj) => {
-      console.log("homeoeoeo",homeObj ) //debug log
       setHome(homeObj);
     });
   }, [jobId]);
@@ -43,7 +42,7 @@ export const UpdateJob = ({ currentUser }) => {
       setJob({
         title: currentJobData.title,
         description: currentJobData.description,
-        
+
         //changing this from areaId: to selectedArea let the update form populate the select with the previous choice
         selectedArea: currentJobData.areaId,
         startDate: Date.now(),
@@ -52,7 +51,7 @@ export const UpdateJob = ({ currentUser }) => {
         budget: currentJobData.budget || 0,
         currentStep: currentJobData.currentStep,
         imgUrl: currentJobData.imgUrl,
-        imgArray: currentJobData.imgArray
+        imgArray: currentJobData.imgArray,
       });
     });
   }, [jobId]);
@@ -71,9 +70,9 @@ export const UpdateJob = ({ currentUser }) => {
         budget: job.budget ? parseInt(job.budget, 10) : 0,
         currentStep: job.currentStep,
         imgUrl: job.imgUrl,
-        imgArray: job.imgArray
+        imgArray: job.imgArray,
       };
-      console.log("Sending this updatedJob", updatedJob); //debug log
+
       submitUpdateJob(updatedJob, jobId).then(() => {
         navigate(-1);
       });
@@ -94,9 +93,9 @@ export const UpdateJob = ({ currentUser }) => {
       budget: job.budget,
       currentStep: "",
       imgUrl: job.imgUrl,
-      imgArray: job.imgArray
+      imgArray: job.imgArray,
     };
-    console.log("Sending this finishedJob", finishedJob); //debug log
+
     submitUpdateJob(finishedJob, jobId).then(() => {
       navigate(`/myJobs/${currentUser.id}`);
     });
@@ -104,7 +103,7 @@ export const UpdateJob = ({ currentUser }) => {
 
   const handleDeleteJob = () => {
     submitDeleteJob(jobId).then(() => {
-      closeDeleteModal()
+      closeDeleteModal();
       navigate(`/myJobs/${currentUser.id}`);
     });
   };
@@ -113,7 +112,7 @@ export const UpdateJob = ({ currentUser }) => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     //if imgUrl is field being changed
-    if (name === 'imgUrl') {
+    if (name === "imgUrl") {
       // sets state with value pair effectively pushing imgUrl to ImgArray
       setJob((prevJob) => ({
         ...prevJob,
@@ -130,21 +129,20 @@ export const UpdateJob = ({ currentUser }) => {
   };
 
   const openDeleteModal = () => {
-    setIsDeleteModalVisible(true)
-  }
+    setIsDeleteModalVisible(true);
+  };
 
   const closeDeleteModal = () => {
-    setIsDeleteModalVisible(false)
-  }
+    setIsDeleteModalVisible(false);
+  };
 
   const openFinishModal = () => {
-    setIsFinishModalVisible(true)
-  }
+    setIsFinishModalVisible(true);
+  };
 
   const closeFinishModal = () => {
-    setIsFinishModalVisible(false)
-  }
-
+    setIsFinishModalVisible(false);
+  };
 
   return (
     <div id="main_container">
@@ -253,7 +251,7 @@ export const UpdateJob = ({ currentUser }) => {
             </ul>
             {/* Here Be Buttons */}
             <div className="btn-wrapper">
-              {console.log("whatIsCurrentJob", currentJob)}
+              
               {!currentJob.endDate && (
                 <button
                   className="form-btn button-79"
@@ -262,36 +260,46 @@ export const UpdateJob = ({ currentUser }) => {
                 >
                   Finish Job
                 </button>
-                
               )}
               {isFinishModalVisible && (
-                
-                <div id="id02" className="modal" style={{ display: isFinishModalVisible ? 'flex': 'none' }}>
-                <span
-                  onClick={closeFinishModal}
-                  className="close"
-                  title="Close Modal"
+                <div
+                  id="id02"
+                  className="modal"
+                  style={{ display: isFinishModalVisible ? "flex" : "none" }}
                 >
-                  &times;
-                </span>
-                <form className="modal-content" >
-                  <div className="container">
-                    <h1>Finish Job</h1>
-                    <p>Are you sure you want to finish out this job?</p>
+                  <span
+                    onClick={closeFinishModal}
+                    className="close"
+                    title="Close Modal"
+                  >
+                    &times;
+                  </span>
+                  <form className="modal-content">
+                    <div className="container">
+                      <h1>Finish Job</h1>
+                      <p>Are you sure you want to finish out this job?</p>
 
-                    <div className="clearfix">
-                      <div id="modal-btn-container">
-                      <button type="button" className="cancel-btn" onClick={closeFinishModal}>
-                        Cancel
-                      </button>
-                      <button type="button" className="finish-btn" onClick={handleFinishJob}>
-                        Finish
-                      </button>
+                      <div className="clearfix">
+                        <div id="modal-btn-container">
+                          <button
+                            type="button"
+                            className="cancel-btn"
+                            onClick={closeFinishModal}
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            type="button"
+                            className="finish-btn"
+                            onClick={handleFinishJob}
+                          >
+                            Finish
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </form>
-              </div>
+                  </form>
+                </div>
               )}
               <button className="form-btn button-78 " type="submit">
                 Submit Job
@@ -305,35 +313,45 @@ export const UpdateJob = ({ currentUser }) => {
                 Delete Job
               </button>
               {isDeleteModalVisible && (
-                
-                <div id="id01" className="modal" style={{ display: isDeleteModalVisible ? 'flex': 'none' }}>
-                <span
-                  onClick={closeDeleteModal}
-                  className="close"
-                  title="Close Modal"
+                <div
+                  id="id01"
+                  className="modal"
+                  style={{ display: isDeleteModalVisible ? "flex" : "none" }}
                 >
-                  &times;
-                </span>
-                <form className="modal-content" >
-                  <div className="container">
-                    <h1>Delete Job</h1>
-                    <p>Are you sure you want to delete this job?</p>
+                  <span
+                    onClick={closeDeleteModal}
+                    className="close"
+                    title="Close Modal"
+                  >
+                    &times;
+                  </span>
+                  <form className="modal-content">
+                    <div className="container">
+                      <h1>Delete Job</h1>
+                      <p>Are you sure you want to delete this job?</p>
 
-                    <div className="clearfix">
-                      <div id="modal-btn-container">
-                      <button type="button" className="cancel-btn" onClick={closeDeleteModal}>
-                        Cancel
-                      </button>
-                      <button type="button" className="delete-btn" onClick={handleDeleteJob}>
-                        Delete
-                      </button>
+                      <div className="clearfix">
+                        <div id="modal-btn-container">
+                          <button
+                            type="button"
+                            className="cancel-btn"
+                            onClick={closeDeleteModal}
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            type="button"
+                            className="delete-btn"
+                            onClick={handleDeleteJob}
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </form>
-              </div>
+                  </form>
+                </div>
               )}
-              
             </div>
           </form>
         </div>

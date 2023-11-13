@@ -1,55 +1,53 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom"
-import { GetHomesByUserId, createHome, createUserHome, submitUpdateHome } from "../../services/homeService";
-import "./AddAHome.css"
+import { useState } from "react";
+import { useNavigate} from "react-router-dom";
+import {
+  
+  createHome,
+  createUserHome
+} from "../../services/homeService";
+import "./AddAHome.css";
 
 export const AddAHome = ({ currentUser }) => {
-    const { currentHomeId } = useParams();
-    
-    const navigate = useNavigate()
-    const [userHome, setUserHome] = useState({})
-    const [home, setHome] = useState({
-        name: "",
-        description: "",
-        imgUrl:""
-    })
-
   
 
-    const handleInputChange = (e) => {
-        const {name, value } = e.target;
-        setHome({
-            ...home,
-            [name]: value
-        })
-    }
+  const navigate = useNavigate();
+  
+  const [home, setHome] = useState({
+    name: "",
+    description: "",
+    imgUrl: "",
+  });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        const newHome = {
-            
-            name: home.name,
-            description: home.description,
-            imgUrl: home.imgUrl
-        }
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setHome({
+      ...home,
+      [name]: value,
+    });
+  };
 
-        const createdHomeResponse = await createHome(newHome)
-        const createdHome = await createdHomeResponse.json()
-        console.log("home created", createdHome)
-        const newUserHome = {
-            userId: currentUser.id,
-            homeId: createdHome.id
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newHome = {
+      name: home.name,
+      description: home.description,
+      imgUrl: home.imgUrl,
+    };
 
-        }
-        await createUserHome(newUserHome)
-        console.log('userHomes created for home ID:', newUserHome)
-        navigate(`/allHomes`)
+    const createdHomeResponse = await createHome(newHome);
+    const createdHome = await createdHomeResponse.json();
 
-        
-    }
+    const newUserHome = {
+      userId: currentUser.id,
+      homeId: createdHome.id,
+    };
+    await createUserHome(newUserHome);
 
-    return (
-      <div id="main_container">
+    navigate(`/allHomes`);
+  };
+
+  return (
+    <div id="main_container">
       <div id="card">
         <div>
           <form onSubmit={handleSubmit}>
@@ -67,7 +65,6 @@ export const AddAHome = ({ currentUser }) => {
                   placeholder="Enter name"
                   value={home.name}
                   onChange={handleInputChange}
-                 
                 />
                 <div id="label_imgUrl">
                   <label htmlFor="imgUrl"> Image URL</label>
@@ -79,10 +76,9 @@ export const AddAHome = ({ currentUser }) => {
                   placeholder="Enter image URL"
                   value={home.imgUrl}
                   onChange={handleInputChange}
-                  
                 />
               </li>
-    
+
               <li>
                 <div id="label_description">
                   <label htmlFor="description">Description</label>
@@ -90,6 +86,7 @@ export const AddAHome = ({ currentUser }) => {
                 <textarea
                   name="description"
                   className="field-style"
+                  id="description"
                   maxLength={84}
                   placeholder="Enter description"
                   value={home.description}
@@ -104,20 +101,19 @@ export const AddAHome = ({ currentUser }) => {
                 type="button"
                 onClick={handleSubmit}
               >
-                 Submit Home
+                Submit Home
               </button>
               <button
                 className="form-btn button-81"
                 type="button"
                 onClick={() => navigate(-1)}
               >
-                 Cancel
+                Cancel
               </button>
             </div>
           </form>
         </div>
       </div>
     </div>
-    
-    )
-}
+  );
+};

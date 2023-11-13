@@ -40,21 +40,22 @@ export const MyJobCards = ({ jobs, owners, isHomeOwner, currentUser }) => {
             <div className="job-card-title">{job.title}</div>
           </Link>
           <div className="myjobs_area_container">
-                <div className="myjob_card_area"><span className="underline">Area:</span> {job.area?.areaName}</div>
-            {console.log(job)}
+            <div className="myjob_card_area">
+              <span className="underline">Area:</span> {job.area?.areaName}
+            </div>
           </div>
           <div>
             <div className="myJobs_card_start">
-              <span className="underline">Started on:</span> {new Date(job.startDate).toLocaleDateString("en-US")}
+              <span className="underline">Started on:</span>{" "}
+              {new Date(job.startDate).toLocaleDateString("en-US")}
             </div>
           </div>
           <div>
             {job.currentStep && (
               <div className="myJobs_card_step">
-              <span className="underline">To Do:</span> {job.currentStep}
-            </div>
+                <span className="underline">To Do:</span> {job.currentStep}
+              </div>
             )}
-            
           </div>
 
           <div className="job_card_img">
@@ -71,9 +72,7 @@ export const MyJobCards = ({ jobs, owners, isHomeOwner, currentUser }) => {
               isHomeOwner={isHomeOwner}
               currentUser={currentUser}
             />
-            
-            </div>
-            
+          </div>
 
           <div className="update-btn-container">
             <button

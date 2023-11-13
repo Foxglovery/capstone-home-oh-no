@@ -21,9 +21,7 @@ export const GetUsersByHomeId = (homeId) => {
 };
 
 export const GetAllUsers = () => {
-  return fetch(
-    `http://localhost:8088/users`
-  ).then((res) => res.json());
+  return fetch(`http://localhost:8088/users`).then((res) => res.json());
 };
 
 export const RemoveOwnerFromHome = (userHomeId) => {
@@ -33,7 +31,5 @@ export const RemoveOwnerFromHome = (userHomeId) => {
 };
 
 export const GetAllUserHomes = () => {
-  return fetch(
-    `http://localhost:8088/userHomes`
-  ).then((res) => res.json());
+  return fetch(`http://localhost:8088/userHomes`).then((res) => res.json());
 };

@@ -1,22 +1,15 @@
-
 .logo-container {
-    width: 300px;
-    display: flex;
-    justify-content: center;
-    z-index: 1;
-    
-    
-    
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
 }
 
-
 .logo {
- max-width: 100%;  
- justify-content: center;
- 
+  max-width: 100%;
+  justify-content: center;
 }
 
 .logo img {
-    max-width: 100%;
+  max-width: 100%;
 }
-    

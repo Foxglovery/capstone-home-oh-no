@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   GetAllUserHomes,
   GetAllUsers,
-  GetUserHomeSpecific,
   RemoveOwnerFromHome,
 } from "../../services/userService";
 import { GetOwnersByHomeId, createUserHome } from "../../services/homeService";
@@ -15,8 +14,9 @@ export const AddOwner = ({ currentUser }) => {
   const [selectedUser, setSelectedUser] = useState({});
   const [otherOwners, setOtherOwners] = useState([]);
   const [userHomes, setUserHomes] = useState([]);
-  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
-  const [userToDelete, setUserToDelete] = useState(null)
+  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+  const [userToDelete, setUserToDelete] = useState(null);
+  const [owners, setOwners] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,8 +26,13 @@ export const AddOwner = ({ currentUser }) => {
   }, []);
 
   useEffect(() => {
+    GetOwnersByHomeId(currentHomeId).then((ownerArray) => {
+      setOwners(ownerArray);
+    });
+  }, [currentHomeId]);
+
+  useEffect(() => {
     GetAllUserHomes().then((data) => {
-      console.log("userHome from api", data);
       setUserHomes(data);
     });
   }, []);
@@ -37,17 +42,19 @@ export const AddOwner = ({ currentUser }) => {
       const ownerFilter = data.filter(
         (owner) => owner.user.id !== currentUser.id
       );
-      console.log("currentownerlog", ownerFilter);
+
       setOtherOwners(ownerFilter);
     });
   }, [currentHomeId, currentUser.id]);
 
   const refreshOwnerList = () => {
     GetOwnersByHomeId(currentHomeId).then((data) => {
-      const ownerFilter = data.filter((owner) => owner.user.id !== currentUser.id);
-    setOtherOwners(ownerFilter);
-    })
-  }
+      const ownerFilter = data.filter(
+        (owner) => owner.user.id !== currentUser.id
+      );
+      setOtherOwners(ownerFilter);
+    });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -88,111 +95,139 @@ export const AddOwner = ({ currentUser }) => {
   };
 
   const openDeleteModal = (deleteUserId) => {
-    setUserToDelete(deleteUserId)
-    setIsDeleteModalVisible(true)
-  }
+    setUserToDelete(deleteUserId);
+    setIsDeleteModalVisible(true);
+  };
 
   const closeDeleteModal = () => {
-    setIsDeleteModalVisible(false)
-    setUserToDelete(null)
-  }
+    setIsDeleteModalVisible(false);
+    setUserToDelete(null);
+  };
+  const isHomeOwner = owners.some((owner) => owner.userId === currentUser.id);
 
   return (
-    <div id="main_container">
-      <div id="card">
-        <div>
-          <form onSubmit={handleSubmit}>
-            <h2>Edit Ownership</h2>
-            <ul>
-              <li>
-                <div id="label_otherOwners">
-                  <label htmlFor="otherOwners">~Delete Another Owner~</label>
-                </div>
+    <>
+      {isHomeOwner ? (
+        <div id="main_container">
+          <div id="card">
+            <div>
+              <form onSubmit={handleSubmit}>
+                <h2>Edit Ownership</h2>
                 <ul>
-                  {otherOwners.map((owner) => (
-                    <div className="other_user_name">
-                      <li  key={owner.id}>
-                      {owner.user.name}
-                      <span
-                        className="remove-owner-symbol"
-                        onClick={() => openDeleteModal(owner.user.id)}
-                        // onClick={() =>
-                        //   handleDeleteOwner(owner.user.id, currentHomeId)
-                        // }
-                        aria-label={`Remove ${owner.user.name}`}
-                      >
-                        &#10008;
-                      </span>
-
-                        
-                      {isDeleteModalVisible && userToDelete === owner.user.id && (
-                
-                <div id="id01" className="modal" style={{ display: isDeleteModalVisible ? 'flex': 'none' }}>
-                <span
-                  onClick={closeDeleteModal}
-                  className="close"
-                  title="Close Modal"
-                >
-                  &times;
-                </span>
-                {userToDelete === owner.user.id && (
-                  <form className="modal-content" >
-                  <div className="container">
-                    <h1>Delete Owner</h1>
-                    <p>You Sure You Want To Delete Them?</p>
-
-                    <div className="clearfix">
-                      <div id="modal-btn-container">
-                      <button type="button" className="cancel-btn" onClick={closeDeleteModal}>
-                        Cancel
-                      </button>
-                      <button type="button" className="delete-btn" onClick={() =>
-                          handleDeleteOwner(owner.user.id, currentHomeId)}>
-                        Delete
-                      </button>
+                  <li>
+                    {otherOwners.length > 0 && (
+                      <div id="label_otherOwners">
+                        <label htmlFor="otherOwners">
+                          ~Delete Another Owner~
+                        </label>
                       </div>
+                    )}
+
+                    <ul>
+                      {otherOwners.map((owner) => (
+                        <div key={owner.id} className="other_user_name">
+                          <li>
+                            {owner.user.name}
+                            <span
+                              className="remove-owner-symbol"
+                              onClick={() => openDeleteModal(owner.user.id)}
+                              // onClick={() =>
+                              //   handleDeleteOwner(owner.user.id, currentHomeId)
+                              // }
+                              aria-label={`Remove ${owner.user.name}`}
+                            >
+                              &#10008;
+                            </span>
+
+                            {isDeleteModalVisible &&
+                              userToDelete === owner.user.id && (
+                                <div
+                                  id="id01"
+                                  className="modal"
+                                  style={{
+                                    display: isDeleteModalVisible
+                                      ? "flex"
+                                      : "none",
+                                  }}
+                                >
+                                  <span
+                                    onClick={closeDeleteModal}
+                                    className="close"
+                                    title="Close Modal"
+                                  >
+                                    &times;
+                                  </span>
+                                  {userToDelete === owner.user.id && (
+                                    <form className="modal-content">
+                                      <div className="container">
+                                        <h1>Delete Owner</h1>
+                                        <p>You Sure You Want To Delete Them?</p>
+
+                                        <div className="clearfix">
+                                          <div id="modal-btn-container">
+                                            <button
+                                              type="button"
+                                              className="cancel-btn"
+                                              onClick={closeDeleteModal}
+                                            >
+                                              Cancel
+                                            </button>
+                                            <button
+                                              type="button"
+                                              className="delete-btn"
+                                              onClick={() =>
+                                                handleDeleteOwner(
+                                                  owner.user.id,
+                                                  currentHomeId
+                                                )
+                                              }
+                                            >
+                                              Delete
+                                            </button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </form>
+                                  )}
+                                </div>
+                              )}
+                          </li>
+                        </div>
+                      ))}
+                    </ul>
+
+                    <div id="label_owner">
+                      <label htmlFor="user">Select User To Add As Owner</label>
                     </div>
+                    <select
+                      id="user"
+                      required
+                      name="selectedUser"
+                      className=""
+                      value={users.selectedUser}
+                      onChange={handleInputChange}
+                    >
+                      <option value="">-- Select A User --</option>
+                      {users.map((user, index) => (
+                        <option key={index} value={user.id}>
+                          {user.name}
+                        </option>
+                      ))}
+                    </select>
+                  </li>
+                  <div className="addOwner_btn_cont">
+                    <button className="button-78" onClick={handleSubmit}>
+                      Submit New Co-Owner
+                    </button>
                   </div>
-                </form>
-                )}
-                
-              </div>
-              )}
-
-                    </li>
-                    </div>
-                    
-                  ))}
                 </ul>
-
-                <div id="label_owner">
-                  <label htmlFor="user">Select User To Add As Owner</label>
-                </div>
-                <select
-                  id="user"
-                  required
-                  name="selectedUser"
-                  className=""
-                  value={users.selectedUser}
-                  onChange={handleInputChange}
-                >
-                  <option value="">-- Select A User --</option>
-                  {users.map((user, index) => (
-                    <option key={index} value={user.id}>
-                      {user.name}
-                    </option>
-                  ))}
-                </select>
-              </li>
-              <div className="addOwner_btn_cont">
-                <button className="button-78" onClick={handleSubmit}>
-                  Submit New Co-Owner
-                </button>
-              </div>
-            </ul>
-          </form>
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      ) : (
+        <div></div>
+      )}
+    </>
   );
 };

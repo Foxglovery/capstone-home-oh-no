@@ -1,12 +1,8 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./HomeDetails.css";
 import { useEffect, useState } from "react";
-import {
-  GetHomeById,
-  GetHomesByUserId,
-  GetOneHomeById,
-} from "../../services/homeService";
-import { GetJobsByHomeId, numToWord } from "../../services/jobsService";
+import { GetHomeById, GetHomesByUserId } from "../../services/homeService";
+import { GetJobsByHomeId } from "../../services/jobsService";
 import { Carousel } from "../Carousel/Carousel";
 import { Logo } from "../Logo/Logo";
 
@@ -16,8 +12,7 @@ export const HomeDetails = ({ currentUser }) => {
   const [userHomes, setUserHomes] = useState([]);
   const [homeId, setHomeId] = useState(0);
   const [completeImgs, setCompleteImgs] = useState([]);
-  const [finishedJobs, setFinishedJobs] = useState([]);
-  const [ongoingJobs, setOngoingJobs] = useState([]);
+
   const [isImageModalVisible, setIsImageModalVisible] = useState(false);
 
   const navigate = useNavigate();
@@ -30,14 +25,6 @@ export const HomeDetails = ({ currentUser }) => {
     });
   }, [currentHomeId]);
 
-  //   useEffect(() => {
-  //     GetOneHomeById(currentHomeId).then((data) => {
-  //         console.log("detailsHome from api:", data); //debug log
-  //         if (data.length > 0) {
-  //             setSwitchedHomeId(data.id)
-  //         }
-  //     })
-  //   },[])
   //uses .some to check all the objects in the array. my new darling child
   const isCurrentUserOwner = home.some(
     (homeEntry) => homeEntry.userId === currentUser.id
@@ -46,13 +33,6 @@ export const HomeDetails = ({ currentUser }) => {
   //this will change dependence when I select home from dropdown
   useEffect(() => {
     GetJobsByHomeId(currentHomeId).then((jobsArray) => {
-      const numberOngoingJobs = jobsArray.filter((job) => !job.endDate).length;
-      const stringOngoingJob = numToWord(numberOngoingJobs);
-      setOngoingJobs(stringOngoingJob);
-      const numberFinishedJobs = jobsArray.filter((job) => job.endDate).length;
-      const stringFinishedJobs = numToWord(numberFinishedJobs);
-      setFinishedJobs(stringFinishedJobs);
-
       const completeJobsFilter = jobsArray.filter((job) => job.endDate);
       const completeImgArray = completeJobsFilter.map((job) => job.imgUrl);
       setCompleteImgs(completeImgArray);
@@ -61,7 +41,6 @@ export const HomeDetails = ({ currentUser }) => {
 
   useEffect(() => {
     GetHomesByUserId(currentUser.id).then((data) => {
-      console.log("Home data from api", data); //debug log
       setUserHomes(data);
     });
   }, [currentUser]);
@@ -213,19 +192,19 @@ export const HomeDetails = ({ currentUser }) => {
           ) : (
             //TODO: this needs to move to include the jobCard component
             <>
-              <div><h2>Looks like you havn't added a home yet!</h2></div>
+              <div>
+                <h2>Looks like you havn't added a home yet!</h2>
+              </div>
               <div>
                 <button
-                      className="details_button-78 details_button-82"
-                      onClick={() => {
-                        navigate(`/addAHome`);
-                      }}
-                    >
-                      Add Home
-                    </button>
+                  className="details_button-78 details_button-82"
+                  onClick={() => {
+                    navigate(`/addAHome`);
+                  }}
+                >
+                  Add Home
+                </button>
               </div>
-              
-              
             </>
           )}
         </div>

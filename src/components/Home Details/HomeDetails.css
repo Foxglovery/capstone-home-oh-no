@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* flex-direction: ;  */
+  
 }
 
 .home-container {
@@ -21,7 +21,7 @@
   flex-direction: column;
   padding: 20px;
   color: white;
-  width: 450px; /* Or whatever width you want */
+  width: 450px; 
 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 20px;
@@ -81,7 +81,7 @@ a {
   padding: 10px;
   display: inline-block;
   color: #0c0d0d;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); 
 }
 
 .owner_text {
@@ -107,7 +107,7 @@ a {
   padding: 10px;
   display: inline-block;
   color: #0c0d0d;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); 
 }
 
 .details_btn_container {
@@ -126,7 +126,7 @@ a {
   padding: 10px;
   display: inline-block;
   color: #0c0d0d;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* More noticeable shadow */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); 
 }
 
 .details_button-78 {
@@ -281,9 +281,9 @@ a {
 
 .details_dropdown {
   position: absolute;
-  right: 10px; /* Adjust as needed */
-  top: 10px; /* Adjust as needed */
-  z-index: 1; /* To ensure it sits above other content */
+  right: 10px; 
+  top: 10px; 
+  z-index: 1; 
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -313,12 +313,12 @@ a {
   transition: all 500ms ease-out;
 }
 
-/* Show the dropdown menu on hover */
+/* Show dropdown menu on hover */
 .details_dropdown:hover .details_dropdown_content {
   display: block;
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
+/* Change the bg color of dropdown button when the dropdown content is shown */
 .details_dropdown:hover .dropbtn {
   background-color: var(--primary);
 }
