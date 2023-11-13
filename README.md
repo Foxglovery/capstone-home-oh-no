@@ -36,7 +36,7 @@ Just two months after diving into my coding bootcamp, we took the exciting leap 
 ## Challenges Faced During Creation
 As this was my first solo react project, I did hit a number of snags. Some notable ones included: 
 <ul>
-    <li>Dealing with a api fetch calls to get the tables needed</li>
+    <li>Honing api fetch calls to get the tables needed</li>
     <li>Keeping elements positioned in my cards</li>
     <li>File structure conventions</li>
     <li>CSS naming to stop wonky inheritance</li>
