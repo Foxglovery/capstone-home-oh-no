@@ -33,6 +33,9 @@ Just two months after diving into my coding bootcamp, we took the exciting leap 
 <a href="https://ibb.co/g7T91WQ"><img src="https://i.ibb.co/fSpFRNZ/SH-3.png" alt="SH-3" border="0"></a>
 <a href="https://ibb.co/Kx642cN"><img src="https://i.ibb.co/B2LWyH4/SH-5.png" alt="SH-5" border="0"></a>
 
+## Challenges Faced During Creation
+As this was my first solo react project, I did hit a number of snags. Some notable ones included: <ul><li>getting the dom</li></ul>
+
 ## Installation
 
 To get started with Home-Oh-No:
