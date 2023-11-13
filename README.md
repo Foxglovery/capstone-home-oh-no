@@ -15,8 +15,7 @@ Just two months after diving into my coding bootcamp, we took the exciting leap 
 
 ## Screenshots
 
-![Screenshot 1](url-to-screenshot1.jpg)
-![Screenshot 2](url-to-screenshot2.jpg)
+<div style="position: relative; padding-bottom: 53.125%; height: 0;"><iframe src="https://www.loom.com/embed/9ef53d61a54d4d25a663f40909a9327f?sid=89f29c2e-edb0-413e-8ccc-9f80a26f225e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## Installation
 
