@@ -16,6 +16,7 @@ import { UpdateHome } from "../components/UpdateHome/UpdateHome";
 import { GetHomesByUserId } from "../services/homeService";
 import { AddAHome } from "../components/AddAHome/AddAHome";
 import { Greeting } from "../components/Greeting/Greeting";
+import { AddOwner } from "../components/AddOwner/AddOwner";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -44,7 +45,7 @@ export const ApplicationViews = () => {
             </>
           }
         >
-          <Route index element={<Welcome />} />
+          <Route index element={<AllHomesList />} />
 
           {/* ALL HOMES PATH */}
           <Route path="allHomes">
@@ -95,6 +96,9 @@ export const ApplicationViews = () => {
           </Route>
           <Route path="addAHome">
             <Route index element={<AddAHome currentUser={currentUser} />}/>
+          </Route>
+          <Route path="addOwner">
+            <Route path=":currentHomeId" element={<AddOwner currentUser={currentUser} />}/>
           </Route>
 
         </Route>

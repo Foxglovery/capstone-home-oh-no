@@ -5,7 +5,7 @@ import "./AddAHome.css"
 
 export const AddAHome = ({ currentUser }) => {
     const { currentHomeId } = useParams();
-    console.log("paramcheck", currentHomeId)//debug log
+    
     const navigate = useNavigate()
     const [userHome, setUserHome] = useState({})
     const [home, setHome] = useState({

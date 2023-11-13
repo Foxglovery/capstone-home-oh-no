@@ -1,0 +1,31 @@
+ul .button-78 {
+    ;
+}
+.addOwner_btn_cont {
+    display: flex;
+    justify-content: center;
+}
+
+.remove-owner-symbol {
+    cursor: pointer;
+    margin-left: 10px; /* Adjust as needed */
+    color: #0b0a0a; /* Or any other color that fits your design */
+  }
+  
+  .remove-owner-symbol:hover {
+    text-decoration: underline; /* Optional, for visual feedback */
+    color: rgb(231, 25, 25);
+  }
+
+  .other_user_name {
+    
+    display: flex
+
+  }
+  .other_user_name li {
+    display: inline;
+    background-color: var(--appBackground);
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 0px 5px 0px 10px;
+  }

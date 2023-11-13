@@ -106,6 +106,13 @@ export const UpdateHome = ({ currentUser }) => {
               >
                  Submit Home
               </button>
+              <button
+                className="form-btn button-79"
+                type="button"
+                onClick={() => navigate(`/addOwner/${currentHomeId}`)}
+              >
+                 Edit Owners
+              </button>
             </div>
           </form>
         </div>

@@ -18,6 +18,7 @@ export const HomeDetails = ({ currentUser }) => {
   const [completeImgs, setCompleteImgs] = useState([]);
   const [finishedJobs, setFinishedJobs] = useState([]);
   const [ongoingJobs, setOngoingJobs] = useState([]);
+  const [isImageModalVisible, setIsImageModalVisible] = useState(false);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -69,6 +70,14 @@ export const HomeDetails = ({ currentUser }) => {
     navigate(`/homeDetails/${selectedHomeId}`);
   };
 
+  const openImageModal = () => {
+    setIsImageModalVisible(true);
+  };
+
+  const closeImageModal = () => {
+    setIsImageModalVisible(false);
+  };
+
   return (
     <>
       <div className="main_container">
@@ -100,9 +109,37 @@ export const HomeDetails = ({ currentUser }) => {
                 </h2>
 
                 <div id="home_card_img">
-                  <img src={home[0].home?.imgUrl} alt={home[0].home?.name} />
+                  <img
+                    id="myImg"
+                    className="fadein"
+                    onClick={openImageModal}
+                    src={home[0].home?.imgUrl}
+                    alt={home[0].home?.name}
+                  />
                 </div>
-                
+                {isImageModalVisible && (
+                  <div
+                    id="myModal"
+                    className="modal"
+                    style={{ display: isImageModalVisible ? "flex" : "none" }}
+                  >
+                    <span
+                      onClick={closeImageModal}
+                      className="close"
+                      title="Close Modal"
+                    >
+                      &times;
+                    </span>
+                    <img
+                      src={home[0].home?.imgUrl}
+                      alt={home[0].home?.name}
+                      className="modal_content"
+                      id="img01"
+                    />
+                    <div id="caption">{home[0].home?.description}</div>
+                  </div>
+                )}
+
                 <div>
                   <div className="owner_chip">
                     <div className="owner_text">~Owned By~ </div>
@@ -175,7 +212,21 @@ export const HomeDetails = ({ currentUser }) => {
             </>
           ) : (
             //TODO: this needs to move to include the jobCard component
-            "Loading..."
+            <>
+              <div><h2>Looks like you havn't added a home yet!</h2></div>
+              <div>
+                <button
+                      className="details_button-78 details_button-82"
+                      onClick={() => {
+                        navigate(`/addAHome`);
+                      }}
+                    >
+                      Add Home
+                    </button>
+              </div>
+              
+              
+            </>
           )}
         </div>
       </div>

@@ -92,7 +92,7 @@ export const UpdateJob = ({ currentUser }) => {
       endDate: true,
       budgetGoal: job.budgetGoal,
       budget: job.budget,
-      currentStep: job.currentStep,
+      currentStep: "",
       imgUrl: job.imgUrl,
       imgArray: job.imgArray
     };

@@ -254,6 +254,15 @@ a {
   opacity: 0.24;
 }
 
+.details_button-82:before {
+  
+    background-image: linear-gradient(
+      92.83deg,
+      var(--primary) 0,
+      #f93a13 100%
+    );
+}
+
 .jobs-container {
   display: flex;
   flex-wrap: wrap;
@@ -274,7 +283,7 @@ a {
   position: absolute;
   right: 10px; /* Adjust as needed */
   top: 10px; /* Adjust as needed */
-  z-index: 10; /* To ensure it sits above other content */
+  z-index: 1; /* To ensure it sits above other content */
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -313,3 +322,4 @@ a {
 .details_dropdown:hover .dropbtn {
   background-color: var(--primary);
 }
+

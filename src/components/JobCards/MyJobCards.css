@@ -251,7 +251,7 @@
   height: 100%;
   padding-bottom: 20px;
   z-index: 1;
-  min-height: 72vh;
+  min-height: 79vh;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -261,6 +261,7 @@
 
 .update-btn-container {
   margin-top: auto;
+  text-align: center;
 }
 
 .job-card-title {

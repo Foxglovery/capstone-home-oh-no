@@ -87,7 +87,7 @@
 
   .job_card_step {
     background-color: var(--appBackground);
-    padding: 0px 15px 0px 15px;
+    padding: 0px 5px 0px 5px;
     display: inline-block;
     color: black;
     border-radius: 8px;

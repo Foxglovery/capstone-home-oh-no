@@ -19,3 +19,21 @@ export const GetUsersByHomeId = (homeId) => {
     `http://localhost:8088/userHomes?homeId=${homeId}&_expand=user`
   ).then((res) => res.json());
 };
+
+export const GetAllUsers = () => {
+  return fetch(
+    `http://localhost:8088/users`
+  ).then((res) => res.json());
+};
+
+export const RemoveOwnerFromHome = (userHomeId) => {
+  return fetch(`http://localhost:8088/userHomes/${userHomeId}`, {
+    method: "DELETE",
+  });
+};
+
+export const GetAllUserHomes = () => {
+  return fetch(
+    `http://localhost:8088/userHomes`
+  ).then((res) => res.json());
+};

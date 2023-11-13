@@ -49,9 +49,12 @@ export const MyJobCards = ({ jobs, owners, isHomeOwner, currentUser }) => {
             </div>
           </div>
           <div>
-            <div className="myJobs_card_step">
+            {job.currentStep && (
+              <div className="myJobs_card_step">
               <span className="underline">To Do:</span> {job.currentStep}
             </div>
+            )}
+            
           </div>
 
           <div className="job_card_img">

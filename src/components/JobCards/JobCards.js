@@ -57,9 +57,12 @@ export const JobCards = ({ currentUser, jobs, currentHomeId }) => {
               <span className="underline">Started on:</span> {new Date(job.startDate).toLocaleDateString("en-US")}
             </div>
           </div>
+          {job.currentStep && (
             <div>
                 <div className="job_card_step"><span className="underline">To Do:</span> {job.currentStep}</div>
             </div>
+          )}
+            
           
           <div className="job_card_img">
             <img src={job.imgUrl} alt={job.title} />

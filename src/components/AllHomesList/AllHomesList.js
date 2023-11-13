@@ -93,31 +93,7 @@ export const AllHomesList = () => {
     });
   }, []);
 
-  const numToWord = (num) => {
-    const words = [
-      "None",
-      "One",
-      "Two",
-      "Three",
-      "Four",
-      "Five",
-      "Six",
-      "Seven",
-      "Eight",
-      "Nine",
-      "Ten",
-      "Eleven",
-      "Twelve",
-      "Thirteen",
-      "Fourteen",
-      "Fifteen",
-      "Sixteen",
-      "Seventeen",
-      "Eighteen",
-      "Nineteen",
-    ];
-    return words[num] || num;
-  };
+  
   return (
     <>
       <div className="main_container">
@@ -154,8 +130,9 @@ export const AllHomesList = () => {
                   <span className="home-info">
                     {" "}
                     <span className="big_number">
-                      {homeJobCount[home.home.name]?.ongoing}
-                      {/* {numToWord(homeJobCount[home.home.name]?.ongoing)} */}
+                      {/* uses OR to give a value to display if undefined */}
+                      {homeJobCount[home.home.name]?.ongoing || 0}
+                      
                     </span>{" "}
                     Jobs{" "}
                   </span>
@@ -164,8 +141,8 @@ export const AllHomesList = () => {
                   <span className="home-info">
                     {" "}
                     <span className="big_number">
-                      {homeJobCount[home.home.name]?.completed}
-                      {/* {numToWord(homeJobCount[home.home.name]?.completed)}{" "} */}
+                      {homeJobCount[home.home.name]?.completed || 0}
+                      
                     </span>{" "}
                     Finished
                   </span>

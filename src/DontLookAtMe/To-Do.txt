@@ -1,27 +1,23 @@
-//figure out how to not display edit button on other users jobs
+
 
 //JobFilteredByHome @69
 //MyJobs @57
 
 
-//figure out how to add owners
-
---display username in nav
 
 
-~CSS~
 
-make string number conditionaly render the word job as singular or plural
-
-On jobsbyhome, make home card appear in upper right corner, so can see job cards from the rip
-stop user from being able to highlight with cursor
+on allhomeslist make Jobs render as Job is it is 1
 
 
 
 
-Done:
-cut neg space off logo
-shortened allhome --> jobsByHome by removing homeDetails bypass
+
+
+
+
+
+
 
 
 
