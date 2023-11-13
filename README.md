@@ -24,6 +24,10 @@ Just two months after diving into my coding bootcamp, we took the exciting leap 
     </a>
   </div>
 
+## Screenshots
+
+    <a href="https://ibb.co/0fW6fgj"><img src="https://i.ibb.co/mHY2HLC/SH-1.png" alt="SH-1" border="0"></a>
+
 ## Installation
 
 To get started with Home-Oh-No:
